@@ -1,0 +1,10 @@
+{
+  "jspm": {
+    "dependencies": {
+      "heracles": "github:wikibus/heracles@master"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
+  }
+}
