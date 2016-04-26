@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "heracles": "github:wikibus/heracles/heracles.d.ts",
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519"
+  }
+}
