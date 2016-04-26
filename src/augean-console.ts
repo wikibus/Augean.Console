@@ -12,7 +12,7 @@ class AugeanConsole extends polymer.Base {
 
     @property()
     currentModel:Object;
-    
+
     hasPreviousModel(_modelHistory) {
         return _modelHistory.base.length > 0;
     }
@@ -48,7 +48,7 @@ class ObjectView extends polymer.Base {
     @property()
     model:Object;
 
-    @property({ value: 0, reflectToAttribute: true, type: Number })
+    @property({value: 0, reflectToAttribute: true, type: Number})
     nestingLevel:number;
 
     @computed()
@@ -69,6 +69,11 @@ class ObjectView extends polymer.Base {
     @computed()
     isLiteral(model) {
         return !(typeof model === 'object') || model['@value'];
+    }
+
+    @computed()
+    arrayModel(model) {
+        return this.isArray ? model : [];
     }
 
     showModel(ev) {
@@ -101,6 +106,45 @@ class DefaultResourceView extends polymer.Base {
     }
 }
 
+@component('documented-property')
+class DocumentedProperty extends polymer.Base {
+
+    @property({readOnly: true})
+    propertyTitle:string;
+
+    @property()
+    propertyId:string;
+
+    @property()
+    resource:Object;
+
+    @observe('resource, propertyId')
+    getTitle(resource:IHydraResource, propertyId) {
+        if (resource.apiDocumentation) {
+            var properties;
+            if (_.isArray(resource['@type'])) {
+                properties = _.map(resource['@type'], t => resource.apiDocumentation.getProperties(t));
+            }
+            else {
+                properties = [resource.apiDocumentation.getProperties(resource['@type'])]
+            }
+
+            Promise.all(properties).then(resolved => {
+                var supportedProp = _.chain(resolved)
+                    .flatten()
+                    .filter(prop => prop.property === propertyId)
+                    .head()
+                    .value();
+
+                if (supportedProp) {
+                    this._setPropertyTitle(supportedProp.title)
+                }
+            });
+        }
+        return this._setPropertyTitle(propertyId);
+    }
+}
+
 @component('default-literal-view')
 class DefaultLiteralView extends polymer.Base {
 
@@ -117,3 +161,4 @@ AugeanConsole.register();
 ObjectView.register();
 DefaultLiteralView.register();
 DefaultResourceView.register();
+DocumentedProperty.register();
