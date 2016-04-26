@@ -7,8 +7,15 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
 
+  packages: {
+    "src": {
+      "defaultExtension": "ts"
+    }
+  },
+
   map: {
     "heracles": "github:wikibus/heracles@master",
+    "lodash": "npm:lodash@4.11.1",
     "typescript": "npm:typescript@1.8.10",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

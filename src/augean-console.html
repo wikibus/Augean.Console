@@ -1,0 +1,88 @@
+<dom-module id="augean-console">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <form on-submit="load">
+            <input id="resource" type="url" required="true" value="http://localhost:57548/links/2016/15"/>
+            <input type="submit" value="Load resource"/>
+        </form>
+
+        <button on-tap="back" hidden$="[[!hasPreviousModel(_modelHistory.*)]]">Back</button>
+
+        <object-view model="[[displayedModel]]" on-show-model="showModel"></object-view>
+    </template>
+</dom-module>
+
+<dom-module id="object-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <template is="dom-if" if="[[isLiteral]]">
+            <default-literal-view literal="[[model]]"></default-literal-view>
+        </template>
+        <template is="dom-if" if="[[isResource]]">
+            <button on-tap="showModel" hidden$="[[!nested]]" data-to-show="[[model]]">Show</button>
+            <template is="dom-if" if="[[!nested]]">
+                <default-resource-view resource="[[model]]"></default-resource-view>
+            </template>
+        </template>
+        <template is="dom-if" if="[[isArray]]" restamp>
+            <template is="dom-repeat" items="[[model]]" as="item">
+                <button on-tap="showModel" data-to-show="[[item]]">Show</button>
+                <template is="dom-if" if="[[!nested]]">
+                    <object-view model="[[item]]" nested on-show-model="forwardEvent"></object-view>
+                </template>
+            </template>
+        </template>
+    </template>
+</dom-module>
+
+<dom-module id="default-literal-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <span>[[literalValue]]</span>
+    </template>
+</dom-module>
+
+<dom-module id="default-resource-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            object-view {
+                border-left: solid 2px black;
+                padding-left: 5px
+            }
+        </style>
+
+        <table>
+            <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
+                <tr>
+                    <th>[[item.0]]</th>
+                    <td>
+                        <object-view model="[[item.1]]" nested></object-view>
+                    </td>
+                </tr>
+            </template>
+        </table>
+    </template>
+</dom-module>
+
+<script>
+    System.import('src/augean-console');
+</script>

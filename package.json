@@ -1,7 +1,8 @@
 {
   "jspm": {
     "dependencies": {
-      "heracles": "github:wikibus/heracles@master"
+      "heracles": "github:wikibus/heracles@master",
+      "lodash": "npm:lodash@^4.11.1"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"
