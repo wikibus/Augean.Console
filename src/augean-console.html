@@ -31,14 +31,14 @@
         <template is="dom-if" if="[[isResource]]">
             <button on-tap="showModel" hidden$="[[!nested]]" data-to-show="[[model]]">Show</button>
             <template is="dom-if" if="[[!nested]]">
-                <default-resource-view resource="[[model]]"></default-resource-view>
+                <default-resource-view resource="[[model]]" nesting-level="[[nextLevel(nestingLevel)]]"></default-resource-view>
             </template>
         </template>
         <template is="dom-if" if="[[isArray]]" restamp>
             <template is="dom-repeat" items="[[model]]" as="item">
-                <button on-tap="showModel" data-to-show="[[item]]">Show</button>
+                <button on-tap="showModel" data-to-show="[[item]]" hidden$="[[!nested]]">Show</button>
                 <template is="dom-if" if="[[!nested]]">
-                    <object-view model="[[item]]" nested on-show-model="forwardEvent"></object-view>
+                    <object-view model="[[item]]" on-show-model="forwardEvent" nesting-level="[[nestingLevel]]"></object-view>
                 </template>
             </template>
         </template>
@@ -75,7 +75,7 @@
                 <tr>
                     <th>[[item.0]]</th>
                     <td>
-                        <object-view model="[[item.1]]" nested></object-view>
+                        <object-view model="[[item.1]]" nesting-level="[[nestingLevel]]"></object-view>
                     </td>
                 </tr>
             </template>

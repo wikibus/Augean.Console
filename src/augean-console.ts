@@ -48,8 +48,13 @@ class ObjectView extends polymer.Base {
     @property()
     model:Object;
 
-    @property({ value:false, type:Boolean })
-    nested:Boolean;
+    @property({ value: 0, reflectToAttribute: true, type: Number })
+    nestingLevel:number;
+
+    @computed()
+    nested(nestingLevel) {
+        return nestingLevel >= 2;
+    }
 
     @computed()
     isArray(model) {
@@ -72,8 +77,8 @@ class ObjectView extends polymer.Base {
         });
     }
 
-    forwardEvent(ev) {
-        //this.fire()
+    nextLevel(level) {
+        return level + 1;
     }
 }
 
