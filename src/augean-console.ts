@@ -48,12 +48,15 @@ class ObjectView extends polymer.Base {
     @property()
     model:Object;
 
-    @property({value: 0, reflectToAttribute: true, type: Number})
+    @property({value: 0, type: Number})
     nestingLevel:number;
+    
+    @property({value: 2})
+    nestingLimit:number;
 
     @computed()
-    nested(nestingLevel) {
-        return nestingLevel >= 2;
+    nested(nestingLevel, nestingLimit) {
+        return nestingLevel >= nestingLimit;
     }
 
     @computed()
@@ -68,7 +71,7 @@ class ObjectView extends polymer.Base {
 
     @computed()
     isLiteral(model) {
-        return !(typeof model === 'object') || model['@value'];
+        return !(typeof model === 'object') || !!model['@value'];
     }
 
     @computed()
