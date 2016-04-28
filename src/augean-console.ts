@@ -20,14 +20,19 @@ class AugeanConsole extends polymer.Base {
     @property({value: []})
     _modelHistory:Array;
 
-    @property()
-    model:Object;
+    @property({ value: null })
+    model:IHydraResource;
 
     @property()
     url:string;
 
     @property()
     currentModel:Object;
+
+    @computed()
+    hasApiDocumentation(model) {
+        return !!model && !!model.apiDocumentation;
+    }
 
     hasPreviousModel(_modelHistory) {
         return _modelHistory.base.length > 0;

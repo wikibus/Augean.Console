@@ -1,18 +1,28 @@
 <dom-module id="api-documentation-viewer">
     <template>
         <style>
+            :host {
+                display: block;
+            }
+
+            paper-dropdown-menu {
+                display: block;
+            }
+
             [is-current] {
                 background-color: rgba(0, 0, 0, 0.13);
             }
         </style>
 
         <paper-dropdown-menu label="Supported Class">
-            <paper-listbox class="dropdown-content">
+            <paper-listbox id="classSelect" class="dropdown-content" on-iron-select="displayClass">
                 <template is="dom-repeat" items="[[classes]]" as="c">
-                    <paper-item is-current$="[[isCurrent(c.id)]]">{{c.title}}</paper-item>
+                    <paper-item is-current$="[[isCurrent(c.id)]]" class-id="[[c.id]]">[[c.title]]</paper-item>
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
+
+        <supported-class-view supported-class="{{class}}"></supported-class-view>
     </template>
 </dom-module>
 

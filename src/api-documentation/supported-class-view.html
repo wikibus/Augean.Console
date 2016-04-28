@@ -1,0 +1,13 @@
+<dom-module id="supported-class-view">
+    <template>
+        <ul>
+        <template is="dom-repeat" items="[[supportedProperties]]" as="prop">
+            <li>[[prop.title]]</li>
+        </template>
+        </ul>
+    </template>
+</dom-module>
+
+<script>
+    System.import('src/api-documentation/supported-class-view');
+</script>

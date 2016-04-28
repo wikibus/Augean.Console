@@ -13,7 +13,8 @@
         </style>
 
         <paper-multidrawer-panel id="drawerPanel"
-                                 force-right-drawer-temporary="true">
+                                 force-right-drawer-temporary="true"
+                                 disable-right-edge-swipe="[[!hasApiDocumentation]]">
 
             <paper-header-panel left-drawer class="flex">
                 <paper-toolbar>
@@ -28,7 +29,7 @@
                 </paper-toolbar>
                 <div>
                     <api-documentation-viewer api-docs="[[model.apiDocumentation]]"
-                                              model-types="[[model.types]]"></api-documentation-viewer>
+                                              model-types="[[currentModel.types]]"></api-documentation-viewer>
                 </div>
             </paper-header-panel>
 
@@ -36,6 +37,7 @@
                 <paper-toolbar class="medium-tall">
                     <span class="title">Augean Hydra Console</span>
                     <paper-icon-button icon="icons:help-outline"
+                                       hidden$="[[!hasApiDocumentation]]"
                                        on-tap="showDocs"></paper-icon-button>
 
                     <paper-icon-button class="middle" icon="av:fast-rewind"
