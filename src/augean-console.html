@@ -32,6 +32,9 @@
                 <paper-toolbar class="medium-tall">
                     <div class="title">Augean Hydra Console</div>
 
+                    <paper-icon-button class="middle" icon="av:fast-rewind"
+                                       disabled="[[!hasPreviousModel(_modelHistory.*)]]"
+                                       on-tap="back"></paper-icon-button>
                     <paper-input id="resource" class="middle title" label="address"
                                  pattern="^https?://.*" no-label-float auto-validate
                                  invalid="{{addressInvalid}}"
@@ -39,7 +42,7 @@
                         <iron-icon prefix icon="icons:language"></iron-icon>
                     </paper-input>
                     <paper-icon-button class="middle" icon="av:play-circle-filled" disabled="[[addressInvalid]]"
-                    on-tap="load"/>
+                                       on-tap="load"></paper-icon-button>
                 </paper-toolbar>
                 <div>
                     <object-view model="[[displayedModel]]" on-show-model="showModel"></object-view>
@@ -47,11 +50,6 @@
             </paper-header-panel>
         </paper-multidrawer-panel>
 
-        <!--
-
-        <button on-tap="back" hidden$="[[!hasPreviousModel(_modelHistory.*)]]">Back</button>
-
-        -->
     </template>
 </dom-module>
 
