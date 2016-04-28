@@ -1,0 +1,29 @@
+<dom-module id="default-literal-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <span>[[literalValue]]</span>
+    </template>
+</dom-module>
+
+<script>
+
+    Polymer({
+        is: 'default-literal-view',
+
+        properties: {
+            literal: Object,
+            literalValue: {
+                computed: '_getLiteralValue(literal)'
+            }
+        },
+
+        _getLiteralValue: function(literal) {
+            return literal['@value'] || literal;
+        }
+    });
+</script>

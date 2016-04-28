@@ -1,0 +1,31 @@
+<dom-module id="default-resource-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            paper-material {
+                margin: 10px;
+                padding: 10px;
+            }
+        </style>
+
+        <paper-card heading="[[resource.id]]">
+            <div class="card-content">
+                <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
+                    <h3>
+                        <property-label resource="[[resource]]" property-id="[[item.0]]"></property-label>
+                    </h3>
+                    <div>
+                        <object-view model="[[item.1]]" nesting-level="[[nestingLevel]]"></object-view>
+                    </div>
+                </template>
+            </div>
+        </paper-card>
+    </template>
+</dom-module>
+
+<script>
+    System.import('src/resource-views/default-resource-view');
+</script>
