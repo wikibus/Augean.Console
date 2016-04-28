@@ -28,8 +28,7 @@ class ApiDocumentationViewer extends polymer.Base {
 
     @observe('apiDocs')
     _getClasses(apiDocs:IApiDocumentation) {
-        apiDocs.getClasses()
-            .then(setClasses.bind(this))
+        apiDocs.getClasses().then(setClasses.bind(this));
     }
 
     isCurrent(typeId) {

@@ -1,13 +1,19 @@
+import 'bower_components/paper-tooltip/paper-tooltip.html!'
 import * as _ from 'lodash';
 
 @component('property-label')
 class PropertyLabel extends polymer.Base {
 
     @property({readOnly: true})
-    propertyTitle:string;
+    supportedProperty:ISupportedProperty;
 
     @property()
     propertyId:string;
+
+    @computed()
+    propertyTitle(supportedProperty:ISupportedProperty, propertyId) {
+        return supportedProperty.title || propertyId;
+    }
 
     @property()
     resource:Object;
@@ -31,11 +37,11 @@ class PropertyLabel extends polymer.Base {
                     .value();
 
                 if (supportedProp) {
-                    this._setPropertyTitle(supportedProp.title)
+                    this._setSupportedProperty(supportedProp)
                 }
             });
         }
-        this._setPropertyTitle(propertyId);
+        this._setSupportedProperty(propertyId);
     }
 }
 
