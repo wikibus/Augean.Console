@@ -31,6 +31,10 @@ class AugeanConsole extends polymer.Base {
         return _modelHistory.base.length > 0;
     }
 
+    showDocs() {
+        this.$.drawerPanel.openRightDrawer();
+    }
+
     load(e) {
         Hydra.loadResource(this.$.resource.value)
             .then(res => {

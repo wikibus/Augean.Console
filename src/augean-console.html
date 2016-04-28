@@ -12,7 +12,8 @@
             }
         </style>
 
-        <paper-multidrawer-panel>
+        <paper-multidrawer-panel id="drawerPanel"
+                                 force-right-drawer-temporary="true">
 
             <paper-header-panel left-drawer class="flex">
                 <paper-toolbar>
@@ -30,7 +31,9 @@
 
             <paper-header-panel main>
                 <paper-toolbar class="medium-tall">
-                    <div class="title">Augean Hydra Console</div>
+                    <span class="title">Augean Hydra Console</span>
+                    <paper-icon-button icon="icons:help-outline"
+                                       on-tap="showDocs"></paper-icon-button>
 
                     <paper-icon-button class="middle" icon="av:fast-rewind"
                                        disabled="[[!hasPreviousModel(_modelHistory.*)]]"
