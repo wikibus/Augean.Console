@@ -26,7 +26,10 @@
                 <paper-toolbar>
                     <div class="title">Documentation</div>
                 </paper-toolbar>
-                <div>Content goes here...</div>
+                <div>
+                    <api-documentation-viewer api-docs="[[model.apiDocumentation]]"
+                                              model-types="[[model.types]]"></api-documentation-viewer>
+                </div>
             </paper-header-panel>
 
             <paper-header-panel main>

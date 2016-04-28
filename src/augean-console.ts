@@ -10,6 +10,7 @@ import 'bower_components/iron-icons/av-icons.html!';
 import 'bower_components/paper-icon-button/paper-icon-button.html!';
 
 import 'src/resource-views/object-view.html!';
+import 'src/api-documentation/viewer.html!';
 
 import {Hydra} from 'heracles';
 

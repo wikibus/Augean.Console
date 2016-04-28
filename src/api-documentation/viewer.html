@@ -1,0 +1,21 @@
+<dom-module id="api-documentation-viewer">
+    <template>
+        <style>
+            [is-current] {
+                background-color: rgba(0, 0, 0, 0.13);
+            }
+        </style>
+
+        <paper-dropdown-menu label="Supported Class">
+            <paper-listbox class="dropdown-content">
+                <template is="dom-repeat" items="[[classes]]" as="c">
+                    <paper-item is-current$="[[isCurrent(c.id)]]">{{c.title}}</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+    </template>
+</dom-module>
+
+<script>
+    System.import('src/api-documentation/viewer');
+</script>
