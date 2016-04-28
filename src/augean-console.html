@@ -4,16 +4,54 @@
             :host {
                 display: block;
             }
+
+            [main] paper-input {
+                --paper-input-container-color: white;
+                --paper-input-container-input-color: white;
+                pointer-events: auto !important;
+            }
         </style>
 
-        <form on-submit="load">
-            <input id="resource" type="url" required="true" value="http://localhost:57548/links/2016/15"/>
-            <input type="submit" value="Load resource"/>
-        </form>
+        <paper-multidrawer-panel>
+
+            <paper-header-panel left-drawer class="flex">
+                <paper-toolbar>
+                    <div class="title">Console</div>
+                </paper-toolbar>
+                <div>Content goes here...</div>
+            </paper-header-panel>
+
+            <paper-header-panel right-drawer>
+                <paper-toolbar>
+                    <div class="title">Documentation</div>
+                </paper-toolbar>
+                <div>Content goes here...</div>
+            </paper-header-panel>
+
+            <paper-header-panel main>
+                <paper-toolbar class="medium-tall">
+                    <div class="title">Augean Hydra Console</div>
+
+                    <paper-input id="resource" class="middle title" label="address"
+                                 pattern="^https?://.*" no-label-float auto-validate
+                                 invalid="{{addressInvalid}}"
+                                 value="{{url}}">
+                        <iron-icon prefix icon="icons:language"></iron-icon>
+                    </paper-input>
+                    <paper-icon-button class="middle" icon="av:play-circle-filled" disabled="[[addressInvalid]]"
+                    on-tap="load"/>
+                </paper-toolbar>
+                <div>
+                    <object-view model="[[displayedModel]]" on-show-model="showModel"></object-view>
+                </div>
+            </paper-header-panel>
+        </paper-multidrawer-panel>
+
+        <!--
 
         <button on-tap="back" hidden$="[[!hasPreviousModel(_modelHistory.*)]]">Back</button>
 
-        <object-view model="[[displayedModel]]" on-show-model="showModel"></object-view>
+        -->
     </template>
 </dom-module>
 
@@ -29,14 +67,15 @@
             <default-literal-view literal="[[model]]"></default-literal-view>
         </div>
 
-        <div hidden$="[[!isResource]]" >
+        <div hidden$="[[!isResource]]">
             <button on-tap="showModel" hidden$="[[!nested]]" data-to-show="[[model]]">Show</button>
             <template is="dom-if" if="[[!nested]]">
-                <default-resource-view resource="[[model]]" nesting-level="[[nextLevel(nestingLevel)]]"></default-resource-view>
+                <default-resource-view resource="[[model]]"
+                                       nesting-level="[[nextLevel(nestingLevel)]]"></default-resource-view>
             </template>
         </div>
 
-        <div hidden$="[[!isArray]]" >
+        <div hidden$="[[!isArray]]">
             <template is="dom-repeat" items="[[arrayModel]]" as="item">
                 <button on-tap="showModel" data-to-show="[[item]]" hidden$="[[!nested]]">Show</button>
                 <template is="dom-if" if="[[!nested]]">
@@ -66,24 +105,24 @@
                 display: block;
             }
 
-            object-view {
-                border-left: solid 2px black;
-                padding-left: 5px
+            paper-material {
+                margin: 10px;
+                padding: 10px;
             }
         </style>
 
-        <table>
-            <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
-                <tr>
-                    <th>
+        <paper-card heading="[[resource.id]]">
+            <div class="card-content">
+                <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
+                    <h3>
                         <documented-property resource="[[resource]]" property-id="[[item.0]]"></documented-property>
-                    </th>
-                    <td>
+                    </h3>
+                    <div>
                         <object-view model="[[item.1]]" nesting-level="[[nestingLevel]]"></object-view>
-                    </td>
-                </tr>
-            </template>
-        </table>
+                    </div>
+                </template>
+            </div>
+        </paper-card>
     </template>
 </dom-module>
 

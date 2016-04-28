@@ -1,3 +1,14 @@
+import 'bower_components/paper-material/paper-material.html!';
+import 'bower_components/paper-multidrawer-panel/paper-multidrawer-panel.html!';
+import 'bower_components/paper-header-panel/paper-header-panel.html!'
+import 'bower_components/paper-toolbar/paper-toolbar.html!'
+import 'bower_components/paper-input/paper-input.html!'
+import 'bower_components/paper-styles/paper-styles.html!'
+import 'bower_components/paper-card/paper-card.html!';
+import 'bower_components/iron-icons/iron-icons.html!';
+import 'bower_components/iron-icons/av-icons.html!';
+import 'bower_components/paper-icon-button/paper-icon-button.html!';
+
 import * as _ from 'lodash';
 import {Hydra} from 'heracles';
 
@@ -9,6 +20,9 @@ class AugeanConsole extends polymer.Base {
 
     @property()
     model:Object;
+
+    @property()
+    url:string;
 
     @property()
     currentModel:Object;
@@ -50,7 +64,7 @@ class ObjectView extends polymer.Base {
 
     @property({value: 0, type: Number})
     nestingLevel:number;
-    
+
     @property({value: 2})
     nestingLimit:number;
 
@@ -144,7 +158,7 @@ class DocumentedProperty extends polymer.Base {
                 }
             });
         }
-        return this._setPropertyTitle(propertyId);
+        this._setPropertyTitle(propertyId);
     }
 }
 

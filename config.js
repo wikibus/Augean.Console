@@ -15,8 +15,12 @@ System.config({
 
   map: {
     "heracles": "github:wikibus/heracles@master",
+    "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "lodash": "npm:lodash@4.11.1",
     "typescript": "npm:typescript@1.8.10",
+    "github:Hypercubed/systemjs-plugin-html@0.0.8": {
+      "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
