@@ -27,6 +27,11 @@ class ObjectView extends polymer.Base {
             if(!template.isMatch(this.model)) continue;
 
             found = true;
+
+            if(template.name) {
+                this.setAttribute('data-template', template.name);
+            }
+
             template.getStamped(this.model)
                 .then(stamped => elementRoot.appendChild(stamped));
             break;

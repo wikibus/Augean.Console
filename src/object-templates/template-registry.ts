@@ -19,7 +19,11 @@ var TemplateStamper = {
             type: String,
             value: 'model'
         },
-        compactWith: Object
+        compactWith: Object,
+        name: {
+            type: String,
+            value: ''
+        }
     },
     
     ready: function() {
