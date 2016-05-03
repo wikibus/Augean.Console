@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="object-templates/array-template.html" />
+<link rel="import" href="object-templates/type-template.html" />
+<link rel="import" href="hydra-views/hydra-collection.html" />
+<link rel="import" href="hydra-views/hydra-partial-view-pager.html" />
+
+<template is="array-template" as="elements">
+    <template is="dom-repeat" items="[[elements]]" as="element">
+        <object-view model="[[element]]"></object-view>
+    </template>
+</template>
+
+<template is="type-template"
+          type="http://www.w3.org/ns/hydra/core#Collection" as="collection">
+    <hydra-collection collection="[[collection]]"></hydra-collection>
+</template>
+
+<template is="type-template"
+          type="http://www.w3.org/ns/hydra/core#PartialCollectionView" as="view">
+    <hydra-partial-view-pager view="[[view]]"></hydra-partial-view-pager>
+</template>
+
+<template is="type-template"
+          type="http://wikibus.org/ontology#Book" as="book">
+    <paper-material elevation="1">
+        Dat book
+    </paper-material>
+</template>

@@ -1,0 +1,14 @@
+<dom-module id="hydra-partial-view-pager">
+    <template>
+        <paper-material elevation="1">
+            <paper-button on-tap="go" data-to="[[view.first.id]]">First</paper-button>
+            <paper-button on-tap="go" data-to="[[view.previous.id]]">Previous</paper-button>
+            <paper-button on-tap="go" data-to="[[view.next.id]]">Next</paper-button>
+            <paper-button on-tap="go" data-to="[[view.last.id]]">Last</paper-button>
+        </paper-material>
+    </template>
+</dom-module>
+
+<script>
+    System.import('src/hydra-views/hydra-partial-view-pager');
+</script>

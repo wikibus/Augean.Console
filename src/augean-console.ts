@@ -43,11 +43,11 @@ class AugeanConsole extends polymer.Base {
     }
 
     load(e) {
-        Hydra.loadResource(this.$.resource.value)
+        this.async(() => {Hydra.loadResource(this.$.resource.value)
             .then(res => {
                 this.model = res;
                 this.currentModel = res;
-            });
+            });});
 
         e.preventDefault();
     }

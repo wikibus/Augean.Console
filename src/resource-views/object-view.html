@@ -6,26 +6,7 @@
             }
         </style>
 
-        <div hidden$="[[!isLiteral]]">
-            <default-literal-view literal="[[model]]"></default-literal-view>
-        </div>
-
-        <div hidden$="[[!isResource]]">
-            <button on-tap="showModel" hidden$="[[!nested]]" data-to-show="[[model]]">Show</button>
-            <template is="dom-if" if="[[!nested]]">
-                <default-resource-view resource="[[model]]"
-                                       nesting-level="[[nextLevel(nestingLevel)]]"></default-resource-view>
-            </template>
-        </div>
-
-        <div hidden$="[[!isArray]]">
-            <template is="dom-repeat" items="[[arrayModel]]" as="item">
-                <button on-tap="showModel" data-to-show="[[item]]" hidden$="[[!nested]]">Show</button>
-                <template is="dom-if" if="[[!nested]]">
-                    <object-view model="[[item]]" nesting-level="[[nestingLevel]]"></object-view>
-                </template>
-            </template>
-        </div>
+        <content></content>
     </template>
 </dom-module>
 

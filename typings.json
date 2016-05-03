@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "heracles": "github:wikibus/heracles/heracles.d.ts",
+    "jsonld": "registry:npm/jsonld#0.4.0+20160423203356",
     "lodash": "registry:npm/lodash#4.0.0+20160416211519"
   }
 }

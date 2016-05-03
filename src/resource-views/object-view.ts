@@ -1,53 +1,44 @@
 import 'src/resource-views/default-literal-view.html!';
 import 'src/resource-views/default-resource-view.html!';
-
-import * as _ from 'lodash';
+import {TemplateRegistry} from './../object-templates/template-registry';
 
 @component('object-view')
+@behavior(TemplateRegistry)
 class ObjectView extends polymer.Base {
 
     @property()
     model:Object;
 
-    @property({value: 0, type: Number})
-    nestingLevel:number;
+    @observe('model')
+    _draw() {
+        var templates = this.templates || [];
+        var found;
+        var elementRoot = Polymer.dom(this.root);
 
-    @property({value: 2})
-    nestingLimit:number;
+        while (elementRoot.firstChild) {
+            elementRoot.removeChild(elementRoot.firstChild);
+        }
 
-    @computed()
-    nested(nestingLevel, nestingLimit) {
-        return nestingLevel >= nestingLimit;
-    }
+        for(var i = 0; i < templates.length; i++) {
+            var template = templates[i];
 
-    @computed()
-    isArray(model) {
-        return Array.isArray(model);
-    }
+            if(!template.isMatch) continue;
 
-    @computed()
-    isResource(model) {
-        return _.isObject(model) && !Array.isArray(model);
-    }
+            if(!template.isMatch(this.model)) continue;
 
-    @computed()
-    isLiteral(model) {
-        return !(typeof model === 'object') || !!model['@value'];
-    }
+            found = true;
+            template.getStamped(this.model)
+                .then(stamped => elementRoot.appendChild(stamped));
+            break;
+        }
 
-    @computed()
-    arrayModel(model) {
-        return this.isArray ? model : [];
-    }
+        if(!found) {
+            var notFoundNode = document.createElement('div');
+            notFoundNode.textContent = 'Template Not found';
+            elementRoot.appendChild(notFoundNode);
 
-    showModel(ev) {
-        this.fire('show-model', ev.target.dataToShow, {
-            bubbles: true
-        });
-    }
-
-    nextLevel(level) {
-        return level + 1;
+            console.warn('Template not found for', this.model);
+        }
     }
 }
 

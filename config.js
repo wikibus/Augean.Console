@@ -16,6 +16,7 @@ System.config({
   map: {
     "heracles": "github:wikibus/heracles@master",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
+    "jsonld": "npm:jsonld@0.4.11",
     "lodash": "npm:lodash@4.11.1",
     "typescript": "npm:typescript@1.8.10",
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
