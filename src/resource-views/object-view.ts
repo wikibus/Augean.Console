@@ -1,9 +1,9 @@
 import 'src/resource-views/default-literal-view.html!';
 import 'src/resource-views/default-resource-view.html!';
-import {TemplateRegistry} from './../object-templates/template-registry';
+import {TemplateRegistryAccess} from './../object-templates/template-registry';
 
 @component('object-view')
-@behavior(TemplateRegistry)
+@behavior(TemplateRegistryAccess)
 class ObjectView extends polymer.Base {
 
     @property()

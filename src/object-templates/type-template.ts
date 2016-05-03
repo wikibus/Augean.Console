@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
-import {TemplateRegistry} from './template-registry';
+import {RegisteredTemplate} from './template-registry';
 
 @component('type-template')
-@behavior(TemplateRegistry)
+@behavior(RegisteredTemplate)
 @extend('template')
 class TypeTemplate extends polymer.Base {
 

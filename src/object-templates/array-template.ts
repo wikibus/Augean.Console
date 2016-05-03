@@ -1,7 +1,7 @@
-import {TemplateRegistry} from './template-registry';
+import {RegisteredTemplate} from './template-registry';
 
 @component('array-template')
-@behavior(TemplateRegistry)
+@behavior(RegisteredTemplate)
 @extend('template')
 class ArrayTemplate extends polymer.Base {
     isMatch(res) {

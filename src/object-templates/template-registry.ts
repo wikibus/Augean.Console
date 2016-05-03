@@ -2,21 +2,26 @@ import {promises as jsonld} from 'jsonld';
 
 var templates = [];
 
-var Registry = {
+export var TemplateRegistryAccess = {
     properties: {
         templates: {
             type: Array,
             notify: true,
             readOnly: true,
             value: templates
-        },
+        }        
+    }    
+};
+
+var TemplateStamper = {
+    properties: {
         as: {
             type: String,
             value: 'model'
         },
         compactWith: Object
     },
-
+    
     ready: function() {
         this.push('templates', this);
     },
@@ -43,4 +48,4 @@ function stamp(object) {
     return this.stamp(stampedModel).root;
 }
 
-export var TemplateRegistry = [ Polymer.Templatizer, Registry ];
+export var RegisteredTemplate = [ Polymer.Templatizer, TemplateStamper, TemplateRegistryAccess ];
