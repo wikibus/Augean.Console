@@ -1,3 +1,20 @@
+<dom-module id="hydra-collection">
+    <template>
+        <style>
+            #member {
+                @apply(--hydra-collection-members);
+            }
+
+            #pager {
+                @apply(--hydra-collection-pager);
+            }
+        </style>
+
+        <object-view id="member" model="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#member')]]"></object-view>
+        <object-view id="pager"  model="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#view')]]"></object-view>
+    </template>
+</dom-module>
+
 <script>
     System.import('src/hydra-views/hydra-collection');
 </script>
