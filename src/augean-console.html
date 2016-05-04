@@ -56,9 +56,11 @@
                     <paper-input id="resource" class="middle title" label="address"
                                  pattern="^https?://.*" no-label-float auto-validate
                                  invalid="{{addressInvalid}}"
-                                 value="[[url]]">
+                                 value="[[url]]"
+                                 on-keydown="loadOnEnter">
                         <iron-icon prefix icon="icons:language"></iron-icon>
                     </paper-input>
+                    <iron-a11y-keys target="[[urlInput]]" keys="enter" on-keys-pressed="onEnter"></iron-a11y-keys>
                     <paper-icon-button class="middle" icon="av:play-circle-filled" disabled="[[addressInvalid]]"
                                        on-tap="load"></paper-icon-button>
                 </paper-toolbar>

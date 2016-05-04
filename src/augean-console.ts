@@ -7,6 +7,7 @@ import 'bower_components/paper-styles/paper-styles.html!'
 import 'bower_components/paper-card/paper-card.html!';
 import 'bower_components/iron-icons/iron-icons.html!';
 import 'bower_components/iron-icons/av-icons.html!';
+import 'bower_components/iron-a11y-keys-behavior/iron-a11y-keys-behavior.html!';
 import 'bower_components/paper-icon-button/paper-icon-button.html!';
 
 import 'src/resource-views/object-view.html!';
@@ -37,8 +38,12 @@ class AugeanConsole extends polymer.Base {
         return !!model && !!model.apiDocumentation;
     }
 
+    @computed()
+    urlInput(){
+        return this.$.resource;
+    }
+
     attached() {
-        console.log('navigatin', this.initialUrl);
         LdNavigation.Helpers.fireNavigation(this, this.initialUrl);
     }
 
@@ -50,8 +55,7 @@ class AugeanConsole extends polymer.Base {
         this.$.drawerPanel.openRightDrawer();
     }
 
-    load(e) {
-        console.log('navigatin', this.$.resource.value);
+    load() {
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
     }
 
@@ -61,6 +65,12 @@ class AugeanConsole extends polymer.Base {
                 this.model = res;
                 this.currentModel = res;
             });
+    }
+
+    loadOnEnter(e) {
+        if(e.keyCode === 13) {
+            this.load();
+        }
     }
 
     @computed()
