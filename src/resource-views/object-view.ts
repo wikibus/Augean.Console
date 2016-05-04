@@ -13,7 +13,7 @@ class ObjectView extends polymer.Base {
     _draw() {
         var templates = this.templates || [];
         var found;
-        var elementRoot = Polymer.dom(this.root);
+        var elementRoot = Polymer.dom(this);
 
         while (elementRoot.firstChild) {
             elementRoot.removeChild(elementRoot.firstChild);

@@ -4,14 +4,9 @@
             :host {
                 display: block;
             }
-
-            paper-material {
-                margin: 10px;
-                padding: 10px;
-            }
         </style>
 
-        <paper-card heading="[[resource.id]]">
+        <paper-card class="default-resource" image="[[image]]">
             <div class="card-content">
                 <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
                     <h3>
@@ -21,6 +16,10 @@
                         <object-view model="[[item.1]]" nesting-level="[[nestingLevel]]"></object-view>
                     </div>
                 </template>
+            </div>
+
+            <div class="card-actions">
+                <paper-button>Show</paper-button>
             </div>
         </paper-card>
     </template>

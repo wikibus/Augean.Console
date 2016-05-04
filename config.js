@@ -17,7 +17,7 @@ System.config({
     "heracles": "github:wikibus/heracles@master",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "jsonld": "npm:jsonld@0.4.11",
-    "lodash": "npm:lodash@4.11.1",
+    "lodash": "npm:lodash@4.11.2",
     "typescript": "npm:typescript@1.8.10",
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
@@ -42,7 +42,7 @@ System.config({
       "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@0.10.0",
       "jsonld": "npm:jsonld@0.4.11",
       "li": "npm:li@1.0.1",
-      "lodash": "npm:lodash@4.11.1"
+      "lodash": "npm:lodash@4.11.2"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -67,7 +67,7 @@ System.config({
       "es6-promise": "npm:es6-promise@2.3.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:lodash@4.11.1": {
+    "npm:lodash@4.11.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },

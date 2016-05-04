@@ -2,11 +2,24 @@
     <template>
         <style>
             #member {
-                @apply(--hydra-collection-members);
+                display: flex;
+                flex-wrap: wrap;
             }
 
-            #pager {
-                @apply(--hydra-collection-pager);
+            #member > .array-element {
+                --object-view: {
+                    margin: 5px;
+                };
+            }
+
+            :host {
+                --paper-card-header-image: {
+                    width: auto;
+                };
+
+                --paper-card: {
+                    width: 400px;
+                }
             }
         </style>
 
