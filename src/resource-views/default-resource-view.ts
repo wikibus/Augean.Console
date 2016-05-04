@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 class DefaultResourceView extends polymer.Base {
 
     @property()
-    resource:Object;
+    resource:IHydraResource;
 
     @computed()
     image(resource) {
@@ -25,6 +25,10 @@ class DefaultResourceView extends polymer.Base {
             .filter(pair => !pair[0].startsWith('@'))
             .filter(pair => pair[0] !== 'http://schema.org/image');
         return pairs;
+    }
+
+    load() {
+        LdNavigation.Helpers.fireNavigation(this, this.resource.id);
     }
 }
 

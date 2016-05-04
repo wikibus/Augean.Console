@@ -8,7 +8,7 @@ class PartialViewPager extends polymer.Base {
     view: IPartialCollectionView;
 
     go(ev) {
-        console.log(ev.target.dataTo);
+        LdNavigation.Helpers.fireNavigation(this, ev.target.dataTo);
     }
 }
 

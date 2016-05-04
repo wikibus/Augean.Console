@@ -24,6 +24,9 @@ class AugeanConsole extends polymer.Base {
     model:IHydraResource;
 
     @property()
+    initialUrl:string;
+
+    @property()
     url:string;
 
     @property()
@@ -32,6 +35,11 @@ class AugeanConsole extends polymer.Base {
     @computed()
     hasApiDocumentation(model) {
         return !!model && !!model.apiDocumentation;
+    }
+
+    attached() {
+        console.log('navigatin', this.initialUrl);
+        LdNavigation.Helpers.fireNavigation(this, this.initialUrl);
     }
 
     hasPreviousModel(_modelHistory) {
@@ -43,13 +51,16 @@ class AugeanConsole extends polymer.Base {
     }
 
     load(e) {
-        this.async(() => {Hydra.loadResource(this.$.resource.value)
+        console.log('navigatin', this.$.resource.value);
+        LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
+    }
+
+    loadResource(e) {
+        Hydra.loadResource(e.detail.value)
             .then(res => {
                 this.model = res;
                 this.currentModel = res;
-            });});
-
-        e.preventDefault();
+            });
     }
 
     @computed()
