@@ -1,0 +1,15 @@
+<dom-module id="fallback-templates">
+    <template>
+        <template is="any-object-template" as="resource">
+            <default-resource-view resource="[[resource]]"></default-resource-view>
+        </template>
+
+        <template is="any-literal-template" as="literal">
+            <default-literal-view literal="[[literal]]"></default-literal-view>
+        </template>
+    </template>
+</dom-module>
+
+<script>
+    System.import('src/fallback-templates');
+</script>
