@@ -9,11 +9,24 @@ export var TemplateRegistryAccess = {
             notify: true,
             readOnly: true,
             value: templates
-        }        
+        }
     }    
 };
 
 var TemplateStamper = {
+    getStamped: function(template, object) {
+        this.templatize(template);
+
+        if(this.compactWith) {
+            return jsonld.compact(object, this.compactWith)
+                .then(compacted => stamp.call(this, template, compacted));
+        } else {
+            return Promise.resolve(stamp.call(this, template, object));
+        }
+    }
+};
+
+export var RegisteredTemplate = {
     properties: {
         as: {
             type: String,
@@ -32,24 +45,15 @@ var TemplateStamper = {
 
     detached: function() {
         this.pop('templates', this);
-    },
-
-    getStamped: function(object) {
-        this.templatize(this);
-
-        if(this.compactWith) {
-            return jsonld.compact(object, this.compactWith).then(stamp.bind(this));
-        } else {
-            return Promise.resolve(stamp.call(this, object));
-        }
     }
 };
 
-function stamp(object) {
+function stamp(template, object) {
     var stampedModel = { };
-    stampedModel[this.as] = object;
+    stampedModel[template.as] = object;
 
     return this.stamp(stampedModel).root;
 }
 
-export var RegisteredTemplate = [ Polymer.Templatizer, TemplateStamper, TemplateRegistryAccess ];
+export var RegisteredTemplate = [ RegisteredTemplate, TemplateRegistryAccess ];
+export var RegisteredTemplateConsumer = [ Polymer.Templatizer, TemplateStamper, TemplateRegistryAccess ];

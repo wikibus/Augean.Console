@@ -1,9 +1,9 @@
 import 'src/resource-views/default-literal-view.html!';
 import 'src/resource-views/default-resource-view.html!';
-import {TemplateRegistryAccess} from './../object-templates/template-registry';
+import {RegisteredTemplateConsumer} from './../object-templates/template-registry';
 
 @component('object-view')
-@behavior(TemplateRegistryAccess)
+@behavior(RegisteredTemplateConsumer)
 class ObjectView extends polymer.Base {
 
     @property()
@@ -13,7 +13,7 @@ class ObjectView extends polymer.Base {
     _draw() {
         var templates = this.templates || [];
         var found;
-        var elementRoot = Polymer.dom(this);
+        var elementRoot = Polymer.dom(this.root);
 
         while (elementRoot.firstChild) {
             elementRoot.removeChild(elementRoot.firstChild);
@@ -32,7 +32,7 @@ class ObjectView extends polymer.Base {
                 this.setAttribute('data-template', template.name);
             }
 
-            template.getStamped(this.model)
+            this.getStamped(template, this.model)
                 .then(stamped => elementRoot.appendChild(stamped));
             break;
         }
