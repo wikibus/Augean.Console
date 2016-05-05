@@ -59,9 +59,6 @@
                                        hidden$="[[!hasApiDocumentation]]"
                                        on-tap="showDocs"></paper-icon-button>
 
-                    <paper-icon-button class="middle" icon="av:fast-rewind"
-                                       disabled="[[!hasPreviousModel(_modelHistory.*)]]"
-                                       on-tap="back"></paper-icon-button>
                     <paper-input id="resource" class="middle title" label="address"
                                  pattern="^https?://.*" no-label-float auto-validate
                                  invalid="{{addressInvalid}}"

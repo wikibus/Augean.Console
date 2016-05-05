@@ -19,9 +19,6 @@ import {Hydra} from 'heracles';
 @component('augean-console')
 class AugeanConsole extends polymer.Base {
 
-    @property({value: []})
-    _modelHistory:Array;
-
     @property({ value: null })
     model:IHydraResource;
 
@@ -88,10 +85,6 @@ class AugeanConsole extends polymer.Base {
     showModel(ev) {
         this.push('_modelHistory', this.currentModel);
         this.currentModel = ev.detail;
-    }
-
-    back() {
-        this.currentModel = this.pop('_modelHistory');
     }
 }
 
