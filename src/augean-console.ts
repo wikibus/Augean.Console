@@ -4,6 +4,7 @@ import 'bower_components/paper-header-panel/paper-header-panel.html!'
 import 'bower_components/paper-toolbar/paper-toolbar.html!'
 import 'bower_components/paper-input/paper-input.html!'
 import 'bower_components/paper-styles/paper-styles.html!'
+import 'bower_components/paper-spinner/paper-spinner.html!'
 import 'bower_components/paper-card/paper-card.html!';
 import 'bower_components/iron-icons/iron-icons.html!';
 import 'bower_components/iron-icons/av-icons.html!';
@@ -33,6 +34,9 @@ class AugeanConsole extends polymer.Base {
     @property()
     currentModel:Object;
 
+    @property({ readOnly: true, notify: true })
+    loading: boolean;
+
     @computed()
     hasApiDocumentation(model) {
         return !!model && !!model.apiDocumentation;
@@ -60,10 +64,13 @@ class AugeanConsole extends polymer.Base {
     }
 
     loadResource(e) {
+        this._setLoading(true);
+
         Hydra.loadResource(e.detail.value)
             .then(res => {
                 this.model = res;
                 this.currentModel = res;
+                this._setLoading(false);
             });
     }
 
