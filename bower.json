@@ -33,6 +33,8 @@
     "paper-tooltip": "PolymerElements/paper-tooltip#~1.1.2",
     "paper-button": "PolymerElements/paper-button#~1.0.11",
     "iron-a11y-keys": "PolymerElements/iron-a11y-keys#~1.0.4",
-    "paper-spinner": "PolymerElements/paper-spinner#~1.1.1"
+    "paper-spinner": "PolymerElements/paper-spinner#~1.1.1",
+    "ld-navigation": "tpluscode/ld-navigation",
+    "polymer-ts": "~0.1.26"
   }
 }
