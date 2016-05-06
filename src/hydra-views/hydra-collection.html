@@ -27,8 +27,8 @@
             }
         </style>
 
-        <object-view id="member" model="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#member')]]"></object-view>
-        <object-view id="pager"  model="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#view')]]"></object-view>
+        <object-view id="member" predicate="http://www.w3.org/ns/hydra/core#member" object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#member')]]"></object-view>
+        <object-view id="pager"  object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#view')]]"></object-view>
     </template>
 </dom-module>
 

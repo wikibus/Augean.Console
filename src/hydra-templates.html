@@ -1,0 +1,16 @@
+<link rel="import" href="hydra-views/hydra-member-view.html" />
+
+<dom-module id="hydra-templates">
+    <template>
+        <template id="hydra-collection-member" is="any-object-template"
+                  predicate="http://www.w3.org/ns/hydra/core#member" as="member">
+            <hydra-member-view resource="[[member]]"></hydra-member-view>
+        </template>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'hydra-templates'
+    });
+</script>

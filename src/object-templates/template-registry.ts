@@ -51,6 +51,7 @@ export var RegisteredTemplate = {
 function stamp(template, object) {
     var stampedModel = { };
     stampedModel[template.as] = object;
+    stampedModel.predicate = this.predicate;
 
     return this.stamp(stampedModel).root;
 }

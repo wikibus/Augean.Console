@@ -18,4 +18,24 @@ class TypeTemplate extends polymer.Base {
     }
 }
 
+@behavior(RegisteredTemplate)
+@extend('template')
+@component('any-object-template')
+class AnyObjectTemplate extends polymer.Base {
+    isMatch(resource) {
+        return typeof resource === 'object' && !resource['@value'];
+    }
+}
+
+@behavior(RegisteredTemplate)
+@extend('template')
+@component('any-literal-template')
+class AnyLiteralTemplate extends polymer.Base {
+    isMatch(resource) {
+        return !(typeof resource === 'object') || !! resource['@value'];
+    }
+}
+
+AnyLiteralTemplate.register();
+AnyObjectTemplate.register();
 TypeTemplate.register();

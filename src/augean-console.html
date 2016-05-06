@@ -1,5 +1,6 @@
 <link rel="import" href="console-templates.html" />
 <link rel="import" href="fallback-templates.html" />
+<link rel="import" href="hydra-templates.html" />
 <link rel="import" href="../bower_components/ld-navigation/ld-navigation.html"/>
 
 <dom-module id="augean-console">
@@ -26,6 +27,7 @@
         </style>
 
         <console-templates></console-templates>
+        <hydra-templates></hydra-templates>
         <fallback-templates></fallback-templates>
 
         <ld-navigator resource-url="{{url}}" on-resource-url-changed="loadResource"></ld-navigator>
@@ -71,7 +73,7 @@
                                        on-tap="load"></paper-icon-button>
                 </paper-toolbar>
                 <div hidden$="[[loading]]">
-                    <object-view model="[[displayedModel]]" on-show-model="showModel"></object-view>
+                    <object-view object="[[displayedModel]]"></object-view>
                 </div>
                 <div id="spinner-container" hidden$="[[!loading]]">
                     <paper-spinner active></paper-spinner>
