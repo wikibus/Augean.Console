@@ -1,4 +1,7 @@
 {
+  "scripts":{
+    "start": "ws -s index.html -p 8080"
+  },
   "jspm": {
     "dependencies": {
       "heracles": "github:wikibus/heracles@master",
