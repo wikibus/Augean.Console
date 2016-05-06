@@ -8,7 +8,7 @@
     <template>
         <template is="array-template" as="elements" name="array-template">
             <template is="dom-repeat" items="[[elements]]" as="element">
-                <object-view model="[[element]]" class="array-element"></object-view>
+                <object-view object="[[element]]" predicate="[[predicate]]" class="array-element"></object-view>
             </template>
         </template>
 

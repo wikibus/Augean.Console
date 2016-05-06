@@ -7,9 +7,12 @@ import {RegisteredTemplateConsumer} from './../object-templates/template-registr
 class ObjectView extends polymer.Base {
 
     @property()
-    model:Object;
+    object:Object;
 
-    @observe('model')
+    @property()
+    predicate:String;
+
+    @observe('object')
     _draw() {
         var templates = this.templates || [];
         var found;
@@ -19,30 +22,30 @@ class ObjectView extends polymer.Base {
             elementRoot.removeChild(elementRoot.firstChild);
         }
 
-        for(var i = 0; i < templates.length; i++) {
+        for (var i = 0; i < templates.length; i++) {
             var template = templates[i];
 
-            if(!template.isMatch) continue;
+            if (!template.isMatch) continue;
 
-            if(!template.isMatch(this.model)) continue;
+            if (!template.isMatch(this.object)) continue;
 
             found = true;
 
-            if(template.name) {
+            if (template.name) {
                 this.setAttribute('data-template', template.name);
             }
 
-            this.getStamped(template, this.model)
+            this.getStamped(template, this.object)
                 .then(stamped => elementRoot.appendChild(stamped));
             break;
         }
 
-        if(!found) {
+        if (!found) {
             var notFoundNode = document.createElement('div');
             notFoundNode.textContent = 'Template Not found';
             elementRoot.appendChild(notFoundNode);
 
-            console.warn('Template not found for', this.model);
+            console.warn('Template not found for', this.object);
         }
     }
 }
