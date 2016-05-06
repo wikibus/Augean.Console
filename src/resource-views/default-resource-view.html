@@ -6,23 +6,16 @@
             }
         </style>
 
-        <paper-card class="default-resource" image="[[image]]">
-            <div class="card-content">
-                <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
-                    <h3>
-                        <property-label resource="[[resource]]" property-id="[[item.0]]"></property-label>
-                    </h3>
-                    <div>
-                        <object-view object="[[item.1]]" nesting-level="[[nestingLevel]]"></object-view>
-                    </div>
-                </template>
-            </div>
-
-            <div class="card-actions">
-                <paper-button on-tap="show">Show</paper-button>
-                <paper-button on-tap="load">Load</paper-button>
-            </div>
-        </paper-card>
+        <div>
+            <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
+                <h3>
+                    <property-label resource="[[resource]]" property-id="[[item.0]]"></property-label>
+                </h3>
+                <div>
+                    <object-view object="[[item.1]]" nesting-level="[[nestingLevel]]"></object-view>
+                </div>
+            </template>
+        </div>
     </template>
 </dom-module>
 

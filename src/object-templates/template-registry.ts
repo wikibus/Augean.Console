@@ -36,7 +36,8 @@ export var RegisteredTemplate = {
         name: {
             type: String,
             value: ''
-        }
+        },
+        predicate: String
     },
     
     ready: function() {

@@ -9,11 +9,11 @@ class ObjectView extends polymer.Base {
     @property()
     object:Object;
 
-    @property()
+    @property({ value: null })
     predicate:String;
 
-    @observe('object')
-    _draw() {
+    @observe('object,predicate')
+    _draw(object, predicate) {
         var templates = this.templates || [];
         var found;
         var elementRoot = Polymer.dom(this.root);
@@ -27,7 +27,7 @@ class ObjectView extends polymer.Base {
 
             if (!template.isMatch) continue;
 
-            if (!template.isMatch(this.object)) continue;
+            if (!template.isMatch(object, predicate)) continue;
 
             found = true;
 
@@ -35,7 +35,7 @@ class ObjectView extends polymer.Base {
                 this.setAttribute('data-template', template.name);
             }
 
-            this.getStamped(template, this.object)
+            this.getStamped(template, object)
                 .then(stamped => elementRoot.appendChild(stamped));
             break;
         }
@@ -45,7 +45,7 @@ class ObjectView extends polymer.Base {
             notFoundNode.textContent = 'Template Not found';
             elementRoot.appendChild(notFoundNode);
 
-            console.warn('Template not found for', this.object);
+            console.warn('Template not found for', object);
         }
     }
 }

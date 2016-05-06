@@ -22,8 +22,15 @@ class TypeTemplate extends polymer.Base {
 @extend('template')
 @component('any-object-template')
 class AnyObjectTemplate extends polymer.Base {
-    isMatch(resource) {
-        return typeof resource === 'object' && !resource['@value'];
+    isMatch(resource, predicate) {
+        var predicateMatches = true;
+        var isObject = typeof resource === 'object' && resource['@id'];
+        
+        if(this.predicate) {
+            predicateMatches = predicate === this.predicate;
+        }
+        
+        return isObject && predicateMatches;
     }
 }
 
