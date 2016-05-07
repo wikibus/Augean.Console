@@ -7,14 +7,15 @@ import 'bower_components/paper-styles/paper-styles.html!'
 import 'bower_components/paper-spinner/paper-spinner.html!'
 import 'bower_components/paper-card/paper-card.html!';
 import 'bower_components/iron-icons/iron-icons.html!';
+import 'bower_components/iron-pages/iron-pages.html!';
 import 'bower_components/iron-icons/av-icons.html!';
 import 'bower_components/iron-a11y-keys-behavior/iron-a11y-keys-behavior.html!';
 import 'bower_components/paper-icon-button/paper-icon-button.html!';
-
 import 'src/resource-views/object-view.html!';
 import 'src/api-documentation/viewer.html!';
-
 import {Hydra} from 'heracles';
+
+type ConsoleState = 'ready' | 'loading' | 'loaded';
 
 @component('augean-console')
 class AugeanConsole extends polymer.Base {
@@ -31,8 +32,8 @@ class AugeanConsole extends polymer.Base {
     @property()
     currentModel:Object;
 
-    @property({ readOnly: true, notify: true })
-    loading: boolean;
+    @property({ notify: true, value: 'ready', type: String })
+    state: ConsoleState;
 
     @computed()
     hasApiDocumentation(model) {
@@ -45,7 +46,7 @@ class AugeanConsole extends polymer.Base {
     }
 
     attached() {
-        LdNavigation.Helpers.fireNavigation(this, this.initialUrl);
+        this.url = this.initialUrl;
     }
 
     hasPreviousModel(_modelHistory) {
@@ -57,18 +58,24 @@ class AugeanConsole extends polymer.Base {
     }
 
     load() {
+        this.state = 'loading';
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
     }
 
-    loadResource(e) {
-        this._setLoading(true);
-
-        Hydra.loadResource(e.detail.value)
+    loadResource() {
+        Hydra.loadResource(this.$.resource.value)
             .then(res => {
                 this.model = res;
                 this.currentModel = res;
-                this._setLoading(false);
+                this.state = 'loaded';
             });
+    }
+    
+    urlChanged(e) {
+        this.$.resource.value = e.detail.value;
+        if(typeof this.state !== 'undefined' && this.state !== 'ready') {
+            this.loadResource();
+        }
     }
 
     loadOnEnter(e) {

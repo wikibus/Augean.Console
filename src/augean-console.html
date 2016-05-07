@@ -30,7 +30,7 @@
         <hydra-templates></hydra-templates>
         <fallback-templates></fallback-templates>
 
-        <ld-navigator resource-url="{{url}}" on-resource-url-changed="loadResource"></ld-navigator>
+        <ld-navigator on-resource-url-changed="urlChanged"></ld-navigator>
         <ld-html5-history></ld-html5-history>
 
         <paper-multidrawer-panel id="drawerPanel"
@@ -72,12 +72,20 @@
                     <paper-icon-button class="middle" icon="av:play-circle-filled" disabled="[[addressInvalid]]"
                                        on-tap="load"></paper-icon-button>
                 </paper-toolbar>
-                <div hidden$="[[loading]]">
-                    <object-view object="[[displayedModel]]"></object-view>
-                </div>
-                <div id="spinner-container" hidden$="[[!loading]]">
-                    <paper-spinner active></paper-spinner>
-                </div>
+
+                <iron-pages attr-for-selected="data-state" selected="[[state]]">
+                    <div data-state="ready">
+                        Hello
+                    </div>
+
+                    <div id="spinner-container" data-state="loading">
+                        <paper-spinner active></paper-spinner>
+                    </div>
+
+                    <div data-state="loaded">
+                        <object-view object="[[displayedModel]]"></object-view>
+                    </div>
+                </iron-pages>
             </paper-header-panel>
         </paper-multidrawer-panel>
 
