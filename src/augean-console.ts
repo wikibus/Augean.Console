@@ -60,6 +60,7 @@ class AugeanConsole extends polymer.Base {
     load() {
         this.state = 'loading';
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
+        this.loadResource();
     }
 
     loadResource() {
@@ -73,7 +74,7 @@ class AugeanConsole extends polymer.Base {
     
     urlChanged(e) {
         this.$.resource.value = e.detail.value;
-        if(typeof this.state !== 'undefined' && this.state !== 'ready') {
+        if(this.state === 'loaded') {
             this.loadResource();
         }
     }
