@@ -36,6 +36,7 @@
     "paper-spinner": "PolymerElements/paper-spinner#~1.1.1",
     "ld-navigation": "tpluscode/ld-navigation",
     "polymer-ts": "~0.1.26",
-    "iron-pages": "polymerelements/iron-pages#~1.0.7"
+    "iron-pages": "polymerelements/iron-pages#~1.0.7",
+    "vaadin-combo-box": "~1.1.0-beta2"
   }
 }

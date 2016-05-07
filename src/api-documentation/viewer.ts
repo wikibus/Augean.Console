@@ -1,6 +1,4 @@
-import 'bower_components/paper-dropdown-menu/paper-dropdown-menu.html!';
-import 'bower_components/paper-listbox/paper-listbox.html!';
-import 'bower_components/paper-item/paper-item.html!';
+import 'bower_components/vaadin-combo-box/vaadin-combo-box.html!';
 import 'src/api-documentation/supported-class-view.html!'
 
 import * as _ from 'lodash';
@@ -10,20 +8,22 @@ class ApiDocumentationViewer extends polymer.Base {
 
     @property()
     apiDocs:IApiDocumentation;
-    
-    @property({ value: [] })
+
+    @property({value: []})
     modelTypes:Array;
 
-    @property({ readOnly: true })
+    @property({readOnly: true})
     classes:Array<IClass>;
 
     @observe('classes,modelTypes')
     selectCurrentClass(classes, types) {
-        var classIdx = _.findIndex(classes, c => {
+        var clazz = _.find(classes, c => {
             return _.some(types, t => c.id === t)
         });
 
-        this.$.classSelect.select(classIdx);
+        if (clazz) {
+            this.$.classSelect.value = clazz.id;
+        }
     }
 
     @observe('apiDocs')

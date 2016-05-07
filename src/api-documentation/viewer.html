@@ -14,13 +14,8 @@
             }
         </style>
 
-        <paper-dropdown-menu label="Supported Class">
-            <paper-listbox id="classSelect" class="dropdown-content" on-iron-select="displayClass">
-                <template is="dom-repeat" items="[[classes]]" as="c">
-                    <paper-item is-current$="[[isCurrent(c.id)]]" class-id="[[c.id]]">[[c.title]]</paper-item>
-                </template>
-            </paper-listbox>
-        </paper-dropdown-menu>
+        <vaadin-combo-box id="classSelect" label="Supported Class" item-value-path="id" item-label-path="title" items="[[classes]]" selected-item="{{class}}">
+        </vaadin-combo-box>
 
         <supported-class-view supported-class="{{class}}"></supported-class-view>
     </template>
