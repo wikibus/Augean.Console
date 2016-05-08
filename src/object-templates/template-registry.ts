@@ -14,14 +14,14 @@ export var TemplateRegistryAccess = {
 };
 
 var TemplateStamper = {
-    getStamped: function(template, object) {
+    getStamped: function(objectView, template, object) {
         this.templatize(template);
 
         if(template.compactWith) {
             return jsonld.compact(object, template.compactWith)
-                .then(compacted => stamp.call(this, template, compacted));
+                .then(compacted => stamp.call(this, objectView, template, compacted));
         } else {
-            return Promise.resolve(stamp.call(this, template, object));
+            return Promise.resolve(stamp.call(this, objectView, template, object));
         }
     }
 };
@@ -75,10 +75,11 @@ export var RegisteredTemplate = {
     }
 };
 
-function stamp(template, object) {
+function stamp(objectView, template, object) {
     var stampedModel = { };
     stampedModel[template.as] = object;
     stampedModel.predicate = this.predicate;
+    stampedModel.params = objectView.params;
 
     return this.stamp(stampedModel).root;
 }

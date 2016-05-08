@@ -12,6 +12,9 @@ class DefaultResourceView extends polymer.Base {
     @property({ value: 0 })
     tab:number;
 
+    @property({ type: Boolean, value: false })
+    nested:Boolean;
+
     @computed()
     image(resource) {
         if (resource['http://schema.org/image']) {
@@ -55,9 +58,17 @@ class ResourceCard extends polymer.Base {
     @property()
     subject:Object;
 
-    @computed()
+    @property({ type: Boolean })
+    nested = false;
+
+    @computed({ reflectToAttribute: true })
     isId(propertyId):boolean {
         return this.propertyId === '@id';
+    }
+
+    @computed({ reflectToAttribute: true })
+    hideId(isId, nested) {
+        return isId && !nested;
     }
 }
 

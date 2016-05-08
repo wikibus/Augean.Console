@@ -20,9 +20,12 @@ class ObjectView extends polymer.Base {
 
     @property({ readOnly: true, notify: true, value: false })
     hasBeenRendered: Boolean;
+    
+    @property({ type: Object, value: {} })
+    params: Object;
 
-    @observe('object,predicate,templateScope,ignoreMissing')
-    _draw(object, predicate, templateScope, ignoreMissing) {
+    @observe('object,predicate,templateScope,ignoreMissing,params')
+    _draw(object, predicate, templateScope, ignoreMissing, params) {
         var templates = this.templates || [];
         var found;
         var elementRoot = Polymer.dom(this.root);
@@ -44,7 +47,7 @@ class ObjectView extends polymer.Base {
                 this.setAttribute('data-template', template.name);
             }
 
-            this.getStamped(template, object)
+            this.getStamped(this, template, object)
                 .then(stamped => elementRoot.appendChild(stamped));
 
             this._setHasBeenRendered(true);

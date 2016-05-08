@@ -14,11 +14,15 @@
             .properties {
                 display: flex;
             }
+
+            resource-card:not([nested])[is-id] {
+                display: none;
+            }
         </style>
 
         <div id="properties">
             <template is="dom-repeat" items="[[objectProperties]]" as="property">
-                <resource-card subject="[[resource]]" property-id="[[property.id]]" object="[[property.value]]"></resource-card>
+                <resource-card nested$="[[nested]]" subject="[[resource]]" property-id="[[property.id]]" object="[[property.value]]"></resource-card>
             </template>
         </div>
 
@@ -43,10 +47,12 @@
             <a is="ld-link" resource-url="[[object]]">[[object]]</a>
         </div>
 
-        <paper-card heading="[[heading]]" hidden$="[[isId]]">
+        <paper-card hidden$="[[isId]]">
             <div class="card-content">
-                <property-label resource="[[subject]]" property-id="[[propertyId]]" property-title="{{heading}}" hidden></property-label>
-                <object-view predicate="[[propertyId]]" object="[[object]]"></object-view>
+                <h2>
+                    <property-label resource="[[subject]]" property-id="[[propertyId]]"></property-label>
+                </h2>
+                <object-view predicate="[[propertyId]]" object="[[object]]" params='{ "nested": true }'></object-view>
             </div>
             <div class="card-actions" hidden$="[[!actionsRendered]]">
                 <object-view template-scope="resource-card-actions" predicate="[[propertyId]]" object="[[object]]"
