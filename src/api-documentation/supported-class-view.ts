@@ -11,6 +11,10 @@ class SupportedClassView extends polymer.Base {
 
     @observe('supportedClass')
     getProperties(supportedClass:IClass) {
+        if(!supportedClass) {
+            return;
+        }
+
         supportedClass.getSupportedProperties()
             .then(setProperties.bind(this));
     }

@@ -30,7 +30,6 @@
         <div>
             <template is="any-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
                 <img src="[[image.thumbnail.contentUrl]]" />
-
             </template>
 
             <template scope="resource-card-actions" is="any-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
@@ -63,7 +62,7 @@
                     <div class="title">Documentation</div>
                 </paper-toolbar>
                 <div>
-                    <api-documentation-viewer api-docs="[[model.apiDocumentation]]"
+                    <api-documentation-viewer id="apiDocumentation" api-docs="[[model.apiDocumentation]]"
                                               model-types="[[currentModel.types]]"></api-documentation-viewer>
                 </div>
             </paper-header-panel>

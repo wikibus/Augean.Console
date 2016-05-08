@@ -66,7 +66,11 @@ export var RegisteredTemplate = {
         return true;
     },
 
-    predicateMatches: function(object) {
+    predicateMatches: function(predicate) {
+        if(this.predicate){
+            return this.predicate == predicate;
+        }
+
         return true;
     },
 

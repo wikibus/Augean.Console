@@ -95,6 +95,13 @@ class AugeanConsole extends polymer.Base {
         this.push('_modelHistory', this.currentModel);
         this.currentModel = ev.detail;
     }
+
+    @listen('show-class-documentation')
+    showDocumentation(e:Event) {
+        this.$.apiDocumentation.selectClass(e.detail.classId);
+        this.showDocs();
+        e.stopPropagation();
+    }
 }
 
 AugeanConsole.register();

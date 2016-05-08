@@ -14,10 +14,12 @@
             }
         </style>
 
-        <vaadin-combo-box id="classSelect" label="Supported Class" item-value-path="id" item-label-path="title" items="[[classes]]" selected-item="{{class}}">
+        <vaadin-combo-box id="classSelect" label="Supported Class" item-value-path="id" item-label-path="title" items="[[classes]]" selected-item="{{selectedClass}}">
         </vaadin-combo-box>
 
-        <supported-class-view supported-class="{{class}}"></supported-class-view>
+        <supported-class-view supported-class="{{selectedClass}}" hidden$="[[!classFound]]"></supported-class-view>
+
+        <paper-toast id="toast" text="Class not found" duration="0" on-tap="closeToast"></paper-toast>
     </template>
 </dom-module>
 

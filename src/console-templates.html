@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html"/>
 <link rel="import" href="object-templates/array-template.html"/>
 <link rel="import" href="object-templates/type-template.html"/>
+<link rel="import" href="../src/resource-views/type-docs-link.html"/>
 <link rel="import" href="hydra-views/hydra-collection.html"/>
 <link rel="import" href="hydra-views/hydra-partial-view-pager.html"/>
 
@@ -10,6 +11,10 @@
             <template is="dom-repeat" items="[[elements]]" as="element">
                 <object-view object="[[element]]" predicate="[[predicate]]" class="array-element"></object-view>
             </template>
+        </template>
+
+        <template is="any-literal-template" as="class" predicate="@type">
+            <type-docs-link class="[[class]]"></type-docs-link>
         </template>
     </template>
 </dom-module>

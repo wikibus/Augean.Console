@@ -1,4 +1,5 @@
 import 'bower_components/vaadin-combo-box/vaadin-combo-box.html!';
+import 'bower_components/paper-toast/paper-toast.html!';
 import 'src/api-documentation/supported-class-view.html!'
 
 import * as _ from 'lodash';
@@ -15,15 +16,22 @@ class ApiDocumentationViewer extends polymer.Base {
     @property({readOnly: true})
     classes:Array<IClass>;
 
+    @property()
+    selectedClass:IClass;
+
+    selectClass(classId) {
+        var clazz = _.find(this.classes, { id: classId });
+
+        selectClass.call(this, clazz);
+    }
+
     @observe('classes,modelTypes')
     selectCurrentClass(classes, types) {
         var clazz = _.find(classes, c => {
             return _.some(types, t => c.id === t)
         });
 
-        if (clazz) {
-            this.$.classSelect.value = clazz.id;
-        }
+        selectClass.call(this, clazz);
     }
 
     @observe('apiDocs')
@@ -37,10 +45,25 @@ class ApiDocumentationViewer extends polymer.Base {
         });
     }
 
-    displayClass(e) {
-        var selectedItem = e.target.selectedItem;
+    @computed()
+    classFound(selectedClass) {
+        return !!selectedClass;
+    }
 
-        this.class = _.find(this.classes, cs => cs.id === selectedItem.classId)
+    closeToast() {
+        this.$.toast.close();
+    }
+}
+
+function selectClass(clas) {
+    this.selectedClass = clas;
+
+    if (!clas) {
+        this.$.toast.open();
+        this.$.classSelect.value = null;
+    } else {
+        this.$.toast.close();
+        this.$.classSelect.value = clas.id;
     }
 }
 
