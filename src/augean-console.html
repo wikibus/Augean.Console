@@ -33,7 +33,7 @@
 
             </template>
 
-            <template scope="actions" is="any-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
+            <template scope="resource-card-actions" is="any-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
                 <a href="[[image.contentUrl]]" target="_blank">
                     <iron-icon icon="icons:zoom-in"></iron-icon>
                 </a>

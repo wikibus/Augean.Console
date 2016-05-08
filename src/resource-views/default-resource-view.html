@@ -49,7 +49,8 @@
                 <object-view predicate="[[propertyId]]" object="[[object]]"></object-view>
             </div>
             <div class="card-actions" hidden$="[[!actionsRendered]]">
-                <object-view template-scope="actions" predicate="[[propertyId]]" object="[[object]]" ignore-missing="true" has-been-rendered="{{actionsRendered}}"></object-view>
+                <object-view template-scope="resource-card-actions" predicate="[[propertyId]]" object="[[object]]"
+                             ignore-missing="true" has-been-rendered="{{actionsRendered}}"></object-view>
             </div>
         </paper-card>
     </template>
