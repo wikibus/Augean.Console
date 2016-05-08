@@ -12,8 +12,17 @@ class ObjectView extends polymer.Base {
     @property({ value: null })
     predicate:String;
 
-    @observe('object,predicate')
-    _draw(object, predicate) {
+    @property({ value: '' })
+    templateScope: String;
+
+    @property({ value: false })
+    ignoreMissing: Boolean;
+
+    @property({ readOnly: true, notify: true, value: false })
+    hasBeenRendered: Boolean;
+
+    @observe('object,predicate,templateScope,ignoreMissing')
+    _draw(object, predicate, templateScope, ignoreMissing) {
         var templates = this.templates || [];
         var found;
         var elementRoot = Polymer.dom(this.root);
@@ -27,7 +36,7 @@ class ObjectView extends polymer.Base {
 
             if (!template.isMatch) continue;
 
-            if (!template.isMatch(object, predicate)) continue;
+            if (!template.isMatch(object, predicate, templateScope)) continue;
 
             found = true;
 
@@ -37,15 +46,19 @@ class ObjectView extends polymer.Base {
 
             this.getStamped(template, object)
                 .then(stamped => elementRoot.appendChild(stamped));
+
+            this._setHasBeenRendered(true);
             break;
         }
 
-        if (!found) {
+        if (!found && !ignoreMissing) {
             var notFoundNode = document.createElement('div');
             notFoundNode.textContent = 'Template Not found';
             elementRoot.appendChild(notFoundNode);
 
             console.warn('Template not found for', object);
+
+            this._setHasBeenRendered(true);
         }
     }
 }

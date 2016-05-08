@@ -4,7 +4,7 @@ import {RegisteredTemplate} from './template-registry';
 @behavior(RegisteredTemplate)
 @extend('template')
 class ArrayTemplate extends polymer.Base {
-    isMatch(res) {
+    objectMatches(res) {
         return Array.isArray(res);
     }
 }

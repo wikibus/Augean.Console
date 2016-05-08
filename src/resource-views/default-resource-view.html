@@ -16,11 +16,11 @@
             }
         </style>
 
-                <div id="properties">
-                    <template is="dom-repeat" items="[[objectProperties]]" as="property">
-                        <resource-card subject="[[resource]]" property-id="[[property.id]]" object="[[property.value]]"></resource-card>
-                    </template>
-                </div>
+        <div id="properties">
+            <template is="dom-repeat" items="[[objectProperties]]" as="property">
+                <resource-card subject="[[resource]]" property-id="[[property.id]]" object="[[property.value]]"></resource-card>
+            </template>
+        </div>
 
     </template>
 </dom-module>
@@ -47,6 +47,9 @@
             <div class="card-content">
                 <property-label resource="[[subject]]" property-id="[[propertyId]]" property-title="{{heading}}" hidden></property-label>
                 <object-view predicate="[[propertyId]]" object="[[object]]"></object-view>
+            </div>
+            <div class="card-actions" hidden$="[[!actionsRendered]]">
+                <object-view template-scope="actions" predicate="[[propertyId]]" object="[[object]]" ignore-missing="true" has-been-rendered="{{actionsRendered}}"></object-view>
             </div>
         </paper-card>
     </template>

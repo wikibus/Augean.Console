@@ -9,7 +9,7 @@ class TypeTemplate extends polymer.Base {
     @property()
     type: String;
 
-    isMatch(res) {
+    objectMatches(res) {
         if(Array.isArray(res['@type'])) {
             return _.some(res['@type'], t => t === this.type);
         }
@@ -22,15 +22,20 @@ class TypeTemplate extends polymer.Base {
 @extend('template')
 @component('any-object-template')
 class AnyObjectTemplate extends polymer.Base {
-    isMatch(resource, predicate) {
-        var predicateMatches = true;
+    objectMatches(resource) {
         var isObject = typeof resource === 'object' && resource['@id'];
-        
+
+        return isObject;
+    }
+
+    predicateMatches(predicate) {
+        var predicateMatches = true;
+
         if(this.predicate) {
             predicateMatches = predicate === this.predicate;
         }
-        
-        return isObject && predicateMatches;
+
+        return predicateMatches;
     }
 }
 
@@ -38,7 +43,7 @@ class AnyObjectTemplate extends polymer.Base {
 @extend('template')
 @component('any-literal-template')
 class AnyLiteralTemplate extends polymer.Base {
-    isMatch(resource) {
+    objectMatches(resource) {
         return !(typeof resource === 'object') || !! resource['@value'];
     }
 }

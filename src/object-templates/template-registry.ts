@@ -37,7 +37,11 @@ export var RegisteredTemplate = {
             type: String,
             value: ''
         },
-        predicate: String
+        predicate: String,
+        scope: {
+            type: String,
+            value: ''
+        }
     },
     
     ready: function() {
@@ -46,6 +50,28 @@ export var RegisteredTemplate = {
 
     detached: function() {
         this.pop('templates', this);
+    },
+    
+    isMatch: function(object, predicate, scope) {
+        var objectMatches, predicateMatches, scopeMatches;
+        
+        objectMatches = this.objectMatches(object);
+        predicateMatches = this.predicateMatches(predicate);
+        scopeMatches = this.scopeMatches(scope);
+        
+        return objectMatches && predicateMatches && scopeMatches;
+    },
+
+    objectMatches: function(object) {
+        return true;
+    },
+
+    predicateMatches: function(object) {
+        return true;
+    },
+
+    scopeMatches: function(scope) {
+        return this.scope == scope;
     }
 };
 

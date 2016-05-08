@@ -37,6 +37,7 @@
     "ld-navigation": "tpluscode/ld-navigation",
     "polymer-ts": "~0.1.26",
     "iron-pages": "polymerelements/iron-pages#~1.0.7",
-    "vaadin-combo-box": "~1.1.0-beta2"
+    "vaadin-combo-box": "~1.1.0-beta2",
+    "paper-tabs": "polymerelements/paper-tabs#~1.5.0"
   }
 }
