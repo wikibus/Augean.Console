@@ -1,3 +1,4 @@
+import './property-label.html!';
 import 'bower_components/paper-tooltip/paper-tooltip.html!'
 import * as _ from 'lodash';
 

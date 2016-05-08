@@ -1,6 +1,7 @@
+import './viewer.html!';
 import 'bower_components/vaadin-combo-box/vaadin-combo-box.html!';
 import 'bower_components/paper-toast/paper-toast.html!';
-import 'src/api-documentation/supported-class-view.html!'
+import '../api-documentation/supported-class-view';
 
 import * as _ from 'lodash';
 

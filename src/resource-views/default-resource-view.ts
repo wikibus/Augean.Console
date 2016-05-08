@@ -1,4 +1,10 @@
-import 'src/api-documentation/property-label.html!';
+import './default-resource-view.html!';
+import './object-view';
+import '../api-documentation/property-label';
+import 'src/api-documentation/property-label';
+import 'bower_components/paper-tabs/paper-tabs.html!';
+import 'bower_components/paper-card/paper-card.html!';
+import 'bower_components/ld-navigation/ld-navigation.html!';
 import {ObjectGetter} from '../hydra-views/hydra-behaviors';
 import * as _ from 'lodash';
 

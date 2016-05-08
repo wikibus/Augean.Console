@@ -1,3 +1,7 @@
+import './console-templates';
+import './fallback-templates';
+import "./hydra-templates";
+import 'bower_components/ld-navigation/ld-navigation.html!';
 import 'bower_components/paper-material/paper-material.html!';
 import 'bower_components/paper-multidrawer-panel/paper-multidrawer-panel.html!';
 import 'bower_components/paper-header-panel/paper-header-panel.html!'
@@ -11,8 +15,8 @@ import 'bower_components/iron-pages/iron-pages.html!';
 import 'bower_components/iron-icons/av-icons.html!';
 import 'bower_components/iron-a11y-keys-behavior/iron-a11y-keys-behavior.html!';
 import 'bower_components/paper-icon-button/paper-icon-button.html!';
-import 'src/resource-views/object-view.html!';
-import 'src/api-documentation/viewer.html!';
+import 'src/resource-views/object-view';
+import 'src/api-documentation/viewer';
 import {Hydra} from 'heracles';
 
 type ConsoleState = 'ready' | 'loading' | 'loaded';

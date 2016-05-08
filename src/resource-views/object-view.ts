@@ -1,7 +1,13 @@
-import 'src/resource-views/default-literal-view.html!';
-import 'src/resource-views/default-resource-view.html!';
+import '../resource-views/default-literal-view';
+import '../resource-views/default-resource-view';
 import {RegisteredTemplateConsumer} from './../object-templates/template-registry';
 
+@template(`<style>
+            :host {
+                display: block;
+                @apply(--object-view);
+            }
+        </style>`)
 @component('object-view')
 @behavior(RegisteredTemplateConsumer)
 class ObjectView extends polymer.Base {

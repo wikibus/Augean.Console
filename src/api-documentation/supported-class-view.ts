@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import './supported-class-view.html!';
 
 @component('supported-class-view')
 class SupportedClassView extends polymer.Base {

@@ -1,8 +1,6 @@
-import './type-docs-link.html!';
-
 @template('<a on-tap="showDocumentation" href="[[class]]">[[title]]</a>')
 @component('type-docs-link')
-class TypeDocsLink extends polymer.Base {
+export class TypeDocsLink extends polymer.Base {
     
     @property()
     'class': String;

@@ -1,3 +1,5 @@
+import './hydra-collection.html!';
+import '../resource-views/object-view';
 import {ObjectGetter} from './hydra-behaviors';
 
 @behavior(ObjectGetter)
@@ -6,8 +8,6 @@ class HydraCollection extends polymer.Base {
 
     @property()
     collection: Object;
-
-
 }
 
 HydraCollection.register();
