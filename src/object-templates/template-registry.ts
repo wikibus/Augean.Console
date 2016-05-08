@@ -17,8 +17,8 @@ var TemplateStamper = {
     getStamped: function(template, object) {
         this.templatize(template);
 
-        if(this.compactWith) {
-            return jsonld.compact(object, this.compactWith)
+        if(template.compactWith) {
+            return jsonld.compact(object, template.compactWith)
                 .then(compacted => stamp.call(this, template, compacted));
         } else {
             return Promise.resolve(stamp.call(this, template, object));
