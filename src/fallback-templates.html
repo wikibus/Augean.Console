@@ -1,7 +1,7 @@
 <dom-module id="fallback-templates">
     <template>
         <template is="any-object-template" as="resource">
-            <default-resource-view resource="[[resource]]"></default-resource-view>
+            <default-resource-view property="[[predicate]]" resource="[[resource]]"></default-resource-view>
         </template>
 
         <template is="any-literal-template" as="literal">

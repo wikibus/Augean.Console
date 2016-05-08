@@ -10,7 +10,7 @@ class PropertyLabel extends polymer.Base {
     @property()
     propertyId:string;
 
-    @computed()
+    @computed({ notify:true })
     propertyTitle(supportedProperty:ISupportedProperty, propertyId) {
         return supportedProperty.title || propertyId;
     }

@@ -9,6 +9,9 @@ class DefaultResourceView extends polymer.Base {
     @property()
     resource:IHydraResource;
 
+    @property({ value: 0 })
+    tab:number;
+
     @computed()
     image(resource) {
         if (resource['http://schema.org/image']) {
@@ -18,12 +21,16 @@ class DefaultResourceView extends polymer.Base {
         return null;
     }
 
-    getKeys(model) {
-        if (typeof model === 'string') return [];
+    @computed()
+    objectProperties(resource) {
+        if (typeof resource === 'string') return [];
 
-        var pairs = _.toPairs(model)
-            .filter(pair => !pair[0].startsWith('@'))
-            .filter(pair => pair[0] !== 'http://schema.org/image');
+        var pairs = _.toPairs(resource)
+            .filter(pair => !(pair[1].startsWith && pair[1].startsWith('_:')))
+            .map(pair => ({
+                id: pair[0],
+                value: getValue(pair[1])
+            }));
         return pairs;
     }
 
@@ -32,4 +39,27 @@ class DefaultResourceView extends polymer.Base {
     }
 }
 
+function getValue(object) {
+    return object ['@value'] || object;
+}
+
+@component('resource-card')
+class ResourceCard extends polymer.Base {
+
+    @property()
+    propertyId:String;
+
+    @property()
+    object:Object;
+
+    @property()
+    subject:Object;
+
+    @computed()
+    isId(propertyId):boolean {
+        return this.propertyId === '@id';
+    }
+}
+
+ResourceCard.register();
 DefaultResourceView.register();

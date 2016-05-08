@@ -75,6 +75,7 @@ class AugeanConsole extends polymer.Base {
     urlChanged(e) {
         this.$.resource.value = e.detail.value;
         if(this.state === 'loaded') {
+            this.state = 'loading';
             this.loadResource();
         }
     }

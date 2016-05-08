@@ -1,21 +1,54 @@
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html" />
+
 <dom-module id="default-resource-view">
     <template>
         <style>
             :host {
                 display: block;
+
+                --resource-card: {
+                    min-width: 250px;
+                }
+            }
+
+            .properties {
+                display: flex;
             }
         </style>
 
-        <div>
-            <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
-                <h3>
-                    <property-label resource="[[resource]]" property-id="[[item.0]]"></property-label>
-                </h3>
-                <div>
-                    <object-view object="[[item.1]]" nesting-level="[[nestingLevel]]"></object-view>
+                <div id="properties">
+                    <template is="dom-repeat" items="[[objectProperties]]" as="property">
+                        <resource-card subject="[[resource]]" property-id="[[property.id]]" object="[[property.value]]"></resource-card>
+                    </template>
                 </div>
-            </template>
+
+    </template>
+</dom-module>
+
+<dom-module id="resource-card">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+                margin: 5px;
+                @apply(--resource-card);
+            }
+
+            paper-card {
+                width: 100%;
+            }
+        </style>
+
+        <div hidden$="[[!isId]]">
+            <a is="ld-link" resource-url="[[object]]">[[object]]</a>
         </div>
+
+        <paper-card heading="[[heading]]" hidden$="[[isId]]">
+            <div class="card-content">
+                <property-label resource="[[subject]]" property-id="[[propertyId]]" property-title="{{heading}}" hidden></property-label>
+                <object-view predicate="[[propertyId]]" object="[[object]]"></object-view>
+            </div>
+        </paper-card>
     </template>
 </dom-module>
 
