@@ -2,7 +2,7 @@ import './default-literal-view.html!';
 
 @component('default-literal-view')
 class DefaultLiteralView extends polymer.Base {
-    literal: Object,
+    literal: Object
 
     @computed()
     literalValue(literal) {

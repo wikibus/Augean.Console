@@ -1,5 +1,5 @@
 {
-  "scripts":{
+  "scripts": {
     "start": "ws -s index.html -p 8080"
   },
   "jspm": {
