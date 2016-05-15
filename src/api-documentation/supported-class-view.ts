@@ -10,18 +10,31 @@ class SupportedClassView extends polymer.Base {
     @property()
     selectedProperty: ISupportedProperty;
 
-    @computed()
-    supportedProperties(supportedClass) {
-        if(!supportedClass) {
-            return;
-        }
-
-        return supportedClass.supportedProperties;
-    }
-
     @computed({ readOnly: true })
     propertyIsSelected(selectedProperty) {
         return typeof selectedProperty !== 'undefined' && selectedProperty !== null;
+    }
+
+    @computed()
+    hasProperties(supportedClass):boolean {
+        if(!supportedClass) {
+            return false;
+        }
+
+        return supportedClass.supportedProperties.length > 0;
+    }
+
+    @computed()
+    hasOperations(supportedClass):boolean {
+        if(!supportedClass) {
+            return false;
+        }
+
+        return supportedClass.supportedOperations.length > 0;
+    }
+    
+    attached() {
+        this.$.classTabs.select(0);
     }
 
     @observe('supportedClass')

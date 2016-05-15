@@ -6,18 +6,52 @@
             }
         </style>
 
-        <p>
-            [[supportedClass.description]]
-        </p>
+        <paper-tabs id="classTabs" selected="{{classTab}}">
+            <paper-tab>Description</paper-tab>
+            <paper-tab>Properties</paper-tab>
+            <paper-tab>Operations</paper-tab>
+        </paper-tabs>
 
-        <paper-card heading="Properties">
+        <paper-card>
             <div class="card-content">
-                <vaadin-combo-box label="Supported Property" item-value-path="id" item-label-path="title"
-                                  items="[[supportedProperties]]" selected-item="{{selectedProperty}}"
-                                  id="supportedProperties">
-                </vaadin-combo-box>
+                <iron-pages selected="{{classTab}}">
+                    <p>
+                        [[supportedClass.description]]
+                    </p>
 
-                <supported-property-view supported-property="[[selectedProperty]]" hidden$="[[!propertyIsSelected]]"></supported-property-view>
+                    <div>
+                        <div hidden$="[[!hasProperties]]">
+                            <vaadin-combo-box label="Supported Property" item-value-path="id" item-label-path="title"
+                                              items="[[supportedClass.supportedProperties]]"
+                                              selected-item="{{selectedProperty}}"
+                                              id="supportedProperties">
+                            </vaadin-combo-box>
+
+                            <supported-property-view supported-property="[[selectedProperty]]"
+                                                     hidden$="[[!propertyIsSelected]]"></supported-property-view>
+                        </div>
+                        <div hidden$="[[hasProperties]]">
+                            No supported properties do display
+                        </div>
+                    </div>
+
+                    <div>
+                        <div hidden$="[[!hasOperations]]">
+                            <vaadin-combo-box label="Supported Operation" item-value-path="id" item-label-path="title"
+                                              items="[[supportedClass.supportedOperations]]"
+                                              selected-item="{{selectedOperation}}"
+                                              id="supportedOperations">
+                            </vaadin-combo-box>
+
+                            <supported-operation-view supported-operation="[[selectedOperation]]"
+                                                      hidden$="[[!operationIsSelected]]"></supported-operation-view>
+                        </div>
+
+                        <div hidden$="[[hasOperations]]">
+                            No supported operations do display
+                        </div>
+                    </div>
+                </iron-pages>
             </div>
         </paper-card>
     </template>
