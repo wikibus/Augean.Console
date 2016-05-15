@@ -19,12 +19,12 @@ import 'src/resource-views/object-view';
 import 'src/api-documentation/viewer';
 import {Hydra} from 'heracles';
 
-type ConsoleState = 'ready' | 'loading' | 'loaded';
+type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error';
 
 @component('augean-console')
 class AugeanConsole extends polymer.Base {
 
-    @property({ value: null })
+    @property({value: null})
     model:IHydraResource;
 
     @property()
@@ -36,8 +36,11 @@ class AugeanConsole extends polymer.Base {
     @property()
     currentModel:Object;
 
-    @property({ notify: true, value: 'ready', type: String })
-    state: ConsoleState;
+    @property({readOnly: true})
+    lastError:Error;
+
+    @property({notify: true, value: 'ready', type: String})
+    state:ConsoleState;
 
     @computed()
     hasApiDocumentation(model) {
@@ -45,12 +48,13 @@ class AugeanConsole extends polymer.Base {
     }
 
     @computed()
-    urlInput(){
+    urlInput() {
         return this.$.resource;
     }
 
     attached() {
         this.url = this.initialUrl;
+        this.state = 'ready';
     }
 
     hasPreviousModel(_modelHistory) {
@@ -64,28 +68,36 @@ class AugeanConsole extends polymer.Base {
     load() {
         this.state = 'loading';
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
-        this.loadResource();
+        this.loadResource(this.$.resource.value);
     }
 
-    loadResource() {
-        Hydra.loadResource(this.$.resource.value)
-            .then(res => {
+    loadResource(value) {
+        Hydra.loadResource(value)
+            .then((res:IHydraResource) => {
                 this.model = res;
                 this.currentModel = res;
                 this.state = 'loaded';
+            })
+            .catch(err => {
+                this._setLastError(err);
+                this.state = 'error';
             });
     }
-    
+
     urlChanged(e) {
-        this.$.resource.value = e.detail.value;
-        if(this.state === 'loaded') {
-            this.state = 'loading';
-            this.loadResource();
-        }
+        this.debounce('load-model', () => {
+            if (e.detail.value !== '/') {
+                this.$.resource.value = e.detail.value;
+                if (!this.$.resource.invalid) {
+                    this.state = 'loading';
+                    this.loadResource(this.$.resource.value);
+                }
+            }
+        });
     }
 
     loadOnEnter(e) {
-        if(e.keyCode === 13) {
+        if (e.keyCode === 13) {
             this.load();
         }
     }
