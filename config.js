@@ -17,7 +17,7 @@ System.config({
     "heracles": "github:wikibus/heracles@master",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "jsonld": "npm:jsonld@0.4.11",
-    "lodash": "npm:lodash@4.11.2",
+    "lodash": "npm:lodash@4.12.0",
     "typescript": "npm:typescript@1.8.10",
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
@@ -32,7 +32,7 @@ System.config({
       "os-browserify": "npm:os-browserify@0.1.2"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.2"
+      "process": "npm:process@0.11.3"
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
@@ -42,7 +42,7 @@ System.config({
       "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@0.10.0",
       "jsonld": "npm:jsonld@0.4.11",
       "li": "npm:li@1.0.1",
-      "lodash": "npm:lodash@4.11.2"
+      "lodash": "npm:lodash@4.12.0"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -67,14 +67,14 @@ System.config({
       "es6-promise": "npm:es6-promise@2.3.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:lodash@4.11.2": {
+    "npm:lodash@4.12.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
-    "npm:process@0.11.2": {
+    "npm:process@0.11.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
     "npm:typescript@1.8.10": {

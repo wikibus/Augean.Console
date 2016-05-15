@@ -1,4 +1,5 @@
 import './supported-class-view.html!';
+import './supported-property-view';
 
 @component('supported-class-view')
 class SupportedClassView extends polymer.Base {
@@ -6,22 +7,31 @@ class SupportedClassView extends polymer.Base {
     @property()
     supportedClass:IClass;
 
-    @property({ readOnly: true })
-    supportedProperties:Array;
+    @property()
+    selectedProperty: ISupportedProperty;
 
-    @observe('supportedClass')
-    getProperties(supportedClass:IClass) {
+    @computed()
+    supportedProperties(supportedClass) {
         if(!supportedClass) {
             return;
         }
 
-        supportedClass.getSupportedProperties()
-            .then(setProperties.bind(this));
+        return supportedClass.supportedProperties;
     }
-}
 
-function setProperties(props) {
-    this._setSupportedProperties(props);
+    @computed({ readOnly: true })
+    propertyIsSelected(selectedProperty) {
+        return typeof selectedProperty !== 'undefined' && selectedProperty !== null;
+    }
+
+    @observe('supportedClass')
+    getProperties(supportedClass:IClass) {
+        this.$.supportedProperties.value = null;
+    }
+
+    openProperties() {
+        this.$.props.toggle();
+    }
 }
 
 SupportedClassView.register();

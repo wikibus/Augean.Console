@@ -11,7 +11,7 @@ class PropertyLabel extends polymer.Base {
     @property()
     propertyId:string;
 
-    @computed({ notify:true })
+    @computed({notify: true})
     propertyTitle(supportedProperty:ISupportedProperty, propertyId) {
         return supportedProperty.title || propertyId;
     }
@@ -30,18 +30,18 @@ class PropertyLabel extends polymer.Base {
                 properties = [resource.apiDocumentation.getProperties(resource['@type'])]
             }
 
-            Promise.all(properties).then(resolved => {
-                var supportedProp = _.chain(resolved)
-                    .flatten()
-                    .filter(prop => prop.property === propertyId)
-                    .head()
-                    .value();
+            var supportedProp = _.chain(properties)
+                .flatten()
+                .filter(prop => prop.property.id === propertyId)
+                .head()
+                .value();
 
-                if (supportedProp) {
-                    this._setSupportedProperty(supportedProp)
-                }
-            });
+            if (supportedProp) {
+                this._setSupportedProperty(supportedProp);
+                return;
+            }
         }
+
         this._setSupportedProperty(propertyId);
     }
 }

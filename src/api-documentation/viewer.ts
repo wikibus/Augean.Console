@@ -14,30 +14,27 @@ class ApiDocumentationViewer extends polymer.Base {
     @property({value: []})
     modelTypes:Array;
 
-    @property({readOnly: true})
-    classes:Array<IClass>;
-
     @property()
     selectedClass:IClass;
 
     selectClass(classId) {
-        var clazz = _.find(this.classes, { id: classId });
+        var clazz = _.find(this.apiDocs.classes, { id: classId });
 
         selectClass.call(this, clazz);
     }
 
-    @observe('classes,modelTypes')
-    selectCurrentClass(classes, types) {
-        var clazz = _.find(classes, c => {
+    onClassSelected(e:Event) {
+        this.selectClass(e.detail.classId);
+        e.preventDefault();
+    }
+
+    @observe('apiDocs,modelTypes')
+    selectCurrentClass(apiDocs, types) {
+        var clazz = _.find(apiDocs.classes, c => {
             return _.some(types, t => c.id === t)
         });
 
         selectClass.call(this, clazz);
-    }
-
-    @observe('apiDocs')
-    _getClasses(apiDocs:IApiDocumentation) {
-        apiDocs.getClasses().then(setClasses.bind(this));
     }
 
     isCurrent(typeId) {
@@ -66,10 +63,6 @@ function selectClass(clas) {
         this.$.toast.close();
         this.$.classSelect.value = clas.id;
     }
-}
-
-function setClasses(classes) {
-    this._setClasses(classes);
 }
 
 ApiDocumentationViewer.register();

@@ -1,9 +1,24 @@
 <dom-module id="supported-class-view">
     <template>
-        <ul>
-        <template is="dom-repeat" items="[[supportedProperties]]" as="prop">
-            <li>[[prop.title]]</li>
-        </template>
-        </ul>
+        <style>
+            paper-card {
+                width: 100%;
+            }
+        </style>
+
+        <p>
+            [[supportedClass.description]]
+        </p>
+
+        <paper-card heading="Properties">
+            <div class="card-content">
+                <vaadin-combo-box label="Supported Property" item-value-path="id" item-label-path="title"
+                                  items="[[supportedProperties]]" selected-item="{{selectedProperty}}"
+                                  id="supportedProperties">
+                </vaadin-combo-box>
+
+                <supported-property-view supported-property="[[selectedProperty]]" hidden$="[[!propertyIsSelected]]"></supported-property-view>
+            </div>
+        </paper-card>
     </template>
 </dom-module>

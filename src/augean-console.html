@@ -5,6 +5,10 @@
                 display: block;
             }
 
+            #api-docs-container {
+                padding: 10px;
+            }
+
             [main] paper-input {
                 --paper-input-container-color: white;
                 --paper-input-container-input-color: white;
@@ -42,7 +46,8 @@
 
         <paper-multidrawer-panel id="drawerPanel"
                                  force-right-drawer-temporary="true"
-                                 disable-right-edge-swipe="true">
+                                 disable-right-edge-swipe="true"
+                                 right-drawer-width="400px">
 
             <paper-header-panel left-drawer class="flex">
                 <paper-toolbar>
@@ -55,7 +60,7 @@
                 <paper-toolbar>
                     <div class="title">Documentation</div>
                 </paper-toolbar>
-                <div>
+                <div id="api-docs-container">
                     <api-documentation-viewer id="apiDocumentation" api-docs="[[model.apiDocumentation]]"
                                               model-types="[[currentModel.types]]"></api-documentation-viewer>
                 </div>
