@@ -1,0 +1,30 @@
+<dom-module id="supported-operation-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <p>
+            [[supportedOperation.description]]
+        </p>
+
+        <p>
+            <b>Expects</b>: [[expectsTitle]]
+        </p>
+
+        <p>
+            <b>Returns</b>: [[returnsTitle]]
+        </p>
+
+        <div hidden$="[[!supportedOperation.statusCodes]]">
+            <template is="dom-bind" items="[[supportedOperation.statusCodes]]" as="status">
+                <p>
+                    <b>[[status.code]]</b>: [[status.description]]
+                </p>
+            </template>
+        </div>
+
+    </template>
+</dom-module>

@@ -6,8 +6,10 @@
     "dependencies": {
       "heracles": "github:wikibus/heracles@master",
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
+      "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@^0.10.0",
       "jsonld": "npm:jsonld@^0.4.11",
-      "lodash": "npm:lodash@^4.11.1"
+      "lodash": "npm:lodash@^4.11.1",
+      "rdf-ext": "npm:rdf-ext@^0.3.0"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"

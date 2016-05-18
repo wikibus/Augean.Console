@@ -1,5 +1,6 @@
 import './supported-class-view.html!';
 import './supported-property-view';
+import './supported-operation-view';
 
 @component('supported-class-view')
 class SupportedClassView extends polymer.Base {
@@ -8,16 +9,24 @@ class SupportedClassView extends polymer.Base {
     supportedClass:IClass;
 
     @property()
-    selectedProperty: ISupportedProperty;
+    selectedProperty:ISupportedProperty;
 
-    @computed({ readOnly: true })
+    @property()
+    selectedOperation:IOperation;
+
+    @computed({readOnly: true})
     propertyIsSelected(selectedProperty) {
         return typeof selectedProperty !== 'undefined' && selectedProperty !== null;
     }
 
+    @computed({readOnly: true})
+    operationIsSelected(selectedOperation) {
+        return typeof selectedOperation !== 'undefined' && selectedOperation !== null;
+    }
+
     @computed()
     hasProperties(supportedClass):boolean {
-        if(!supportedClass) {
+        if (!supportedClass) {
             return false;
         }
 
@@ -26,13 +35,13 @@ class SupportedClassView extends polymer.Base {
 
     @computed()
     hasOperations(supportedClass):boolean {
-        if(!supportedClass) {
+        if (!supportedClass) {
             return false;
         }
 
         return supportedClass.supportedOperations.length > 0;
     }
-    
+
     attached() {
         this.$.classTabs.select(0);
     }
@@ -40,6 +49,7 @@ class SupportedClassView extends polymer.Base {
     @observe('supportedClass')
     getProperties(supportedClass:IClass) {
         this.$.supportedProperties.value = null;
+        this.$.classTabs.selected = 0;
     }
 
     openProperties() {
