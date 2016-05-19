@@ -1,21 +1,39 @@
-@template('<a on-tap="showDocumentation" href="[[class]]">[[title]]</a>')
+@template('<a on-tap="showDocumentation" href="[[class.id]]">[[title]]</a>')
+
 @component('type-docs-link')
 export class TypeDocsLink extends polymer.Base {
-    
-    @property()
-    'class': String;
 
-    @property({ readOnly: true })
+    @property()
+    'class':IClass;
+
+    @property()
+    classId:IClass;
+
+    @property({readOnly: true})
     title:String;
-    
-    @observe('class')
-    titleChanged(clas) {
-        this._setTitle(clas);
+
+    @observe('classId')
+    classIdChanged(classId) {
+        var apiDocumentation = document.createElement('iron-meta').byKey('apiDocs');
+
+        if (apiDocumentation) {
+            this.class = apiDocumentation.getClass(classId);
+        }
     }
-    
+
+    @observe('class')
+    titleChanged(clas:IDocumentedResource) {
+        if (clas) {
+            this._setTitle(clas.title);
+        }
+        else {
+            this._setTitle('');
+        }
+    }
+
     showDocumentation(e) {
         this.fire('show-class-documentation', {
-            classId: this.class
+            classId: this.class.id
         });
 
         e.preventDefault();

@@ -15,6 +15,7 @@ import 'bower_components/iron-pages/iron-pages.html!';
 import 'bower_components/iron-icons/av-icons.html!';
 import 'bower_components/iron-a11y-keys-behavior/iron-a11y-keys-behavior.html!';
 import 'bower_components/paper-icon-button/paper-icon-button.html!';
+import 'bower_components/iron-meta/iron-meta.html!';
 import './resource-views/object-view';
 import './api-documentation/viewer';
 import './operation-views/operation-selector';
