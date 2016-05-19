@@ -35,6 +35,10 @@
             #operationToggle {
                 --paper-fab-background: var(--paper-deep-purple-400);
             }
+
+            #operationToggle[data-no-operations] {
+                --paper-fab-background: var(--paper-grey-500);
+            }
         </style>
 
             <div id="operations" hidden$="[[!showOperations]]">
@@ -49,6 +53,10 @@
                 </template>
             </div>
 
-            <paper-fab id="operationToggle" toggles icon="image:flash-on" active="{{showOperations}}"></paper-fab>
+            <paper-fab id="operationToggle" toggles$="[[hasOperations]]" icon="image:flash-on" active="{{showOperations}}"
+                       data-no-operations$="[[!hasOperations]]" on-tap="showTooltip"></paper-fab>
+            <paper-tooltip id="noOperationsTooltip" position="left" manual-mode="true">
+                There are no known operations for current model
+            </paper-tooltip>
     </template>
 </dom-module>
