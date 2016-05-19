@@ -1,0 +1,54 @@
+<dom-module id="operation-selector">
+    <template>
+        <style>
+            :host {
+                display: block;
+                position: absolute;
+                right: 80px;
+                bottom: 40px;
+            }
+
+            paper-fab {
+                margin: 0 auto;
+            }
+
+            paper-fab.operation {
+                --paper-fab-mini: {
+                    margin-bottom: 10px;
+                };
+
+                --paper-fab-background: var(--paper-grey-500);
+            }
+
+            paper-fab.operation[data-method=GET] {
+                --paper-fab-background: var(--paper-light-green-400);
+            }
+
+            paper-fab.operation[data-method=DELETE] {
+                --paper-fab-background: var(--paper-red-500);
+            }
+
+            paper-fab.operation[data-method=POST], paper-fab.operation[data-method=PUT] {
+                --paper-fab-background: var(--paper-amber-600);
+            }
+
+            #operationToggle {
+                --paper-fab-background: var(--paper-deep-purple-400);
+            }
+        </style>
+
+            <div id="operations" hidden$="[[!showOperations]]">
+                <template is="dom-repeat" items="[[operations]]" as="operation">
+                    <div tabindex="0">
+                        <paper-fab mini class="operation" icon="[[getIcon(operation)]]" data-method$="[[operation.method]]"></paper-fab>
+
+                        <paper-tooltip position="left">
+                            [[operation.title]]
+                        </paper-tooltip>
+                    </div>
+                </template>
+            </div>
+
+            <paper-fab id="operationToggle" toggles icon="image:flash-on" active="{{showOperations}}"></paper-fab>
+    </template>
+</dom-module>
