@@ -54,22 +54,25 @@ class ObjectView extends polymer.Base {
             }
 
             this.getStamped(this, template, object)
-                .then(stamped => elementRoot.appendChild(stamped));
+                .then(stamped => replaceContent.call(this, elementRoot, stamped));
 
-            this._setHasBeenRendered(true);
             break;
         }
 
         if (!found && !ignoreMissing) {
             var notFoundNode = document.createElement('div');
             notFoundNode.textContent = 'Template Not found';
-            elementRoot.appendChild(notFoundNode);
+            replaceContent.call(this, elementRoot, notFoundNode);
 
             console.warn('Template not found for', object);
-
-            this._setHasBeenRendered(true);
         }
     }
+}
+
+function replaceContent(elementRoot, newContent) {
+    elementRoot.appendChild(newContent);
+
+    this._setHasBeenRendered(true);
 }
 
 ObjectView.register();
