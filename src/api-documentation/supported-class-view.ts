@@ -1,6 +1,6 @@
 import './supported-class-view.html!';
 import './supported-property-view';
-import './supported-operation-view';
+import './supported-operations-viewer';
 
 @component('supported-class-view')
 class SupportedClassView extends polymer.Base {
@@ -11,17 +11,9 @@ class SupportedClassView extends polymer.Base {
     @property()
     selectedProperty:ISupportedProperty;
 
-    @property()
-    selectedOperation:IOperation;
-
     @computed({readOnly: true})
     propertyIsSelected(selectedProperty) {
         return typeof selectedProperty !== 'undefined' && selectedProperty !== null;
-    }
-
-    @computed({readOnly: true})
-    operationIsSelected(selectedOperation) {
-        return typeof selectedOperation !== 'undefined' && selectedOperation !== null;
     }
 
     @computed()

@@ -37,14 +37,7 @@
 
                     <div>
                         <div hidden$="[[!hasOperations]]">
-                            <vaadin-combo-box label="Supported Operation" item-value-path="id" item-label-path="method"
-                                              items="[[supportedClass.supportedOperations]]"
-                                              selected-item="{{selectedOperation}}"
-                                              id="supportedOperations">
-                            </vaadin-combo-box>
-
-                            <supported-operation-view supported-operation="[[selectedOperation]]"
-                                                      hidden$="[[!operationIsSelected]]"></supported-operation-view>
+                            <supported-operations-viewer id="operations" supported-operations="[[supportedClass.supportedOperations]]"></supported-operations-viewer>
                         </div>
 
                         <div hidden$="[[hasOperations]]">
