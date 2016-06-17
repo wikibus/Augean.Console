@@ -30,6 +30,13 @@ class ObjectView extends polymer.Base {
     @property({ type: Object, value: {} })
     params: Object;
 
+    attached() {
+        document.addEventListener('ags-templates', (() => {
+            if(this.object)
+                this._draw(this.object, this.predicate, this.templateScope, this.ignoreMissing, this.params);
+        }).bind(this));
+    }
+
     @observe('object,predicate,templateScope,ignoreMissing,params')
     _draw(object, predicate, templateScope, ignoreMissing, params) {
         var templates = this.templates || [];

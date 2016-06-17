@@ -44,12 +44,14 @@ export var RegisteredTemplate = {
         }
     },
     
-    ready: function() {
+    attached: function() {
         this.push('templates', this);
+        this.fire('ags-templates', {}, { bubble: true });
     },
 
     detached: function() {
         this.pop('templates', this);
+        this.fire('ags-templates', {}, { bubble: true });
     },
     
     isMatch: function(object, predicate, scope) {
