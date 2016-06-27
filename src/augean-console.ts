@@ -1,6 +1,6 @@
-import './console-templates';
-import './fallback-templates';
-import "./hydra-templates";
+import './templates/console-templates';
+import './templates/fallback-templates';
+import "./templates/hydra-templates";
 import 'bower_components/ld-navigation/ld-navigation.html!';
 import 'bower_components/paper-material/paper-material.html!';
 import 'bower_components/paper-multidrawer-panel/paper-multidrawer-panel.html!';
