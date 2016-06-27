@@ -8,7 +8,7 @@
 
             :host {
                 #member > .array-element {
-                    --object-view: {
+                    --ags-view: {
                         margin: 5px;
                     };
 
@@ -31,7 +31,7 @@
             }
         </style>
 
-        <object-view id="member" predicate="http://www.w3.org/ns/hydra/core#member" object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#member')]]"></object-view>
-        <object-view id="pager"  object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#view')]]"></object-view>
+        <ags-view id="member" predicate="http://www.w3.org/ns/hydra/core#member" object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#member')]]"></ags-view>
+        <ags-view id="pager"  object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#view')]]"></ags-view>
     </template>
 </dom-module>

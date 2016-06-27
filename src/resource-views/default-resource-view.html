@@ -50,11 +50,11 @@
                 <h2>
                     <property-label resource="[[subject]]" property-id="[[propertyId]]"></property-label>
                 </h2>
-                <object-view predicate="[[propertyId]]" object="[[object]]" params='{ "nested": true }'></object-view>
+                <ags-view predicate="[[propertyId]]" object="[[object]]" params='{ "nested": true }'></ags-view>
             </div>
             <div class="card-actions" hidden$="[[!actionsRendered]]">
-                <object-view template-scope="resource-card-actions" predicate="[[propertyId]]" object="[[object]]"
-                             ignore-missing="true" has-been-rendered="{{actionsRendered}}"></object-view>
+                <ags-view template-scope="resource-card-actions" predicate="[[propertyId]]" object="[[object]]"
+                             ignore-missing="true" has-been-rendered="{{actionsRendered}}"></ags-view>
             </div>
         </paper-card>
     </template>

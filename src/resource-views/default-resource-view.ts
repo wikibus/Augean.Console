@@ -1,5 +1,4 @@
 import './default-resource-view.html!';
-import './object-view';
 import '../api-documentation/property-label';
 import 'src/api-documentation/property-label';
 import 'bower_components/paper-tabs/paper-tabs.html!';

@@ -21,11 +21,12 @@ System.config({
     "lodash": "npm:lodash@4.12.0",
     "rdf-ext": "npm:rdf-ext@0.3.0",
     "typescript": "npm:typescript@1.8.10",
+    "wikibus/augeas": "github:wikibus/augeas@master",
     "github:Hypercubed/systemjs-plugin-html@0.0.8": {
       "webcomponentsjs": "github:webcomponents/webcomponentsjs@0.7.22"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
-      "assert": "npm:assert@1.4.0"
+      "assert": "npm:assert@1.4.1"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.6.0"
@@ -57,7 +58,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.3"
+      "process": "npm:process@0.11.5"
     },
     "github:jspm/nodelibs-stream@0.1.0": {
       "stream-browserify": "npm:stream-browserify@1.0.0"
@@ -73,6 +74,9 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "github:wikibus/augeas@master": {
+      "jsonld": "npm:jsonld@0.4.11"
     },
     "github:wikibus/heracles@master": {
       "core-decorators": "npm:core-decorators@0.12.2",
@@ -93,10 +97,9 @@ System.config({
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
-    "npm:assert@1.4.0": {
+    "npm:assert@1.4.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "buffer-shims": "npm:buffer-shims@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "npm:util@0.10.3"
     },
@@ -146,9 +149,6 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "parse-asn1": "npm:parse-asn1@5.0.0",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
-    },
-    "npm:buffer-shims@1.0.0": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:buffer-xor@1.0.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -308,8 +308,10 @@ System.config({
     "npm:process-nextick-args@1.0.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.3": {
-      "assert": "github:jspm/nodelibs-assert@0.1.0"
+    "npm:process@0.11.5": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
     "npm:public-encrypt@4.0.0": {
       "bn.js": "npm:bn.js@4.11.3",

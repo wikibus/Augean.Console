@@ -2,7 +2,6 @@ import './hydra-member-view.html!';
 import 'bower_components/paper-button/paper-button.html!';
 import 'bower_components/paper-card/paper-card.html!';
 import '../api-documentation/property-label';
-import '../resource-views/object-view';
 import {ObjectGetter} from '../hydra-views/hydra-behaviors';
 import * as _ from 'lodash';
 

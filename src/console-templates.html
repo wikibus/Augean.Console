@@ -1,12 +1,12 @@
 <dom-module id="console-templates">
     <template>
-        <template is="array-template" as="elements" name="array-template">
+        <template is="ags-array-template" as="elements" name="array-template">
             <template is="dom-repeat" items="[[elements]]" as="element">
-                <object-view object="[[element]]" predicate="[[predicate]]" class="array-element" params="[[params]]"></object-view>
+                <ags-view object="[[element]]" predicate="[[predicate]]" class="array-element" params="[[params]]"></ags-view>
             </template>
         </template>
 
-        <template is="any-literal-template" as="class" predicate="@type">
+        <template is="ags-literal-template" as="class" predicate="@type">
             <type-docs-link class-id="[[class]]"></type-docs-link>
         </template>
     </template>
