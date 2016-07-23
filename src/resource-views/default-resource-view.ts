@@ -73,7 +73,7 @@ class ResourceCard extends polymer.Base {
 
     @computed({ reflectToAttribute: true })
     hideId(isId, nested) {
-        return isId && !nested;
+        return isId;
     }
 }
 
