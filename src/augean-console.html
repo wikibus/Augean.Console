@@ -9,7 +9,7 @@
                 padding: 10px;
             }
 
-            [main] paper-input {
+            .middle {
                 --paper-input-container-color: white;
                 --paper-input-container-input-color: white;
                 pointer-events: auto !important;
@@ -50,14 +50,14 @@
                                  right-drawer-width="400px">
 
             <paper-header-panel left-drawer class="flex">
-                <paper-toolbar>
+                <paper-toolbar class="medium-tall">
                     <div class="title">Options</div>
-                </paper-toolbar>
 
-                <entrypoint-selector url="{{url}}" on-url-changed="_focusUrlInput">
-                    <span data-url="http://wikibus-test.gear.host/">Bus encyclopedia</span>
-                    <span data-url="http://www.markus-lanthaler.com/hydra/api-demo/">Hydra demo API</span>
-                </entrypoint-selector>
+                    <entrypoint-selector class="middle" url="{{url}}" on-url-changed="_focusUrlInput">
+                        <span data-url="http://wikibus-test.gear.host/">Bus encyclopedia</span>
+                        <span data-url="http://www.markus-lanthaler.com/hydra/api-demo/">Hydra demo API</span>
+                    </entrypoint-selector>
+                </paper-toolbar>
             </paper-header-panel>
 
             <paper-header-panel right-drawer>
