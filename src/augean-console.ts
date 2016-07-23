@@ -19,6 +19,7 @@ import 'bower_components/iron-meta/iron-meta.html!';
 import 'wikibus/augeas';
 import './api-documentation/viewer';
 import './operation-views/operation-selector';
+import './entrypoint-selector';
 import {Hydra} from 'heracles';
 
 type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error';
@@ -28,9 +29,6 @@ class AugeanConsole extends polymer.Base {
 
     @property({value: null})
     model:IHydraResource;
-
-    @property()
-    initialUrl:string;
 
     @property()
     url:string;
@@ -55,7 +53,6 @@ class AugeanConsole extends polymer.Base {
     }
 
     attached() {
-        this.url = this.initialUrl;
         this.state = 'ready';
     }
 
@@ -119,6 +116,10 @@ class AugeanConsole extends polymer.Base {
         this.$.apiDocumentation.selectClass(e.detail.classId);
         this.showDocs();
         e.stopPropagation();
+    }
+
+    _focusUrlInput() {
+        this.$.resource.focus();
     }
 }
 

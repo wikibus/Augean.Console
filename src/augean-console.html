@@ -26,11 +26,11 @@
         </style>
 
         <div>
-            <template is="any-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
+            <template is="ags-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
                 <img src="[[image.thumbnail.contentUrl]]" />
             </template>
 
-            <template scope="resource-card-actions" is="any-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
+            <template scope="resource-card-actions" is="ags-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
                 <a href="[[image.contentUrl]]" target="_blank">
                     <iron-icon icon="icons:zoom-in"></iron-icon>
                 </a>
@@ -51,9 +51,13 @@
 
             <paper-header-panel left-drawer class="flex">
                 <paper-toolbar>
-                    <div class="title">Console</div>
+                    <div class="title">Options</div>
                 </paper-toolbar>
-                <div>Content goes here...</div>
+
+                <entrypoint-selector url="{{url}}" on-url-changed="_focusUrlInput">
+                    <span data-url="http://wikibus-test.gear.host/">Bus encyclopedia</span>
+                    <span data-url="http://www.markus-lanthaler.com/hydra/api-demo/">Hydra demo API</span>
+                </entrypoint-selector>
             </paper-header-panel>
 
             <paper-header-panel right-drawer>
