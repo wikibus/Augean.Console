@@ -44,7 +44,7 @@
             <div id="operations" hidden$="[[!showOperations]]">
                 <template is="dom-repeat" items="[[operations]]" as="operation">
                     <div tabindex="0">
-                        <paper-fab mini class="operation" icon="[[getIcon(operation)]]" data-method$="[[operation.method]]"></paper-fab>
+                        <paper-fab mini class="operation" icon="[[getIcon(operation)]]" data-method$="[[operation.method]]" on-tap="selectOperation"></paper-fab>
 
                         <paper-tooltip position="left">
                             [[operation.title]]

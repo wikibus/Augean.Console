@@ -42,6 +42,7 @@
     "paper-toast": "PolymerElements/paper-toast#~1.2.2",
     "iron-collapse": "PolymerElements/iron-collapse#~1.0.8",
     "paper-fab": "PolymerElements/paper-fab#~1.2.0",
-    "iron-meta": "PolymerElements/iron-meta#~1.1.1"
+    "iron-meta": "PolymerElements/iron-meta#~1.1.1",
+    "paper-dialog": "~1.1.0"
   }
 }

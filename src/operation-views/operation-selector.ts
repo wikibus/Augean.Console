@@ -9,6 +9,9 @@ class OperationSelector extends polymer.Base {
     @property()
     operations:Array<IOperation>;
 
+    @property({ readOnly: true, notify: true })
+    operation:IOperation;
+
     @computed()
     hasOperations(operations) {
         return !!operations && operations.length > 0;
@@ -28,6 +31,16 @@ class OperationSelector extends polymer.Base {
         if (!this.hasOperations) {
             this.$.noOperationsTooltip.show();
         }
+    }
+
+    selectOperation(e) {
+        this._setOperation(e.model.operation);
+
+        console.dir(e.model.operation);
+
+        this.fire('operation-selected', {
+            operation: e.model.operation
+        });
     }
 
     getIcon(operation:IOperation) {

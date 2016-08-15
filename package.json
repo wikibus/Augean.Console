@@ -1,18 +1,20 @@
 {
   "scripts": {
     "start": "ws -s index.html -p 8080",
+    "bundle": "jspm bundle src/augean-console dist/augean.console.js --minify ",
+    "minify": "html-minifier build.html -o build.min.html --collapse-whitespace --minify-css --remove-comments --collapse-boolean-attributes --collapse-inline-tag-whitespace --decode-entities --html5 --minify-js --minify-ur-ls --remove-attribute-quote --remove-empty-attributes --remove-optional-tags --remove-script-type-attributes --remove-link-type-attributes --remove-tag-whitespace --use-short-doctype",
     "preinstall": "npm i -g local-web-server bower jspm",
     "postinstall": "bower i && jspm i"
   },
   "jspm": {
     "dependencies": {
+      "augeas": "github:wikibus/augeas@^0.1.0",
       "heracles": "github:wikibus/heracles@master",
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
       "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@^0.10.0",
       "jsonld": "npm:jsonld@^0.4.11",
       "lodash": "npm:lodash@^4.11.1",
-      "rdf-ext": "npm:rdf-ext@^0.3.0",
-      "wikibus/augeas": "github:wikibus/augeas@master"
+      "rdf-ext": "npm:rdf-ext@^0.3.0"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"

@@ -6,6 +6,7 @@ import 'bower_components/paper-material/paper-material.html!';
 import 'bower_components/paper-multidrawer-panel/paper-multidrawer-panel.html!';
 import 'bower_components/paper-header-panel/paper-header-panel.html!'
 import 'bower_components/paper-toolbar/paper-toolbar.html!'
+import 'bower_components/paper-tabs/paper-tabs.html!'
 import 'bower_components/paper-input/paper-input.html!'
 import 'bower_components/paper-styles/paper-styles.html!'
 import 'bower_components/paper-spinner/paper-spinner.html!'
@@ -15,14 +16,16 @@ import 'bower_components/iron-pages/iron-pages.html!';
 import 'bower_components/iron-icons/av-icons.html!';
 import 'bower_components/iron-a11y-keys-behavior/iron-a11y-keys-behavior.html!';
 import 'bower_components/paper-icon-button/paper-icon-button.html!';
+import 'bower_components/paper-dialog/paper-dialog.html!';
 import 'bower_components/iron-meta/iron-meta.html!';
-import 'wikibus/augeas';
+import 'augeas';
 import './api-documentation/viewer';
 import './operation-views/operation-selector';
 import './entrypoint-selector';
 import {Hydra} from 'heracles';
+import './augean-console.html!';
 
-type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error';
+type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
 
 @component('augean-console')
 class AugeanConsole extends polymer.Base {
@@ -119,6 +122,19 @@ class AugeanConsole extends polymer.Base {
 
     _focusUrlInput() {
         this.$.resource.focus();
+    }
+
+    showOperationForm(e) {
+        this._prevState = this.state;
+        this.state = 'operation';
+    }
+
+    hideOperationForm() {
+        this.state = this._prevState || 'ready';
+    }
+
+    executeOperation() {
+        alert('op');
     }
 }
 
