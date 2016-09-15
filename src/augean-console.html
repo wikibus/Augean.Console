@@ -26,11 +26,11 @@
         </style>
 
         <div>
-            <template is="ags-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
+            <template id="image" is="ags-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
                 <img src="[[image.thumbnail.contentUrl]]" />
             </template>
 
-            <template scope="resource-card-actions" is="ags-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
+            <template id="actions" scope="resource-card-actions" is="ags-object-template" as="image" predicate="http://schema.org/image" compact-with='{ "@vocab": "http://schema.org/" }'>
                 <a href="[[image.contentUrl]]" target="_blank">
                     <iron-icon icon="icons:zoom-in"></iron-icon>
                 </a>

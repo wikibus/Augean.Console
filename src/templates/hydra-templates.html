@@ -1,16 +1,16 @@
 <dom-module id="hydra-templates">
     <template>
-        <template id="hydra-collection-member" is="any-object-template"
+        <template id="hydra-collection-member" is="ags-object-template"
                   predicate="http://www.w3.org/ns/hydra/core#member" as="member">
             <hydra-member-view resource="[[member]]"></hydra-member-view>
         </template>
 
-        <template is="ags-type-template"
+        <template is="ags-type-template" id="Collection"
                   type="http://www.w3.org/ns/hydra/core#Collection" as="collection">
             <hydra-collection collection="[[collection]]"></hydra-collection>
         </template>
 
-        <template is="ags-type-template"
+        <template is="ags-type-template" id="Partial"
                   type="http://www.w3.org/ns/hydra/core#PartialCollectionView" as="view">
             <hydra-partial-view-pager view="[[view]]"></hydra-partial-view-pager>
         </template>

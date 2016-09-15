@@ -1,10 +1,10 @@
 <dom-module id="fallback-templates">
     <template>
-        <template is="ags-object-template" as="resource">
+        <template is="ags-object-template" as="resource" id="fallback-obj">
             <default-resource-view nested$="[[params.nested]]" property="[[predicate]]" resource="[[resource]]"></default-resource-view>
         </template>
 
-        <template is="ags-literal-template" as="literal">
+        <template is="ags-literal-template" as="literal" id="fallback-literal">
             <default-literal-view literal="[[literal]]"></default-literal-view>
         </template>
     </template>
