@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "ws -s index.html -p 8080",
-    "preinstall": "npm i -g local-web-server"
+    "preinstall": "npm i -g local-web-server bower jspm",
+    "postinstall": "bower i && jspm i"
   },
   "jspm": {
     "dependencies": {
