@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "ws -s index.html -p 8080"
+    "start": "ws -s index.html -p 8080",
+    "preinstall": "npm i -g local-web-server"
   },
   "jspm": {
     "dependencies": {
