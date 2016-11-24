@@ -74,7 +74,7 @@ class AugeanConsole extends polymer.Base {
 
     loadResource(value) {
         Hydra.loadResource(value)
-            .then((res:IHydraResource) => {
+            .then(res => {
                 this.model = res;
                 this.currentModel = res;
                 this.state = 'loaded';
@@ -125,8 +125,12 @@ class AugeanConsole extends polymer.Base {
     }
 
     showOperationForm(e) {
-        this._prevState = this.state;
-        this.state = 'operation';
+        if (e.detail.operation.requiresInput == false) {
+            e.detail.operation.invoke();
+        } else {
+            this._prevState = this.state;
+            this.state = 'operation';
+        }
     }
 
     hideOperationForm() {
