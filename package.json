@@ -3,7 +3,7 @@
     "start": "ws -s index.html -p 8080",
     "bundle": "jspm bundle src/augean-console dist/augean.console.js --minify ",
     "minify": "html-minifier build.html -o build.min.html --collapse-whitespace --minify-css --remove-comments --collapse-boolean-attributes --collapse-inline-tag-whitespace --decode-entities --html5 --minify-js --minify-ur-ls --remove-attribute-quote --remove-empty-attributes --remove-optional-tags --remove-script-type-attributes --remove-link-type-attributes --remove-tag-whitespace --use-short-doctype",
-    "postinstall": "npm i -g bower jspm vulcanize && bower i && jspm i",
+    "postinstall": "npm i -g bower jspm vulcanize ws && bower i && jspm i",
     "heroku-postbuild": "mkdir dist && npm run bundle"
   },
   "cacheDirectories": [
