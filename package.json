@@ -3,9 +3,14 @@
     "start": "ws -s index.html -p 8080",
     "bundle": "jspm bundle src/augean-console dist/augean.console.js --minify ",
     "minify": "html-minifier build.html -o build.min.html --collapse-whitespace --minify-css --remove-comments --collapse-boolean-attributes --collapse-inline-tag-whitespace --decode-entities --html5 --minify-js --minify-ur-ls --remove-attribute-quote --remove-empty-attributes --remove-optional-tags --remove-script-type-attributes --remove-link-type-attributes --remove-tag-whitespace --use-short-doctype",
-    "preinstall": "npm i -g local-web-server bower jspm vulcanize && bower i && jspm i",
-    "heroku-postbuild": "npm run bundle"
+    "postinstall": "bower i && jspm i",
+    "heroku-postbuild": "mkdir dist && touch dist/augean.consol.html && npm run bundle"
   },
+  "cacheDirectories": [
+    "jspm_packages",
+    "bower_components",
+    "node_modules"
+  ],
   "jspm": {
     "dependencies": {
       "augeas": "github:wikibus/augeas@^0.1.0",
@@ -20,5 +25,10 @@
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"
     }
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "jspm": "^0.16.48",
+    "vulcanize": "^1.14.12"
   }
 }
