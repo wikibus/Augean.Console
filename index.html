@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 <head>
-    <!-- build:js inline -->
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script>
@@ -9,14 +8,13 @@
             dom: 'shadow'
         };
     </script>
-    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js" async></script>
+    <!-- build:remove -->
+    <link rel="import" href="bower_components/polymer/polymer.html" async />
     <!-- /build -->
-    <link rel="import" href="bower_components/polymer/polymer.html"/>
-    <link rel="import" href="bower_components/polymer-ts/polymer-ts.min.html"/>
-    <!-- build:include dist/augean.console.min.html -->
-    <!-- /build -->
-    <!-- build:include dist/augean.console.js -->
-    <!-- /build -->
+    <link rel="import" href="bower_components/polymer-ts/polymer-ts.min.html" async />
+    <link rel="import" href="dist/augean.console.min.html" />
+    <script src="dist/augean.console.js"></script>
     <link rel="import" href="src/styles.html" />
 </head>
 <body>
