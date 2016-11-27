@@ -15,7 +15,7 @@ System.config({
 
   map: {
     "augeas": "github:wikibus/augeas@0.1.2",
-    "heracles": "npm:heracles@0.1.2-pre03",
+    "heracles": "npm:heracles@0.1.2-pre04",
     "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
     "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@0.10.0",
     "jsonld": "npm:jsonld@0.4.11",
@@ -431,7 +431,7 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.2",
       "url": "github:jspm/nodelibs-url@0.1.0"
     },
-    "npm:heracles@0.1.2-pre03": {
+    "npm:heracles@0.1.2-pre04": {
       "jsonld": "npm:jsonld@0.4.11",
       "li": "npm:li@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",

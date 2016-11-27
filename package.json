@@ -1,10 +1,10 @@
 {
   "scripts": {
     "start": "ws -s index.html -p 8080",
-    "bundle": "jspm bundle src/augean-console dist/augean.console.js --minify ",
-    "minify": "html-minifier build.html -o build.min.html --collapse-whitespace --minify-css --remove-comments --collapse-boolean-attributes --collapse-inline-tag-whitespace --decode-entities --html5 --minify-js --minify-ur-ls --remove-attribute-quote --remove-empty-attributes --remove-optional-tags --remove-script-type-attributes --remove-link-type-attributes --remove-tag-whitespace --use-short-doctype",
-    "postinstall": "npm i -g bower jspm vulcanize local-web-server && bower i && jspm i",
-    "heroku-postbuild": "mkdir dist && npm run bundle"
+    "bundle": "jspm bundle src/augean-console dist/augean.console.js --minify",
+    "minify": "html-minifier dist/augean.console.html -o dist/augean.console.min.html --collapse-whitespace --minify-css --remove-comments --collapse-boolean-attributes --collapse-inline-tag-whitespace --decode-entities --html5 --minify-js --minify-ur-ls --remove-attribute-quote --remove-empty-attributes --remove-optional-tags --remove-script-type-attributes --remove-link-type-attributes --remove-tag-whitespace --use-short-doctype",
+    "postinstall": "npm i -g bower jspm vulcanize local-web-server html-minifier htmlprocessor && bower i && jspm i",
+    "heroku-postbuild": "mkdir dist && npm run bundle && npm run minify && htmlprocessor index.html -o index.html"
   },
   "cacheDirectories": [
     "jspm_packages",
@@ -14,7 +14,7 @@
   "jspm": {
     "dependencies": {
       "augeas": "github:wikibus/augeas@^0.1.0",
-      "heracles": "npm:heracles@0.1.2-pre03",
+      "heracles": "npm:heracles@0.1.2-pre04",
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
       "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@^0.10.0",
       "jsonld": "npm:jsonld@^0.4.11",
