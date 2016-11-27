@@ -14,7 +14,7 @@
   "jspm": {
     "dependencies": {
       "augeas": "github:wikibus/augeas@^0.1.0",
-      "heracles": "npm:heracles@^0.1.2-pre01",
+      "heracles": "npm:heracles@0.1.2-pre03",
       "html": "github:Hypercubed/systemjs-plugin-html@^0.0.8",
       "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@^0.10.0",
       "jsonld": "npm:jsonld@^0.4.11",
