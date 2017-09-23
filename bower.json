@@ -11,7 +11,7 @@
     "bower_components"
   ],
   "dependencies": {
-    "ld-navigation": "~0.2.3",
+    "ld-navigation": "~0.4",
     "polymer": "Polymer/polymer#^2.0.0",
     "paper-tabs": "PolymerElements/paper-tabs#^2.0.0",
     "paper-input": "PolymerElements/paper-input#^2.0.2",

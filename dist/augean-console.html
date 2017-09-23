@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/ld-navigation/ld-navigation.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
@@ -155,15 +156,14 @@
         };
       }
       urlChanged(e) {
-        this.debounce('load-model', () => {
-          if (e.detail.value !== '/') {
-            this.$.resource.value = e.detail.value;
-            if (!this.$.resource.invalid) {
-              this.state = 'loading';
-              this.loadResource(this.$.resource.value);
-            }
+        // Polymer.Debouncer.debounce('load-model', () => {
+        if (e.detail.value !== '/') {
+          this.$.resource.value = e.detail.value;
+          if (!this.$.resource.invalid) {
+            this.state = 'loading';
+            this.loadResource(this.$.resource.value);
           }
-        });
+        }
       }
       _hasApiDocumentationComputed(model) {
         return !!model && !!model.apiDocumentation;

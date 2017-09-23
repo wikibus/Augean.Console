@@ -4,7 +4,7 @@ import {PaperInput} from "bower:paper-input/paper-input.html";
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
 import 'bower:paper-input/paper-input.html';
-//import 'bower:ld-navigation/ld-navigation.html';
+import 'bower:ld-navigation/ld-navigation.html';
 import 'bower:app-layout/app-layout.html';
 import 'bower:iron-pages/iron-pages.html';
 import 'bower:paper-icon-button/paper-icon-button.html';
@@ -69,7 +69,7 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     urlChanged(e: CustomEvent) {
-        this.debounce('load-model', () => {
+       // Polymer.Debouncer.debounce('load-model', () => {
             if (e.detail.value !== '/') {
                 this.$.resource.value = e.detail.value;
                 if (!this.$.resource.invalid) {
@@ -77,7 +77,7 @@ export class AugeanConsole extends Polymer.Element {
                     this.loadResource(this.$.resource.value);
                 }
             }
-        });
+        //});
     }
 
     loadOnEnter(e) {
