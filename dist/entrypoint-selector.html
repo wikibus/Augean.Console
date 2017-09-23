@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<dom-module id="entrypoint-selector">
+  <template>
+
+    <vaadin-combo-box label="Select Hydra API" items="[[apis]]" on-value-changed="_entrypointSelected"></vaadin-combo-box>
+  </template>
+  <script>
+    class EntrypointSelector extends Polymer.Element {
+      static get is() {
+        return 'entrypoint-selector';
+      }
+      static get properties() {
+        return {
+          url: {
+            type: String,
+            readOnly: true,
+            notify: true
+          },
+          apis: {
+            type: Array,
+            readOnly: true
+          }
+        };
+      }
+      ready() {
+        super.ready();
+        const apis = Array.prototype.map.call(this.children, (apiEl) => {
+          return {
+            label: apiEl.textContent,
+            value: apiEl.getAttribute('data-url')
+          };
+        });
+        this._setApis(apis);
+      }
+      _entrypointSelected(e) {
+        this._setUrl(e.detail.value);
+      }
+    }
+    customElements.define(EntrypointSelector.is, EntrypointSelector);
+  </script>
+</dom-module>
