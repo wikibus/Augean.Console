@@ -1,0 +1,237 @@
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./api-documentation/viewer.html">
+<link rel="import" href="./operation-views/operation-selector.html">
+<link rel="import" href="./entrypoint-selector.html">
+<dom-module id="augean-console">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      #api-docs-container {
+        padding: 10px;
+      }
+
+      app-toolbar {
+        background: var(--paper-blue-400);
+        color: white;
+        @apply(--paper-font-common-base);
+      }
+
+      iron-icon {
+        color: white;
+      }
+
+      .middle {
+        --paper-input-container-color: white;
+        --paper-input-container-input-color: white;
+        pointer-events: auto !important;
+      }
+
+      #spinner-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <ld-navigator on-resource-url-changed="urlChanged"></ld-navigator>
+    <ld-navigation-history use-hash-fragment></ld-navigation-history>
+
+    <app-drawer-layout>
+      <app-drawer slot="drawer" swipe-open>
+        <app-toolbar class="medium-tall">
+          <div class="title">Options</div>
+        </app-toolbar>
+
+        <app-toolbar>
+          <entrypoint-selector class="middle" url="{{url}}" on-url-changed="_focusUrlInput">
+            <span data-url="http://wikibus-test.gear.host/">Bus encyclopedia</span>
+            <span data-url="http://www.markus-lanthaler.com/hydra/api-demo/">Hydra demo API</span>
+          </entrypoint-selector>
+        </app-toolbar>
+      </app-drawer>
+
+      <app-drawer id="drawer" align="end" slot="drawer" swipe-open>
+        <app-toolbar>
+          <div class="title">Documentation</div>
+        </app-toolbar>
+        <div id="api-docs-container">
+          <api-documentation-viewer id="apiDocumentation" api-docs="[[model.apiDocumentation]]" model-types="[[currentModel.types]]"></api-documentation-viewer>
+        </div>
+      </app-drawer>
+
+      <app-header-layout>
+        <app-header slot="header">
+          <app-toolbar>
+            <div main-title>
+              Augean Hydra Console
+            </div>
+          </app-toolbar>
+
+          <app-toolbar>
+            <paper-icon-button icon="icons:help-outline" hidden$="[[!hasApiDocumentation]]" on-tap="showDocs"></paper-icon-button>
+
+            <paper-input main-title id="resource" class="middle" label="address" pattern="^https?://.*" no-label-float auto-validate invalid="{{addressInvalid}}" value="[[url]]" on-keydown="loadOnEnter">
+              <iron-icon slot="prefix" icon="icons:language"></iron-icon>
+            </paper-input>
+            <iron-a11y-keys target="[[urlInput]]" keys="enter" on-keys-pressed="onEnter"></iron-a11y-keys>
+            <paper-icon-button class="middle" icon="av:play-circle-filled" disabled="[[addressInvalid]]" on-tap="load"></paper-icon-button>
+          </app-toolbar>
+        </app-header>
+
+        <iron-pages attr-for-selected="data-state" selected$="[[state]]">
+          <div data-state="ready">
+            Hello
+          </div>
+
+          <div id="spinner-container" data-state="loading">
+            <paper-spinner active></paper-spinner>
+          </div>
+
+          <div data-state="loaded">
+            <iron-meta key="apiDocs" value="[[displayedModel.apiDocumentation]]"></iron-meta>
+            <ags-view object="[[displayedModel]]"></ags-view>
+
+            <operation-selector operations="[[displayedModel.operations]]" on-operation-selected="showOperationForm" operation="{{operation}}"></operation-selector>
+          </div>
+
+          <div data-state="operation">
+            <ags-hydra-adapter id="hydraAdapter" contract="{{contract}}" operation="[[operation]]"></ags-hydra-adapter>
+            <ags-form contract="{{contract}}"></ags-form>
+
+            <paper-button on-tap="hideOperationForm">Cancel</paper-button>
+            <paper-button on-tap="executeOperation">Submit</paper-button>
+          </div>
+
+          <div data-state="error">
+            An error occurred:
+            <p>[[lastError]]</p>
+          </div>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+  <script>
+    class AugeanConsole extends Polymer.Element {
+      static get is() {
+        return "augean-console";
+      }
+      static get properties() {
+        return {
+          model: {
+            type: Object,
+            value: null
+          },
+          url: String,
+          currentModel: Object,
+          lastError: {
+            type: Object,
+            readOnly: true
+          },
+          state: {
+            type: Object,
+            value: 'ready',
+            notify: true
+          },
+          _prevState: Object,
+          hasApiDocumentation: {
+            type: Boolean,
+            computed: "_hasApiDocumentationComputed(model)"
+          },
+          urlInput: {
+            type: Object,
+            computed: "_urlInputComputed()"
+          },
+          displayedModel: {
+            type: Object,
+            computed: "_displayedModelComputed(currentModel)"
+          }
+        };
+      }
+      urlChanged(e) {
+        this.debounce('load-model', () => {
+          if (e.detail.value !== '/') {
+            this.$.resource.value = e.detail.value;
+            if (!this.$.resource.invalid) {
+              this.state = 'loading';
+              this.loadResource(this.$.resource.value);
+            }
+          }
+        });
+      }
+      _hasApiDocumentationComputed(model) {
+        return !!model && !!model.apiDocumentation;
+      }
+      _displayedModelComputed(currentModel) {
+        return currentModel.collection || currentModel;
+      }
+      hasPreviousModel(_modelHistory) {
+        return _modelHistory.base.length > 0;
+      }
+      showDocs() {
+        this.$.drawerPanel.openRightDrawer();
+      }
+      load() {
+        this.state = 'loading';
+        LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
+      }
+      loadResource(value) {
+        Hydra.loadResource(value)
+          .then(res => {
+            this.model = res;
+            this.currentModel = res;
+            this.state = 'loaded';
+          })
+          .catch(err => {
+            this._setLastError(err);
+            this.state = 'error';
+          });
+      }
+      _urlInputComputed() {
+        return this.$.resource;
+      }
+      loadOnEnter(e) {
+        if (e.keyCode === 13) {
+          this.load();
+        }
+      }
+      showModel(ev) {
+        this.push('_modelHistory', this.currentModel);
+        this.currentModel = ev.detail;
+      }
+      showDocumentation(e) {
+        this.$.apiDocumentation.selectClass(e.detail.classId);
+        this.showDocs();
+        e.stopPropagation();
+      }
+      _focusUrlInput() {
+        this.$.resource.focus();
+      }
+      showOperationForm(e) {
+        if (e.detail.operation.requiresInput == false) {
+          e.detail.operation.invoke();
+        } else {
+          this._prevState = this.state;
+          this.state = 'operation';
+        }
+      }
+      hideOperationForm() {
+        this.state = this._prevState || 'ready';
+      }
+      executeOperation() {
+        alert('op');
+      }
+    }
+    customElements.define(AugeanConsole.is, AugeanConsole);
+  </script>
+</dom-module>

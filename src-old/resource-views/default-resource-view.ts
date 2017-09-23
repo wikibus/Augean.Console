@@ -1,6 +1,6 @@
 import './default-resource-view.html!';
 import '../api-documentation/property-label';
-import 'src/api-documentation/property-label';
+import 'src-old/api-documentation/property-label';
 import 'bower_components/paper-tabs/paper-tabs.html!';
 import 'bower_components/paper-card/paper-card.html!';
 import 'bower_components/ld-navigation/ld-navigation.html!';

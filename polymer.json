@@ -1,0 +1,17 @@
+{
+  "entrypoint": "index.html",
+  "shell": "dist/augean-console.ts",
+  "sources": [
+    "dist/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/**/*"
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  }
+}
