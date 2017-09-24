@@ -1,0 +1,60 @@
+<script src="../libs/Utils.js"></script>
+<dom-module id="property-label">
+  <template>
+
+    <span id="title">[[propertyTitle]]</span>
+    <paper-tooltip for="title" position="right">
+      [[propertyId]]
+      <br>
+      <br> [[supportedProperty.description]]
+    </paper-tooltip>
+  </template>
+  <script>
+    class PropertyLabel extends Polymer.Element {
+      static get is() {
+        return 'property-label';
+      }
+      static get observers() {
+        return [
+          'getTitle(resource, propertyId)'
+        ];
+      }
+      static get properties() {
+        return {
+          supportedProperty: {
+            type: Object,
+            readOnly: true
+          },
+          propertyId: String,
+          propertyTitle: {
+            type: String,
+            notify: true,
+            computed: '_propertyTitleComputed(supportedProperty, propertyId)'
+          },
+          resource: Object
+        };
+      }
+      _propertyTitleComputed(supportedProperty, propertyId) {
+        return supportedProperty.title || propertyId;
+      }
+      getTitle(resource, propertyId) {
+        if (resource.apiDocumentation) {
+          let properties;
+          if (Array.isArray(resource.types)) {
+            properties = resource.types.map((t) => resource.apiDocumentation.getProperties(t));
+          } else {
+            properties = [resource.apiDocumentation.getProperties(resource.types)];
+          }
+          const supportedProps = Utils.flatten(properties);
+          const [supportedProp, ...tail] = supportedProps.filter((prop) => prop.property.id === propertyId);
+          if (supportedProp) {
+            this._setSupportedProperty(supportedProp);
+            return;
+          }
+        }
+        this._setSupportedProperty(propertyId);
+      }
+    }
+    customElements.define(PropertyLabel.is, PropertyLabel);
+  </script>
+</dom-module>

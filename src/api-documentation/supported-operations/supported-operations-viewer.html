@@ -1,0 +1,8 @@
+<vaadin-combo-box label="Supported Operation" item-value-path="id" item-label-path="method"
+                  items="[[supportedOperations]]"
+                  selected-item="{{selectedOperation}}"
+                  id="supportedOperations">
+</vaadin-combo-box>
+
+<supported-operation-view supported-operation="[[selectedOperation]]"
+                          hidden$="[[!operationIsSelected]]"></supported-operation-view>

@@ -1,7 +1,8 @@
 import {CustomElement, notify, compute, style} from "twc/polymer";
 import {PaperInput} from "bower:paper-input/paper-input.html";
+import {IHydraResource} from "heracles";
 
-import './libs/index.js';
+import './libs/Hypermedia.js';
 
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
@@ -27,11 +28,11 @@ type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
 @style('augean-console.css')
 export class AugeanConsole extends Polymer.Element {
 
-    model: object = null;
+    model: IHydraResource = null;
 
     url: string;
 
-    currentModel: object;
+    currentModel: IHydraResource;
 
     readonly lastError: Error;
 
@@ -40,7 +41,7 @@ export class AugeanConsole extends Polymer.Element {
 
     _prevState: ConsoleState;
 
-    @compute((model: any) => !!model && !!model.apiDocumentation)
+    @compute((model: IHydraResource) => !!model && !!model.apiDocumentation)
     hasApiDocumentation: boolean;
 
     @compute(() => this.$.resource)
@@ -60,7 +61,7 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     loadResource(value: string) {
-        AugeasConsole.Hydra.loadResource(value)
+        Hypermedia.Hydra.loadResource(value)
             .then((res: Response) => {
                 this.model = res;
                 this.currentModel = res;
@@ -93,8 +94,8 @@ export class AugeanConsole extends Polymer.Element {
         }
     }
 
-    @compute((currentModel: any) => currentModel.collection || currentModel)
-    displayedModel: object;
+    @compute((currentModel: IHydraResource) => currentModel.collection || currentModel)
+    displayedModel: IHydraResource;
 
     showModel(ev: CustomEvent) {
         this.push('_modelHistory', this.currentModel);

@@ -1612,3 +1612,509 @@ declare module "bower:paper-toolbar/paper-toolbar.html" {
     middleJustify: string;
   }
 }
+
+declare module "bower:vaadin-combo-box/vaadin-combo-box.html" {
+  export class VaadinComboBox {
+    /** * Name of the validator to use.
+     */
+    validator: string;
+
+    /** * True if the last call to `validate` is invalid.
+     */
+    invalid: boolean;
+
+    name: string;
+
+    /** * The `String` value for the selected item of the combo box. Provides
+     * the value for `iron-form`.
+     *
+     * When there’s no item selected, the value is an empty string.
+     *
+     * Use `selectedItem` property to get the raw selected item from
+     * the `items` array.
+     */
+    value: string;
+
+    /** * Set to true to mark the input as required.
+     */
+    required: boolean;
+
+    /** * True if the dropdown is open, false otherwise.
+     */
+    opened: boolean;
+
+    /** * Set to true to disable this input.
+     */
+    disabled: boolean;
+
+    readonly: boolean;
+
+    /** * A full set of items to filter the visible options from.
+     * The items can be of either `String` or `Object` type.
+     */
+    items: Array<any>;
+
+    /** * If `true`, the user can input a value that is not present in the items list.
+     * `value` property will be set to the input value in this case.
+     * Also, when `value` is set programmatically, the input value will be set
+     * to reflect that value.
+     */
+    allowCustomValue: boolean;
+
+    /** * A subset of items, filtered based on the user input. Filtered items
+     * can be assigned directly to omit the internal filtering functionality.
+     * The items can be of either `String` or `Object` type.
+     */
+    filteredItems: Array<any>;
+
+    /** * A read-only property indicating whether this combo box has a value
+     * selected or not. It can be used for example in styling of the component.
+     */
+    hasValue: boolean;
+
+    /** * When set to `true`, a loading spinner is displayed on top of the list of options.
+     */
+    loading: boolean;
+
+    /** * Filtering string the user has typed into the input field.
+     */
+    filter: string;
+
+    /** * The selected item from the `items` array.
+     */
+    selectedItem: any;
+
+    /** * Path for label of the item. If `items` is an array of objects, the
+     * `itemLabelPath` is used to fetch the displayed string label for each
+     * item.
+     *
+     * The item label is also used for matching items when processing user
+     * input, i.e., for filtering and selecting items.
+     *
+     * When using item templates, the property is still needed because it is used
+     * for filtering, and for displaying the selected item value in the input box.
+     */
+    itemLabelPath: string;
+
+    /** * Path for the value of the item. If `items` is an array of objects, the
+     * `itemValuePath:` is used to fetch the string value for the selected
+     * item.
+     *
+     * The item value is used in the `value` property of the combo box,
+     * to provide the form value.
+     */
+    itemValuePath: string;
+
+    /** * Returns a reference to the native input element.
+     *
+     * @deprecated will be dropped in 3.0
+     */
+    inputElement: any;
+
+    /** * The label for this element.
+     */
+    label: string;
+
+    /** * Set to true to disable the floating label.
+     */
+    noLabelFloat: boolean;
+
+    /** * Set to true to always float the label.
+     */
+    alwaysFloatLabel: boolean;
+
+    /** * Set to true to auto-validate the input value.
+     */
+    autoValidate: boolean;
+
+    /** * Set to true to prevent the user from entering invalid input.
+     */
+    preventInvalidInput: boolean;
+
+    /** * Set this to specify the pattern allowed by `preventInvalidInput`.
+     */
+    allowedPattern: string;
+
+    /** * A pattern to validate the `input` with.
+     */
+    pattern: string;
+
+    /** * The error message to display when the input is invalid.
+     */
+    errorMessage: string;
+
+    autofocus: boolean;
+
+    inputmode: string;
+
+    /** * A placeholder string in addition to the label. If this is set, the label will always float.
+     */
+    placeholder: string;
+
+    size: number;
+
+    /** * True when the input field has focus.
+     */
+    focused: boolean;
+    /** *
+     * @return {boolean} True if the validator `validator` exists.
+     */
+    hasValidator(): boolean;
+
+    /** * Returns true if the `value` is valid, and updates `invalid`. If you want
+     * your element to have custom validation logic, do not override this method;
+     * override `_getValidity(value)` instead.
+     *
+     * @param {Object} value Deprecated: The value to be validated. By default,
+    it is passed to the validator's `validate()` function, if a validator is set.
+    If this argument is not specified, then the element's `value` property
+    is used, if it exists.
+     * @return {boolean} True if `value` is valid.
+     */
+    validate(value: any): boolean;
+
+    /** * Generates an anonymous `TemplateInstance` class (stored as `this.ctor`)
+     * for the provided template.  This method should be called once per
+     * template to prepare an element for stamping the template, followed
+     * by `stamp` to create new instances of the template.
+     *
+     * @param {HTMLTemplateElement} template Template to prepare
+     * @param mutableData When `true`, the generated class will skip
+      strict dirty-checking for objects and arrays (always consider them to
+      be "dirty"). Defaults to false.
+     * @this {TemplatizerUser} TemplatizerUser
+     */
+    templatize(template: any, mutableData: boolean);
+
+    /** * Creates an instance of the template prepared by `templatize`.  The object
+     * returned is an instance of the anonymous class generated by `templatize`
+     * whose `root` property is a document fragment containing newly cloned
+     * template content, and which has property accessors corresponding to
+     * properties referenced in template bindings.
+     *
+     * @param model Object containing initial property values to
+      populate into the template bindings.
+     * @return {TemplateInstanceBase} Returns the created instance of
+    the template prepared by `templatize`.
+     * @this {TemplatizerUser} TemplatizerUser
+     */
+    stamp(model: any): any;
+
+    /** * Returns the template "model" (`TemplateInstance`) associated with
+     * a given element, which serves as the binding scope for the template
+     * instance the element is contained in.  A template model should be used
+     * to manipulate data associated with this template instance.
+     *
+     * @param {HTMLElement} el Element for which to return a template model.
+     * @return {TemplateInstanceBase} Model representing the binding scope for
+      the element.
+     * @this {TemplatizerUser} TemplatizerUser
+     */
+    modelForElement(el: any): any;
+
+    /** * Opens the dropdown list.
+     */
+    open();
+
+    /** * Closes the dropdown list.
+     */
+    close();
+
+    /** * Reverts back to original value.
+     */
+    cancel();
+
+    /** * Sets focus on the input field.
+     */
+    focus();
+
+    /** * Removes focus from the input field.
+     */
+    blur();
+  }
+}
+
+declare module "bower:paper-dropdown-menu/paper-dropdown-menu.html" {
+  export class PaperDropdownMenu {
+    /** * The EventTarget that will be firing relevant KeyboardEvents. Set it to
+     * `null` to disable the listeners.
+     */
+    keyEventTarget?: any;
+
+    /** * If true, this property will cause the implementing element to
+     * automatically stop propagation on any handled KeyboardEvents.
+     */
+    stopKeyboardEventPropagation: boolean;
+
+    keyBindings: any;
+
+    /** * If true, the user is currently holding down the button.
+     */
+    pressed: boolean;
+
+    /** * If true, the button toggles the active state with each tap or press
+     * of the spacebar.
+     */
+    toggles: boolean;
+
+    /** * If true, the button is a toggle and is currently in the active state.
+     */
+    active: boolean;
+
+    /** * True if the element is currently being pressed by a "pointer," which
+     * is loosely defined as mouse or touch input (but specifically excluding
+     * keyboard input).
+     */
+    pointerDown: boolean;
+
+    /** * True if the input device that caused the element to receive focus
+     * was a keyboard.
+     */
+    receivedFocusFromKeyboard: boolean;
+
+    /** * The aria attribute to be set if the button is a toggle and in the
+     * active state.
+     */
+    ariaActiveAttribute: string;
+
+    /** * If true, the element currently has focus.
+     */
+    focused: boolean;
+
+    /** * If true, the user cannot interact with this element.
+     */
+    disabled: boolean;
+
+    /** * The name of this element.
+     */
+    name: string;
+
+    /** * The value for this element that will be used when submitting in
+     * a form. It is read only, and will always have the same value
+     * as `selectedItemLabel`.
+     */
+    value: string;
+
+    /** * Set to true to mark the input as required. If used in a form, a
+     * custom element that uses this behavior should also use
+     * Polymer.IronValidatableBehavior and define a custom validation method.
+     * Otherwise, a `required` element will always be considered valid.
+     * It's also strongly recommended to provide a visual style for the element
+     * when its value is invalid.
+     */
+    required: boolean;
+
+    /** * Name of the validator to use.
+     */
+    validator: string;
+
+    /** * True if the last call to `validate` is invalid.
+     */
+    invalid: boolean;
+
+    /** * The derived "label" of the currently selected item. This value
+     * is the `label` property on the selected item if set, or else the
+     * trimmed text content of the selected item.
+     */
+    selectedItemLabel: string;
+
+    /** * The last selected item. An item is selected if the dropdown menu has
+     * a child with slot `dropdown-content`, and that child triggers an
+     * `iron-select` event with the selected `item` in the `detail`.
+     */
+    selectedItem?: any;
+
+    /** * The label for the dropdown.
+     */
+    label: string;
+
+    /** * The placeholder for the dropdown.
+     */
+    placeholder: string;
+
+    /** * The error message to display when invalid.
+     */
+    errorMessage: string;
+
+    /** * True if the dropdown is open. Otherwise, false.
+     */
+    opened: boolean;
+
+    /** * By default, the dropdown will constrain scrolling on the page
+     * to itself when opened.
+     * Set to true in order to prevent scroll from being constrained
+     * to the dropdown when it opens.
+     */
+    allowOutsideScroll: boolean;
+
+    /** * Set to true to disable the floating label. Bind this to the
+     * `<paper-input-container>`'s `noLabelFloat` property.
+     */
+    noLabelFloat: boolean;
+
+    /** * Set to true to always float the label. Bind this to the
+     * `<paper-input-container>`'s `alwaysFloatLabel` property.
+     */
+    alwaysFloatLabel: boolean;
+
+    /** * Set to true to disable animations when opening and closing the
+     * dropdown.
+     */
+    noAnimations: boolean;
+
+    /** * The orientation against which to align the menu dropdown
+     * horizontally relative to the dropdown trigger.
+     */
+    horizontalAlign: string;
+
+    /** * The orientation against which to align the menu dropdown
+     * vertically relative to the dropdown trigger.
+     */
+    verticalAlign: string;
+
+    /** * If true, the `horizontalAlign` and `verticalAlign` properties will
+     * be considered preferences instead of strict requirements when
+     * positioning the dropdown and may be changed if doing so reduces
+     * the area of the dropdown falling outside of `fitInto`.
+     */
+    dynamicAlign: boolean;
+
+    /** * Whether focus should be restored to the dropdown when the menu closes.
+     */
+    restoreFocusOnClose: boolean;
+
+    /** * The content element that is contained by the dropdown menu, if any.
+     */
+    contentElement: any;
+    /** * Can be used to imperatively add a key binding to the implementing
+     * element. This is the imperative equivalent of declaring a keybinding
+     * in the `keyBindings` prototype property.
+     *
+     * @param {string} eventString
+     * @param {string} handlerName
+     */
+    addOwnKeyBinding(eventString: string, handlerName: string);
+
+    /** * When called, will remove all imperatively-added key bindings.
+     */
+    removeOwnKeyBindings();
+
+    /** * Returns true if a keyboard event matches `eventString`.
+     *
+     * @param {KeyboardEvent} event
+     * @param {string} eventString
+     * @return {boolean}
+     */
+    keyboardEventMatchesKeys(event: any, eventString: string): boolean;
+
+    /** *
+     * @return {boolean} True if the validator `validator` exists.
+     */
+    hasValidator(): boolean;
+
+    /** * Returns true if the `value` is valid, and updates `invalid`. If you want
+     * your element to have custom validation logic, do not override this method;
+     * override `_getValidity(value)` instead.
+     *
+     * @param {Object} value Deprecated: The value to be validated. By default,
+    it is passed to the validator's `validate()` function, if a validator is set.
+    If this argument is not specified, then the element's `value` property
+    is used, if it exists.
+     * @return {boolean} True if `value` is valid.
+     */
+    validate(value: any): boolean;
+
+    /** * Show the dropdown content.
+     */
+    open();
+
+    /** * Hide the dropdown content.
+     */
+    close();
+  }
+}
+
+declare module "bower:paper-tooltip/paper-tooltip.html" {
+  export class PaperTooltip {
+    /** * The entry and exit animations that will be played when showing and
+     * hiding the tooltip. If you want to override this, you must ensure
+     * that your animationConfig has the exact format below.
+     */
+    animationConfig: any;
+
+    /** * Convenience property for setting an 'entry' animation. Do not set `animationConfig.entry`
+     * manually if using this. The animated node is set to `this` if using this property.
+     */
+    entryAnimation: string;
+
+    /** * Convenience property for setting an 'exit' animation. Do not set `animationConfig.exit`
+     * manually if using this. The animated node is set to `this` if using this property.
+     */
+    exitAnimation: string;
+
+    /** * The id of the element that the tooltip is anchored to. This element
+     * must be a sibling of the tooltip.
+     */
+    for: string;
+
+    /** * Set this to true if you want to manually control when the tooltip
+     * is shown or hidden.
+     */
+    manualMode: boolean;
+
+    /** * Positions the tooltip to the top, right, bottom, left of its content.
+     */
+    position: string;
+
+    /** * If true, no parts of the tooltip will ever be shown offscreen.
+     */
+    fitToVisibleBounds: boolean;
+
+    /** * The spacing between the top of the tooltip and the element it is
+     * anchored to.
+     */
+    offset: number;
+
+    /** * This property is deprecated, but left over so that it doesn't
+     * break exiting code. Please use `offset` instead. If both `offset` and
+     * `marginTop` are provided, `marginTop` will be ignored.
+     *
+     * @deprecated since version 1.0.3
+     */
+    marginTop: number;
+
+    /** * The delay that will be applied before the `entry` animation is
+     * played when showing the tooltip.
+     */
+    animationDelay: number;
+
+    /** * Returns the target element that this tooltip is anchored to. It is
+     * either the element given by the `for` attribute, or the immediate parent
+     * of the tooltip.
+     */
+    target: any;
+    /** * An element implementing `Polymer.NeonAnimationRunnerBehavior` calls this method to configure
+     * an animation with an optional type. Elements implementing `Polymer.NeonAnimatableBehavior`
+     * should define the property `animationConfig`, which is either a configuration object
+     * or a map of animation type to array of configuration objects.
+     */
+    getAnimationConfig(type: any);
+
+    /** * Plays an animation with an optional `type`.
+     *
+     * @param type
+     * @param cookie
+     */
+    playAnimation(type: string, cookie: any);
+
+    /** * Cancels the currently running animations.
+     */
+    cancelAnimation();
+
+    show();
+
+    hide();
+
+    updatePosition();
+  }
+}

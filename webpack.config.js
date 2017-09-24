@@ -2,7 +2,10 @@ const path = require('path');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/libs/index.js'),
+    entry: {
+        'Hypermedia': path.resolve(__dirname, 'src/libs/Hypermedia.js'),
+        'Utils': path.resolve(__dirname, 'src/libs/Utils.js')
+    },
     module: {
         rules: [
             {
@@ -18,9 +21,9 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, `dist/libs`),
-        filename: 'index.js',
+        filename: '[name].js',
         libraryTarget: 'umd',
-        library: "AugeasConsole"
+        library: "[name]"
     },
     plugins: [
         /*new MinifyPlugin(

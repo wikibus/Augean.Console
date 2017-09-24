@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<script src="./libs/Hypermedia.js"></script>
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
@@ -188,7 +189,7 @@
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
       }
       loadResource(value) {
-        AugeasConsole.Hydra.loadResource(value)
+        Hypermedia.Hydra.loadResource(value)
           .then((res) => {
             this.model = res;
             this.currentModel = res;

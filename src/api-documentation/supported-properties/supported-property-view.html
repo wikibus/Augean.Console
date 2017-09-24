@@ -1,0 +1,23 @@
+<p>
+    [[supportedProperty.description]]
+</p>
+<p>
+    <b>Predicate:</b><br>
+    [[supportedProperty.property.id]]
+</p>
+<p>
+    <b>Required:</b>
+    <iron-icon icon="[[yesNoIcon(supportedProperty.required)]]"></iron-icon>
+</p>
+<p>
+    <b>Writable:</b>
+    <iron-icon icon="[[yesNoIcon(supportedProperty.writable)]]"></iron-icon>
+</p>
+<p>
+    <b>Readable:</b>
+    <iron-icon icon="[[yesNoIcon(supportedProperty.readable)]]"></iron-icon>
+</p>
+
+<supported-operations-viewer
+    hidden$="[[!hasOperations]]"
+    supported-operations="[[supportedProperty.property.supportedOperations]]"></supported-operations-viewer>

@@ -1,0 +1,97 @@
+<link rel="import" href="../supported-classes/supported-class-link.html">
+<dom-module id="supported-operation-view">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      [hidden] {
+        display: none;
+      }
+    </style>
+    <p>
+      [[supportedOperation.title]]
+    </p>
+
+    <p>
+      [[supportedOperation.description]]
+    </p>
+
+    <p>
+      <b>Expects</b>:
+      <type-docs-link hidden$="[[!hasExpects]]" class="[[supportedOperation.expects]]"></type-docs-link>
+      <span hidden$="[[hasExpects]]">[[expectsTitle]]</span>
+    </p>
+
+    <p>
+      <b>Returns</b>:
+      <type-docs-link hidden$="[[!hasReturns]]" class="[[supportedOperation.returns]]"></type-docs-link>
+      <span hidden$="[[hasReturns]]">[[returnsTitle]]</span>
+    </p>
+
+    <div hidden$="[[!supportedOperation.statusCodes]]">
+      <template is="dom-bind" items="[[supportedOperation.statusCodes]]" as="status">
+        <p>
+          <b>[[status.code]]</b>: [[status.description]]
+        </p>
+      </template>
+    </div>
+  </template>
+  <script>
+    const nothing = 'http://www.w3.org/2002/07/owl#Nothing';
+    class SupportedOperationView extends Polymer.Element {
+      static get is() {
+        return 'supported-operation-view';
+      }
+      static get observers() {
+        return [
+          'expectsObserver(supportedOperation.expects)',
+          'returnsObserver(supportedOperation.returns)'
+        ];
+      }
+      static get properties() {
+        return {
+          supportedOperation: Object,
+          expectsTitle: {
+            type: String,
+            readOnly: true
+          },
+          returnsTitle: {
+            type: String,
+            readOnly: true
+          },
+          hasExpects: {
+            type: String,
+            readOnly: true
+          },
+          hasReturns: {
+            type: String,
+            readOnly: true
+          }
+        };
+      }
+      expectsObserver(expects) {
+        this._setHasExpects(!!expects && expects.id !== nothing);
+        setTitle.call(this, expects, this._setExpectsTitle);
+      }
+      returnsObserver(returns) {
+        this._setHasReturns(!!returns && returns.id !== nothing);
+        setTitle.call(this, returns, this._setReturnsTitle);
+      }
+    }
+    customElements.define(SupportedOperationView.is, SupportedOperationView);
+
+    function setTitle(clas, setter) {
+      let title;
+      if (!clas) {
+        title = '?';
+      } else if (clas.id == nothing) {
+        title = 'Nothing';
+      } else {
+        title = clas.title;
+      }
+      setter.call(this, title);
+    }
+  </script>
+</dom-module>
