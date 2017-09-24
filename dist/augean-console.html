@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="../bower_components/ld-navigation/ld-navigation.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
@@ -63,7 +64,7 @@
         </app-toolbar>
       </app-drawer>
 
-      <app-drawer id="drawer" align="end" slot="drawer" swipe-open>
+      <app-drawer id="documentation" align="end" slot="drawer" swipe-open>
         <app-toolbar>
           <div class="title">Documentation</div>
         </app-toolbar>
@@ -78,11 +79,10 @@
             <div main-title>
               Augean Hydra Console
             </div>
+            <paper-icon-button icon="icons:help-outline" hidden$="[[!hasApiDocumentation]]" on-tap="showDocs"></paper-icon-button>
           </app-toolbar>
 
           <app-toolbar>
-            <paper-icon-button icon="icons:help-outline" hidden$="[[!hasApiDocumentation]]" on-tap="showDocs"></paper-icon-button>
-
             <paper-input main-title id="resource" class="middle" label="address" pattern="^https?://.*" no-label-float auto-validate invalid="{{addressInvalid}}" value="[[url]]" on-keydown="loadOnEnter">
               <iron-icon slot="prefix" icon="icons:language"></iron-icon>
             </paper-input>
@@ -161,14 +161,15 @@
         };
       }
       urlChanged(e) {
-        // Polymer.Debouncer.debounce('load-model', () => {
-        if (e.detail.value !== '/') {
-          this.$.resource.value = e.detail.value;
-          if (!this.$.resource.invalid) {
-            this.state = 'loading';
-            this.loadResource(this.$.resource.value);
+        Polymer.Debouncer.debounce(null, Polymer.Async.microTask, () => {
+          if (e.detail.value !== '/') {
+            this.$.resource.value = e.detail.value;
+            if (!this.$.resource.invalid) {
+              this.state = 'loading';
+              this.loadResource(this.$.resource.value);
+            }
           }
-        }
+        });
       }
       _hasApiDocumentationComputed(model) {
         return !!model && !!model.apiDocumentation;
@@ -180,7 +181,7 @@
         return _modelHistory.base.length > 0;
       }
       showDocs() {
-        this.$.drawerPanel.openRightDrawer();
+        this.$.documentation.open();
       }
       load() {
         this.state = 'loading';

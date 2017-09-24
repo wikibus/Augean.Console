@@ -14,7 +14,7 @@
         </app-toolbar>
     </app-drawer>
 
-    <app-drawer id="drawer" align="end" slot="drawer" swipe-open>
+    <app-drawer id="documentation" align="end" slot="drawer" swipe-open>
         <app-toolbar>
             <div class="title">Documentation</div>
         </app-toolbar>
@@ -30,13 +30,12 @@
                 <div main-title>
                     Augean Hydra Console
                 </div>
-            </app-toolbar>
-
-            <app-toolbar>
                 <paper-icon-button icon="icons:help-outline"
                                    hidden$="[[!hasApiDocumentation]]"
                                    on-tap="showDocs"></paper-icon-button>
+            </app-toolbar>
 
+            <app-toolbar>
                 <paper-input main-title id="resource" class="middle" label="address"
                              pattern="^https?://.*" no-label-float auto-validate
                              invalid="{{addressInvalid}}"

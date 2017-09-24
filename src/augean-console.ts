@@ -4,6 +4,7 @@ import {PaperInput} from "bower:paper-input/paper-input.html";
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
 import 'bower:paper-input/paper-input.html';
+import 'bower:paper-spinner/paper-spinner.html';
 import 'bower:ld-navigation/ld-navigation.html';
 import 'bower:app-layout/app-layout.html';
 import 'bower:iron-pages/iron-pages.html';
@@ -26,7 +27,7 @@ export class AugeanConsole extends Polymer.Element {
 
     model: object = null;
 
-    url:string;
+    url: string;
 
     currentModel: object;
 
@@ -38,7 +39,7 @@ export class AugeanConsole extends Polymer.Element {
     _prevState: ConsoleState;
 
     @compute((model: any) => !!model && !!model.apiDocumentation)
-    hasApiDocumentation : boolean;
+    hasApiDocumentation: boolean;
 
     @compute(() => this.$.resource)
     urlInput: PaperInput;
@@ -48,7 +49,7 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     showDocs() {
-        this.$.drawerPanel.openRightDrawer();
+        this.$.documentation.open();
     }
 
     load() {
@@ -70,15 +71,18 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     urlChanged(e: CustomEvent) {
-       // Polymer.Debouncer.debounce('load-model', () => {
-            if (e.detail.value !== '/') {
-                this.$.resource.value = e.detail.value;
-                if (!this.$.resource.invalid) {
-                    this.state = 'loading';
-                    this.loadResource(this.$.resource.value);
+        Polymer.Debouncer.debounce(
+            null,
+            Polymer.Async.microTask,
+            () => {
+                if (e.detail.value !== '/') {
+                    this.$.resource.value = e.detail.value;
+                    if (!this.$.resource.invalid) {
+                        this.state = 'loading';
+                        this.loadResource(this.$.resource.value);
+                    }
                 }
-            }
-        //});
+            });
     }
 
     loadOnEnter(e: KeyboardEvent) {
