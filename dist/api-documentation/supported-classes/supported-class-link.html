@@ -26,12 +26,15 @@
       _classTitleComputed(supportedClass) {
         return supportedClass.title || supportedClass.id;
       }
-      selectClass() {
+      selectClass(e) {
         this.dispatchEvent(new CustomEvent('class-selected', {
           detail: {
-            classId: this.supportedClass.id
-          }
+            classId: this.supportedClass.id,
+          },
+          bubbles: true,
+          composed: true
         }));
+        e.preventDefault();
       }
     }
     customElements.define(SupportedClassLink.is, SupportedClassLink);

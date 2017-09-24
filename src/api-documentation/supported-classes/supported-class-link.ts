@@ -11,11 +11,15 @@ class SupportedClassLink extends Polymer.Element {
     @compute((supportedClass: IDocumentedResource) => supportedClass.title || supportedClass.id)
     classTitle: string;
 
-    selectClass() {
+    selectClass(e: Event) {
         this.dispatchEvent(new CustomEvent('class-selected', {
             detail: {
-                classId: this.supportedClass.id
-            }
+                classId: this.supportedClass.id,
+            },
+            bubbles: true,
+            composed: true
         }));
+
+        e.preventDefault();
     }
 }

@@ -17,6 +17,14 @@
     <b>Readable:</b>
     <iron-icon icon="[[yesNoIcon(supportedProperty.readable)]]"></iron-icon>
 </p>
+<p>
+    <b>Domain:</b>
+    <supported-class-link hidden$="[[!hasReturns]]" supported-class="[[supportedProperty.property.domain]]"></supported-class-link>
+</p>
+<p>
+    <b>Range:</b>
+    <supported-class-link hidden$="[[!hasReturns]]" supported-class="[[supportedProperty.property.range]]"></supported-class-link>
+</p>
 
 <supported-operations-viewer
     hidden$="[[!hasOperations]]"
