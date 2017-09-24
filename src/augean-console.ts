@@ -1,5 +1,7 @@
-import { CustomElement, notify, compute, style } from "twc/polymer";
+import {CustomElement, notify, compute, style} from "twc/polymer";
 import {PaperInput} from "bower:paper-input/paper-input.html";
+
+import './libs/index.js';
 
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
@@ -58,7 +60,7 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     loadResource(value: string) {
-        Hydra.loadResource(value)
+        AugeasConsole.Hydra.loadResource(value)
             .then((res: Response) => {
                 this.model = res;
                 this.currentModel = res;

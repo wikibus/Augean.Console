@@ -1,5 +1,5 @@
 import { Hydra } from 'heracles';
 
-export default {
+export {
     Hydra
 };

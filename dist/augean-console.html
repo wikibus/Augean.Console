@@ -188,7 +188,7 @@
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
       }
       loadResource(value) {
-        Hydra.loadResource(value)
+        AugeasConsole.Hydra.loadResource(value)
           .then((res) => {
             this.model = res;
             this.currentModel = res;
