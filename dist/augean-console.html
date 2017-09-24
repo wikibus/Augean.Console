@@ -6,6 +6,11 @@
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../bower_components/paper-styles/default-theme.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
 <link rel="import" href="./api-documentation/viewer.html">
 <link rel="import" href="./operation-views/operation-selector.html">
 <link rel="import" href="./entrypoint-selector.html">
@@ -14,6 +19,7 @@
     <style>
       :host {
         display: block;
+        margin: 0;
       }
 
       #api-docs-container {
@@ -41,8 +47,7 @@
         justify-content: center;
       }
     </style>
-    <ld-navigator on-resource-url-changed="urlChanged"></ld-navigator>
-    <ld-navigation-history use-hash-fragment></ld-navigation-history>
+    <ld-navigator on-resource-url-changed="urlChanged" use-hash-fragment></ld-navigator>
 
     <app-drawer-layout>
       <app-drawer slot="drawer" swipe-open>
@@ -183,12 +188,12 @@
       }
       loadResource(value) {
         Hydra.loadResource(value)
-          .then(res => {
+          .then((res) => {
             this.model = res;
             this.currentModel = res;
             this.state = 'loaded';
           })
-          .catch(err => {
+          .catch((err) => {
             this._setLastError(err);
             this.state = 'error';
           });

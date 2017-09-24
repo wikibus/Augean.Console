@@ -11,7 +11,7 @@
     "bower_components"
   ],
   "dependencies": {
-    "ld-navigation": "~0.4",
+    "ld-navigation": "^0.2.3",
     "polymer": "Polymer/polymer#^2.0.0",
     "paper-tabs": "PolymerElements/paper-tabs#^2.0.0",
     "paper-input": "PolymerElements/paper-input#^2.0.2",
@@ -29,5 +29,8 @@
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "ld-navigation": "v0.4-a1"
   }
 }

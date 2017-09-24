@@ -1,5 +1,6 @@
 :host {
   display: block;
+  margin: 0;
 }
 
 #api-docs-container {

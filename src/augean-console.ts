@@ -8,10 +8,11 @@ import 'bower:ld-navigation/ld-navigation.html';
 import 'bower:app-layout/app-layout.html';
 import 'bower:iron-pages/iron-pages.html';
 import 'bower:paper-icon-button/paper-icon-button.html';
-import 'bower:iron-icons/iron-icons.html;
-import 'bower:iron-icons/av-icons.html;
-import 'bower:paper-styles/default-theme.html;
-import 'bower:paper-styles/typography.html;
+import 'bower:iron-icons/iron-icons.html';
+import 'bower:iron-icon/iron-icon.html';
+import 'bower:iron-icons/av-icons.html';
+import 'bower:paper-styles/default-theme.html';
+import 'bower:paper-styles/typography.html';
 
 import './api-documentation/viewer';
 import './operation-views/operation-selector';
@@ -55,14 +56,14 @@ export class AugeanConsole extends Polymer.Element {
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
     }
 
-    loadResource(value) {
+    loadResource(value: string) {
         Hydra.loadResource(value)
-            .then(res => {
+            .then((res: Response) => {
                 this.model = res;
                 this.currentModel = res;
                 this.state = 'loaded';
             })
-            .catch(err => {
+            .catch((err: Error) => {
                 this._setLastError(err);
                 this.state = 'error';
             });
@@ -80,7 +81,7 @@ export class AugeanConsole extends Polymer.Element {
         //});
     }
 
-    loadOnEnter(e) {
+    loadOnEnter(e: KeyboardEvent) {
         if (e.keyCode === 13) {
             this.load();
         }
