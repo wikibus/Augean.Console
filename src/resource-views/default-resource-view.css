@@ -1,0 +1,15 @@
+:host {
+  display: block;
+
+  --resource-card: {
+    min-width: 250px;
+  }
+}
+
+.properties {
+  display: flex;
+}
+
+resource-card:not([nested])[is-id] {
+  display: none;
+}

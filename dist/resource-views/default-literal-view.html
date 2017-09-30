@@ -1,0 +1,31 @@
+<dom-module id="default-literal-view">
+  <template>
+    <style>
+      {
+        :host {
+          display: block
+        }
+    </style>
+    <span>[[literalValue]]</span>
+  </template>
+  <script>
+    class DefaultLiteralView extends Polymer.Element {
+      static get is() {
+        return 'default-literal-view';
+      }
+      static get properties() {
+        return {
+          literal: Object,
+          literalValue: {
+            type: String,
+            computed: '_literalValueComputed(literal)'
+          }
+        };
+      }
+      _literalValueComputed(literal) {
+        return literal['@value'] || literal;
+      }
+    }
+    customElements.define(DefaultLiteralView.is, DefaultLiteralView);
+  </script>
+</dom-module>

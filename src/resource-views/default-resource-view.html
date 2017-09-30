@@ -1,0 +1,6 @@
+<div id="properties">
+    <template is="dom-repeat" items="[[objectProperties]]" as="property">
+        <resource-card nested$="[[nested]]" subject="[[resource]]" property-id="[[property.id]]"
+                       object="[[property.value]]"></resource-card>
+    </template>
+</div>

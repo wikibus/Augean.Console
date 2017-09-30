@@ -1,0 +1,9 @@
+:host {
+  display: inline-block;
+  margin: 5px;
+  @apply(--resource-card);
+}
+
+paper-card {
+  width: 100%;
+}

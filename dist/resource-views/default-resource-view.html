@@ -1,0 +1,67 @@
+<link rel="import" href="../api-documentation/property-label.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/ld-navigation/ld-navigation.html">
+<link rel="import" href="./resource-card.html">
+<dom-module id="default-resource-view">
+  <template>
+
+    <div id="properties">
+      <template is="dom-repeat" items="[[objectProperties]]" as="property">
+        <resource-card nested$="[[nested]]" subject="[[resource]]" property-id="[[property.id]]" object="[[property.value]]"></resource-card>
+      </template>
+    </div>
+  </template>
+  <script>
+    class DefaultResourceView extends Polymer.Element {
+      static get is() {
+        return 'default-resource-view';
+      }
+      static get properties() {
+        return {
+          resource: Object,
+          tab: {
+            type: Number,
+            value: 0
+          },
+          nested: {
+            type: Object,
+            value: false
+          },
+          image: {
+            type: Object,
+            computed: '_getImage(resource)'
+          },
+          objectProperties: {
+            type: Array,
+            computed: '_getObjectProperties(resource)'
+          }
+        };
+      }
+      _getImage(resource) {
+        if (resource['http://schema.org/image']) {
+          return resource['http://schema.org/image']['http://schema.org/thumbnail']['http://schema.org/contentUrl'];
+        }
+        return null;
+      }
+      _getObjectProperties(resource) {
+        if (typeof resource === 'string')
+          return [];
+        return Object.entries(resource)
+          .filter(pair => !(pair[1].startsWith && pair[1].startsWith('_:')))
+          .map(pair => ({
+            id: pair[0],
+            value: getValue(pair[1])
+          }));
+      }
+      load() {
+        LdNavigation.Helpers.fireNavigation(this, this.resource.id);
+      }
+    }
+    customElements.define(DefaultResourceView.is, DefaultResourceView);
+
+    function getValue(object) {
+      return object['@value'] || object;
+    }
+  </script>
+</dom-module>

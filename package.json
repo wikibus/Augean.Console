@@ -24,6 +24,7 @@
     "@types/lodash": "^4.14.74",
     "augeas": "git://github.com/wikibus/augeas.git#master",
     "heracles": "git://github.com/wikibus/heracles.git#webpack",
+    "lit-html": "^0.6.0",
     "lodash.flatten": "^4.4.0",
     "rdf-serializer-jsonld-ext": "^1.2.0"
   }

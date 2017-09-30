@@ -20,10 +20,14 @@ ViewTemplates.when
 ViewTemplates.when
     .value(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#PartialCollectionView')
     .scope(s => s === 'pager')
-    .renders((render, view, scope) => {
-        return html`<hydra-partial-view-pager view="${view}" slot$="${scope}"></hydra-partial-view-pager>`;
-    });
+    .renders((render, view, scope) => html`<hydra-partial-view-pager view="${view}" slot$="${scope}"></hydra-partial-view-pager>`);
 
 ViewTemplates.when
-.value(v=> true)
-.renders((r,v,s) => html`${v}`);
+    .value(v => typeof(v) === 'object' && v !== null)
+    .renders((r, v, property) => html`<default-resource-view nested$="${!!property}"
+                                                             property="${property}"
+                                                             resource="${v}"></default-resource-view>`);
+
+ViewTemplates.when
+    .value(v => true)
+    .renders((r,v,s) => html`${v}`);

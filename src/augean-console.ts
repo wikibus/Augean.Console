@@ -25,6 +25,8 @@ import './entrypoint-selector';
 import './hydra-views/hydra-collection';
 import './hydra-views/hydra-member-view';
 import './hydra-views/hydra-partial-view-pager';
+import './resource-views/default-resource-view';
+import './resource-views/default-literal-view';
 
 type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
 

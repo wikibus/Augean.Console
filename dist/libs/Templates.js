@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 255);
+/******/ 	return __webpack_require__(__webpack_require__.s = 256);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -79,7 +79,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__template_registry__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__template_registry__ = __webpack_require__(264);
 
 
 const ViewTemplates = new __WEBPACK_IMPORTED_MODULE_0__template_registry__["a" /* default */]();
@@ -510,14 +510,14 @@ class TemplateInstance {
 
 /***/ }),
 
-/***/ 255:
+/***/ 256:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_augeas__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_augeas__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lit_html__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lit_html_lib_repeat__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lit_html_lib_repeat__ = __webpack_require__(267);
 
 
 
@@ -535,19 +535,21 @@ __WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => v[
                     </hydra-collection>`;
 });
 
-__WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#PartialCollectionView').scope(s => s === 'pager').renders((render, view, scope) => {
-    return __WEBPACK_IMPORTED_MODULE_1_lit_html__["f" /* html */]`<hydra-partial-view-pager view="${view}" slot$="${scope}"></hydra-partial-view-pager>`;
-});
+__WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#PartialCollectionView').scope(s => s === 'pager').renders((render, view, scope) => __WEBPACK_IMPORTED_MODULE_1_lit_html__["f" /* html */]`<hydra-partial-view-pager view="${view}" slot$="${scope}"></hydra-partial-view-pager>`);
+
+__WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => typeof v === 'object' && v !== null).renders((r, v, property) => __WEBPACK_IMPORTED_MODULE_1_lit_html__["f" /* html */]`<default-resource-view nested$="${!!property}"
+                                                             property="${property}"
+                                                             resource="${v}"></default-resource-view>`);
 
 __WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => true).renders((r, v, s) => __WEBPACK_IMPORTED_MODULE_1_lit_html__["f" /* html */]`${v}`);
 
 /***/ }),
 
-/***/ 256:
+/***/ 257:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__elements_ags_view__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__elements_ags_view__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__template_registry__ = __webpack_require__(102);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__template_registry__["a"]; });
 /* unused harmony reexport FormTemplates */
@@ -559,12 +561,12 @@ __WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => tr
 
 /***/ }),
 
-/***/ 257:
+/***/ 258:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lit_html_lib_lit_extended__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__polymer_polymer_lib_mixins_property_accessors__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lit_html_lib_lit_extended__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__polymer_polymer_lib_mixins_property_accessors__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lit_html__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__template_registry__ = __webpack_require__(102);
 
@@ -620,6 +622,7 @@ class AgsView extends Object(__WEBPACK_IMPORTED_MODULE_1__polymer_polymer_lib_mi
     connectedCallback() {
         this._enableProperties();
         this.__connected = true;
+        this._render();
     }
 
     disconnectedCallback() {
@@ -639,9 +642,9 @@ class AgsView extends Object(__WEBPACK_IMPORTED_MODULE_1__polymer_polymer_lib_mi
             const templateFunc = recurseTemplates(this, true, this.templateScope);
 
             Object(__WEBPACK_IMPORTED_MODULE_0_lit_html_lib_lit_extended__["a" /* render */])(templateFunc(this.value), this.shadowRoot);
-        }
 
-        this.dispatchEvent(new CustomEvent('ags-render'));
+            this.dispatchEvent(new CustomEvent('ags-render'));
+        }
     }
 }
 /* unused harmony export default */
@@ -654,7 +657,7 @@ window.customElements.define('ags-view', AgsView);
 
 /***/ }),
 
-/***/ 258:
+/***/ 259:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -780,15 +783,15 @@ class EventPart {
 
 /***/ }),
 
-/***/ 259:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_boot_js__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_boot_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__utils_boot_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_mixin_js__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_case_map_js__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_async_js__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_mixin_js__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_case_map_js__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_async_js__ = __webpack_require__(263);
 
 
 
@@ -1378,7 +1381,7 @@ const PropertyAccessors = Object(__WEBPACK_IMPORTED_MODULE_1__utils_mixin_js__["
 
 /***/ }),
 
-/***/ 260:
+/***/ 261:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1435,7 +1438,7 @@ const dedupingMixin = function(mixin) {
 
 /***/ }),
 
-/***/ 261:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1467,7 +1470,7 @@ function camelToDashCase(camel) {
 
 /***/ }),
 
-/***/ 262:
+/***/ 263:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1622,11 +1625,11 @@ const microTask = {
 
 /***/ }),
 
-/***/ 263:
+/***/ 264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TemplateSelectorBuilder__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TemplateSelectorBuilder__ = __webpack_require__(265);
 
 
 class TemplateRegistry {
@@ -1683,11 +1686,11 @@ class TemplateRegistry {
 
 /***/ }),
 
-/***/ 264:
+/***/ 265:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TemplateSelector__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TemplateSelector__ = __webpack_require__(266);
 
 
 class TemplateSelectorBuilder {
@@ -1719,7 +1722,7 @@ class TemplateSelectorBuilder {
 
 /***/ }),
 
-/***/ 265:
+/***/ 266:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1739,7 +1742,7 @@ class TemplateSelector {
 
 /***/ }),
 
-/***/ 266:
+/***/ 267:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

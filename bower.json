@@ -26,12 +26,10 @@
     "paper-toolbar": "PolymerElements/paper-toolbar#^2.0.0",
     "vaadin-combo-box": "^2.0.0",
     "paper-dropdown-menu": "polymerelements/paper-dropdown-menu#^2.0.0",
-    "paper-tooltip": "polymerelements/paper-tooltip#^2.0.1"
+    "paper-tooltip": "polymerelements/paper-tooltip#^2.0.1",
+    "ld-navigation": "^0.4"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
-  },
-  "resolutions": {
-    "ld-navigation": "v0.4-a1"
   }
 }
