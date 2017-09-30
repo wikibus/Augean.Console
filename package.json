@@ -3,26 +3,12 @@
     "start": "polymer serve",
     "build": "webpack",
     "typings": "potts",
-    "watch": "twc -w"
+    "watch": "twc -w & webpack -w"
   },
   "cacheDirectories": [
     "bower_components",
     "node_modules"
   ],
-  "jspm": {
-    "dependencies": {
-      "augeas": "github:wikibus/augeas@^0.1.0",
-      "heracles": "npm:heracles@0.1.2-pre04",
-      "jasnell/linkeddata-vocabs": "github:jasnell/linkeddata-vocabs@^0.10.0",
-      "jsonld": "npm:jsonld@^0.4.11",
-      "lodash": "npm:lodash@^4.11.1",
-      "rdf-ext": "npm:rdf-ext@^0.3.0",
-      "request": "npm:request@^2.74.0"
-    },
-    "devDependencies": {
-      "typescript": "npm:typescript@^1.6.2"
-    }
-  },
   "devDependencies": {
     "babel-loader": "^7.1.2",
     "babel-minify-webpack-plugin": "^0.2.0",
@@ -36,7 +22,9 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.74",
+    "augeas": "git://github.com/wikibus/augeas.git#master",
     "heracles": "git://github.com/wikibus/heracles.git#webpack",
-    "lodash.flatten": "^4.4.0"
+    "lodash.flatten": "^4.4.0",
+    "rdf-serializer-jsonld-ext": "^1.2.0"
   }
 }

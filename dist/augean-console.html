@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <script src="./libs/Hypermedia.js"></script>
+<script src="./libs/Templates.js"></script>
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
@@ -103,7 +104,7 @@
 
           <div data-state="loaded">
             <iron-meta key="apiDocs" value="[[displayedModel.apiDocumentation]]"></iron-meta>
-            <ags-view object="[[displayedModel]]"></ags-view>
+            <ags-view value="[[displayedModel]]"></ags-view>
 
             <operation-selector operations="[[displayedModel.operations]]" on-operation-selected="showOperationForm" operation="{{operation}}"></operation-selector>
           </div>

@@ -31,7 +31,7 @@
             }
         </style>
 
-        <ags-view id="member" predicate="http://www.w3.org/ns/hydra/core#member" object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#member')]]"></ags-view>
-        <ags-view id="pager"  object="[[getObject(collection, 'http://www.w3.org/ns/hydra/core#view')]]"></ags-view>
+        <slot name="members"></slot>
+        <slot name="pager"></slot>
     </template>
 </dom-module>

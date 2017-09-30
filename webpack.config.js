@@ -4,7 +4,8 @@ const MinifyPlugin = require("babel-minify-webpack-plugin");
 module.exports = {
     entry: {
         'Hypermedia': path.resolve(__dirname, 'src/libs/Hypermedia.js'),
-        'Utils': path.resolve(__dirname, 'src/libs/Utils.js')
+        'Utils': path.resolve(__dirname, 'src/libs/Utils.js'),
+        'Templates': path.resolve(__dirname, 'src/libs/templates/index.js'),
     },
     module: {
         rules: [

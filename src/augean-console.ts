@@ -3,6 +3,7 @@ import {PaperInput} from "bower:paper-input/paper-input.html";
 import {IHydraResource} from "heracles";
 
 import './libs/Hypermedia.js';
+import './libs/Templates.js';
 
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
