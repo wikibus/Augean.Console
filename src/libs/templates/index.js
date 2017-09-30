@@ -23,3 +23,7 @@ ViewTemplates.when
     .renders((render, view, scope) => {
         return html`<hydra-partial-view-pager view="${view}" slot$="${scope}"></hydra-partial-view-pager>`;
     });
+
+ViewTemplates.when
+.value(v=> true)
+.renders((r,v,s) => html`${v}`);

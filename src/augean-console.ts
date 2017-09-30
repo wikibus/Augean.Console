@@ -22,6 +22,9 @@ import 'bower:paper-styles/typography.html';
 import './api-documentation/viewer';
 import './operation-views/operation-selector';
 import './entrypoint-selector';
+import './hydra-views/hydra-collection';
+import './hydra-views/hydra-member-view';
+import './hydra-views/hydra-partial-view-pager';
 
 type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
 

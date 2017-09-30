@@ -1,0 +1,17 @@
+<paper-card class="default-resource" image="[[image]]" heading="[[resource.id]]">
+    <div class="card-content">
+        <template is="dom-repeat" items="[[getKeys(resource)]]" as="item">
+            <h3>
+                <property-label resource="[[resource]]" property-id="[[item.0]]"></property-label>
+            </h3>
+            <div>
+                <ags-view value="[[item.1]]"></ags-view>
+            </div>
+        </template>
+    </div>
+
+    <div class="card-actions">
+        <paper-button on-tap="show">Show</paper-button>
+        <paper-button on-tap="load">Load</paper-button>
+    </div>
+</paper-card>

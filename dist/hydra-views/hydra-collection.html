@@ -1,0 +1,48 @@
+<dom-module id="hydra-collection">
+  <template>
+    <style>
+      #member {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      :host {
+        #member>.array-element {
+          --ags-view: {
+            margin: 5px;
+          }
+          ;
+          --paper-card: {
+            width: 400px;
+          }
+          ;
+        }
+        :host {
+          --paper-card-header-image: {
+            width: auto;
+          }
+          ;
+          --paper-card-header-image-text: {
+            background-color: rgba(255, 255, 255, 0.5);
+          }
+          ;
+          display: block;
+        }
+    </style>
+    <slot name="members"></slot>
+    <slot name="pager"></slot>
+  </template>
+  <script>
+    class HydraCollection extends Polymer.Element {
+      static get is() {
+        return 'hydra-collection';
+      }
+      static get properties() {
+        return {
+          collection: Object
+        };
+      }
+    }
+    customElements.define(HydraCollection.is, HydraCollection);
+  </script>
+</dom-module>

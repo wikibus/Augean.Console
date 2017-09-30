@@ -17,6 +17,9 @@
 <link rel="import" href="./api-documentation/viewer.html">
 <link rel="import" href="./operation-views/operation-selector.html">
 <link rel="import" href="./entrypoint-selector.html">
+<link rel="import" href="./hydra-views/hydra-collection.html">
+<link rel="import" href="./hydra-views/hydra-member-view.html">
+<link rel="import" href="./hydra-views/hydra-partial-view-pager.html">
 <dom-module id="augean-console">
   <template>
     <style>
@@ -76,7 +79,7 @@
       </app-drawer>
 
       <app-header-layout>
-        <app-header slot="header">
+        <app-header slot="header" fixed>
           <app-toolbar>
             <div main-title>
               Augean Hydra Console

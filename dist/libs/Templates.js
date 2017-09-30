@@ -539,6 +539,8 @@ __WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => v[
     return __WEBPACK_IMPORTED_MODULE_1_lit_html__["f" /* html */]`<hydra-partial-view-pager view="${view}" slot$="${scope}"></hydra-partial-view-pager>`;
 });
 
+__WEBPACK_IMPORTED_MODULE_0_augeas__["a" /* ViewTemplates */].when.value(v => true).renders((r, v, s) => __WEBPACK_IMPORTED_MODULE_1_lit_html__["f" /* html */]`${v}`);
+
 /***/ }),
 
 /***/ 256:

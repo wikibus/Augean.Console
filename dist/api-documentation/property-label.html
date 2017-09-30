@@ -35,7 +35,10 @@
         };
       }
       _propertyTitleComputed(supportedProperty, propertyId) {
-        return supportedProperty.title || propertyId;
+        if (supportedProperty && supportedProperty.title) {
+          return supportedProperty.title;
+        }
+        return propertyId;
       }
       getTitle(resource, propertyId) {
         if (resource.apiDocumentation) {

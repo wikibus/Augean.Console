@@ -3,6 +3,7 @@ import {IClass, IHydraResource, IResource, ISupportedProperty} from "heracles";
 import '../libs/Utils.js';
 
 import 'bower:paper-tooltip/paper-tooltip.html!'
+import {debug} from "util";
 
 @CustomElement()
 class PropertyLabel extends Polymer.Element {
@@ -13,7 +14,11 @@ class PropertyLabel extends Polymer.Element {
 
     @notify()
     @compute((supportedProperty:ISupportedProperty, propertyId: string) => {
-        return supportedProperty.title || propertyId;
+        if(supportedProperty && supportedProperty.title) {
+            return supportedProperty.title;
+        }
+
+        return propertyId;
     })
     propertyTitle: string;
 
