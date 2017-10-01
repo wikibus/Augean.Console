@@ -1,0 +1,18 @@
+<div id="operations" hidden$="[[!showOperations]]">
+    <template is="dom-repeat" items="[[operations]]" as="operation">
+        <div tabindex="0">
+            <paper-fab mini class="operation" icon="[[getIcon(operation)]]" data-method$="[[operation.method]]"
+                       on-tap="selectOperation"></paper-fab>
+
+            <paper-tooltip position="left">
+                [[operation.title]]
+            </paper-tooltip>
+        </div>
+    </template>
+</div>
+
+<paper-fab id="operationToggle" toggles$="[[hasOperations]]" icon="image:flash-on" active="{{showOperations}}"
+           data-no-operations$="[[!hasOperations]]" on-tap="showTooltip"></paper-fab>
+<paper-tooltip id="noOperationsTooltip" position="left" manual-mode="true">
+    There are no known operations for current model
+</paper-tooltip>

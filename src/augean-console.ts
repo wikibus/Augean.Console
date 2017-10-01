@@ -8,7 +8,7 @@ import './libs/Templates.js';
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
 import 'bower:paper-input/paper-input.html';
-import 'bower:paper-spinner/paper-spinner.html';
+import 'bower:mat-elements/mat-spinner.html';
 import 'bower:ld-navigation/ld-navigation.html';
 import 'bower:app-layout/app-layout.html';
 import 'bower:iron-pages/iron-pages.html';

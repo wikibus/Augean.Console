@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
+<dom-module id="operation-selector">
+  <template>
+
+    <div id="operations" hidden$="[[!showOperations]]">
+      <template is="dom-repeat" items="[[operations]]" as="operation">
+        <div tabindex="0">
+          <paper-fab mini class="operation" icon="[[getIcon(operation)]]" data-method$="[[operation.method]]" on-tap="selectOperation"></paper-fab>
+
+          <paper-tooltip position="left">
+            [[operation.title]]
+          </paper-tooltip>
+        </div>
+      </template>
+    </div>
+
+    <paper-fab id="operationToggle" toggles$="[[hasOperations]]" icon="image:flash-on" active="{{showOperations}}" data-no-operations$="[[!hasOperations]]" on-tap="showTooltip"></paper-fab>
+    <paper-tooltip id="noOperationsTooltip" position="left" manual-mode="true">
+      There are no known operations for current model
+    </paper-tooltip>
+  </template>
+  <script>
+    class OperationSelector extends Polymer.Element {
+      static get is() {
+        return 'operation-selector';
+      }
+      static get properties() {
+        return {
+          operations: Array,
+          operation: {
+            type: Object,
+            readOnly: true,
+            notify: true
+          },
+          hasOperations: {
+            type: Boolean,
+            computed: '_hasOperationsComputed(operations)',
+            observer: 'updateFabStyle'
+          }
+        };
+      }
+      _hasOperationsComputed(operations) {
+        return !!operations && operations.length > 0;
+      }
+      connectedCallback() {
+        this.addEventListener("blur", this._onBlurBound = this.onBlur.bind(this));
+      }
+      disconnectedCallback() {
+        this.removeEventListener("blur", this._onBlurBound);
+      }
+      updateFabStyle(hasOperations) {
+        this.updateStyles();
+      }
+      onBlur() {
+        this.$.operationToggle.active = false;
+      }
+      showTooltip() {
+        if (!this.hasOperations) {
+          this.$.noOperationsTooltip.show();
+        }
+      }
+      selectOperation(e) {
+        this._setOperation(e.model.operation);
+        console.dir(e.model.operation);
+        this.dispatchEvent(new CustomEvent('operation-selected', {
+          detail: {
+            operation: e.model.operation
+          },
+        }));
+      }
+      getIcon(operation) {
+        switch ((operation.method || '').toUpperCase()) {
+          case 'GET':
+            return 'icons:file-download';
+          case 'PUT':
+            return 'icons:file-upload';
+          case 'DELETE':
+            return 'icons:delete';
+          default:
+            return 'icons:settings';
+        }
+      }
+    }
+    customElements.define(OperationSelector.is, OperationSelector);
+  </script>
+</dom-module>

@@ -2118,3 +2118,130 @@ declare module "bower:paper-tooltip/paper-tooltip.html" {
     updatePosition();
   }
 }
+
+declare module "bower:paper-fab/paper-fab.html" {
+  export class PaperFab {
+    /** * The EventTarget that will be firing relevant KeyboardEvents. Set it to
+     * `null` to disable the listeners.
+     */
+    keyEventTarget?: any;
+
+    /** * If true, this property will cause the implementing element to
+     * automatically stop propagation on any handled KeyboardEvents.
+     */
+    stopKeyboardEventPropagation: boolean;
+
+    keyBindings: any;
+
+    /** * If true, the user is currently holding down the button.
+     */
+    pressed: boolean;
+
+    /** * If true, the button toggles the active state with each tap or press
+     * of the spacebar.
+     */
+    toggles: boolean;
+
+    /** * If true, the button is a toggle and is currently in the active state.
+     */
+    active: boolean;
+
+    /** * True if the element is currently being pressed by a "pointer," which
+     * is loosely defined as mouse or touch input (but specifically excluding
+     * keyboard input).
+     */
+    pointerDown: boolean;
+
+    /** * True if the input device that caused the element to receive focus
+     * was a keyboard.
+     */
+    receivedFocusFromKeyboard: boolean;
+
+    /** * The aria attribute to be set if the button is a toggle and in the
+     * active state.
+     */
+    ariaActiveAttribute: string;
+
+    /** * If true, the element currently has focus.
+     */
+    focused: boolean;
+
+    /** * If true, the user cannot interact with this element.
+     */
+    disabled: boolean;
+
+    /** * If true, the element will not produce a ripple effect when interacted
+     * with via the pointer.
+     */
+    noink: boolean;
+
+    /** * The z-depth of this element, from 0-5. Setting to 0 will remove the
+     * shadow, and each increasing number greater than 0 will be "deeper"
+     * than the last.
+     *
+     * @attribute elevation
+     */
+    elevation: number;
+
+    /** * The URL of an image for the icon. If the src property is specified,
+     * the icon property should not be.
+     */
+    src: string;
+
+    /** * Specifies the icon name or index in the set of icons available in
+     * the icon's icon set. If the icon property is specified,
+     * the src property should not be.
+     */
+    icon: string;
+
+    /** * Set this to true to style this is a "mini" FAB.
+     */
+    mini: boolean;
+
+    /** * The label displayed in the badge. The label is centered, and ideally
+     * should have very few characters.
+     */
+    label: string;
+    /** * Can be used to imperatively add a key binding to the implementing
+     * element. This is the imperative equivalent of declaring a keybinding
+     * in the `keyBindings` prototype property.
+     *
+     * @param {string} eventString
+     * @param {string} handlerName
+     */
+    addOwnKeyBinding(eventString: string, handlerName: string);
+
+    /** * When called, will remove all imperatively-added key bindings.
+     */
+    removeOwnKeyBindings();
+
+    /** * Returns true if a keyboard event matches `eventString`.
+     *
+     * @param {KeyboardEvent} event
+     * @param {string} eventString
+     * @return {boolean}
+     */
+    keyboardEventMatchesKeys(event: any, eventString: string): boolean;
+
+    /** * Ensures this element contains a ripple effect. For startup efficiency
+     * the ripple effect is dynamically on demand when needed.
+     *
+     * @param optTriggeringEvent (optional) event that triggered the
+    ripple.
+     */
+    ensureRipple(optTriggeringEvent: any);
+
+    /** * Returns the `<paper-ripple>` element used by this element to create
+     * ripple effects. The element's ripple is created on demand, when
+     * necessary, and calling this method will force the
+     * ripple to be created.
+     */
+    getRipple();
+
+    /** * Returns true if this element currently contains a ripple effect.
+     *
+     * @return {boolean}
+     */
+    hasRipple(): boolean;
+  }
+}
