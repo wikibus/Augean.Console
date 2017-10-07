@@ -39,3 +39,4 @@ typings
 # Created by .ignore support plugin (hsz.mobi)
 
 build/
+dist/
