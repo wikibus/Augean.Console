@@ -1,4 +1,5 @@
 import { CustomElement, compute, style, template } from 'twc/polymer';
+import 'bower:polymer/polymer.html';
 
 @CustomElement()
 @style('{ :host { display: block }')

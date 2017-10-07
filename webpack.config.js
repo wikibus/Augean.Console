@@ -27,11 +27,11 @@ module.exports = {
         library: "[name]"
     },
     plugins: [
-        /*new MinifyPlugin(
+        new MinifyPlugin(
             {},
             {
                 comments: false
-            })*/
+            })
     ],
     devtool: 'source-map'
 };

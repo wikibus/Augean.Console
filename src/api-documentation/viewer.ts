@@ -9,7 +9,7 @@ import 'bower:paper-dropdown-menu/paper-dropdown-menu.html'
 import './supported-classes/supported-class-view';
 
 @CustomElement()
-@style('viewer.cs')
+@style('viewer.css')
 class ApiDocumentationViewer extends Polymer.Element {
 
     apiDocs: IApiDocumentation;

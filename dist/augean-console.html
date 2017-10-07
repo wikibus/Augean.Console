@@ -1,27 +1,17 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
-<script src="./libs/Hypermedia.js"></script>
 <script src="./libs/Templates.js"></script>
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../bower_components/mat-elements/mat-spinner.html">
 <link rel="import" href="../bower_components/ld-navigation/ld-navigation.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/av-icons.html">
 <link rel="import" href="../bower_components/paper-styles/default-theme.html">
 <link rel="import" href="../bower_components/paper-styles/typography.html">
-<link rel="import" href="./api-documentation/viewer.html">
-<link rel="import" href="./operation-views/operation-selector.html">
 <link rel="import" href="./entrypoint-selector.html">
-<link rel="import" href="./hydra-views/hydra-collection.html">
-<link rel="import" href="./hydra-views/hydra-member-view.html">
-<link rel="import" href="./hydra-views/hydra-partial-view-pager.html">
-<link rel="import" href="./resource-views/default-resource-view.html">
-<link rel="import" href="./resource-views/default-literal-view.html">
 <dom-module id="augean-console">
   <template>
     <style>
@@ -131,6 +121,11 @@
     </app-drawer-layout>
   </template>
   <script>
+    /*import './hydra-views/hydra-collection';
+    import './hydra-views/hydra-member-view';
+    import './hydra-views/hydra-partial-view-pager';
+    import './resource-views/default-resource-view';
+    import './resource-views/default-literal-view';*/
     class AugeanConsole extends Polymer.Element {
       static get is() {
         return "augean-console";

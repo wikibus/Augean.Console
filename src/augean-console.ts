@@ -2,16 +2,15 @@ import {CustomElement, notify, compute, style} from "twc/polymer";
 import {PaperInput} from "bower:paper-input/paper-input.html";
 import {IHydraResource} from "heracles";
 
-import './libs/Hypermedia.js';
 import './libs/Templates.js';
 
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
 import 'bower:paper-input/paper-input.html';
-import 'bower:mat-elements/mat-spinner.html';
+//import 'bower:mat-elements/mat-spinner.html';
 import 'bower:ld-navigation/ld-navigation.html';
 import 'bower:app-layout/app-layout.html';
-import 'bower:iron-pages/iron-pages.html';
+//import 'bower:iron-pages/iron-pages.html';
 import 'bower:paper-icon-button/paper-icon-button.html';
 import 'bower:iron-icons/iron-icons.html';
 import 'bower:iron-icon/iron-icon.html';
@@ -19,14 +18,14 @@ import 'bower:iron-icons/av-icons.html';
 import 'bower:paper-styles/default-theme.html';
 import 'bower:paper-styles/typography.html';
 
-import './api-documentation/viewer';
-import './operation-views/operation-selector';
+/*import './api-documentation/viewer';
+import './operation-views/operation-selector';*/
 import './entrypoint-selector';
-import './hydra-views/hydra-collection';
+/*import './hydra-views/hydra-collection';
 import './hydra-views/hydra-member-view';
 import './hydra-views/hydra-partial-view-pager';
 import './resource-views/default-resource-view';
-import './resource-views/default-literal-view';
+import './resource-views/default-literal-view';*/
 
 type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
 

@@ -37,3 +37,5 @@ typings
 .node_repl_history
 
 # Created by .ignore support plugin (hsz.mobi)
+
+build/
