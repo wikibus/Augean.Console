@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "polymer serve",
-    "build": "webpack",
+    "build": "twc && webpack && polymer build",
     "typings": "potts",
     "watch": "twc -w & webpack -w",
     "postinstall": "npm i -g prpl-server"
@@ -15,9 +15,6 @@
     "babel-minify-webpack-plugin": "^0.2.0",
     "polymer-cli": "^1.5.5",
     "potts": "^1.2.1",
-    "rollup": "^0.50.0",
-    "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-node-resolve": "^3.0.0",
     "twc": "^0.4.4-rc",
     "webpack": "^3.6.0"
   },

@@ -1,5 +1,14 @@
 const path = require('path');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
+const plugins = [];
+
+if (process.env.DEPLOY) {
+    plugins.push(new MinifyPlugin(
+        {},
+        {
+            comments: false
+        }));
+}
 
 module.exports = {
     entry: {
@@ -26,12 +35,6 @@ module.exports = {
         libraryTarget: 'umd',
         library: "[name]"
     },
-    plugins: [
-        new MinifyPlugin(
-            {},
-            {
-                comments: false
-            })
-    ],
+    plugins: plugins,
     devtool: 'source-map'
 };

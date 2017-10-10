@@ -1,1 +1,1 @@
-web: prpl-server --root . --config polymer.json --port $PORT
+web: prpl-server --root build --port $PORT --https-redirect

@@ -8,13 +8,13 @@
 
         <app-toolbar>
             <entrypoint-selector class="middle" url="{{url}}" on-url-changed="_focusUrlInput">
-            <span data-url="http://wikibus-test.gear.host/">Bus encyclopedia</span>
-            <span data-url="http://www.markus-lanthaler.com/hydra/api-demo/">Hydra demo API</span>
-        </entrypoint-selector>
+                <span data-url="http://wikibus-test.gear.host/">Bus encyclopedia</span>
+                <span data-url="http://www.markus-lanthaler.com/hydra/api-demo/">Hydra demo API</span>
+            </entrypoint-selector>
         </app-toolbar>
     </app-drawer>
 
-    <app-drawer id="documentation" align="end" slot="drawer" swipe-open>
+    <app-drawer id="documentation" align="end" slot="drawer" swipe-open on-opened-changed="_loadDocElements">
         <app-toolbar>
             <div class="title">Documentation</div>
         </app-toolbar>
@@ -39,7 +39,7 @@
                 <paper-input main-title id="resource" class="middle" label="address"
                              pattern="^https?://.*" no-label-float auto-validate
                              invalid="{{addressInvalid}}"
-                             value="[[url]]"
+                             value="{{url}}"
                              on-keydown="loadOnEnter">
                     <iron-icon slot="prefix" icon="icons:language"></iron-icon>
                 </paper-input>

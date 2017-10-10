@@ -1,14 +1,14 @@
 import { CustomElement, notify, template } from 'twc/polymer';
 import 'bower:polymer/polymer-element.html';
-
+import './libs/Hypermedia.js';
 import 'bower:vaadin-combo-box/vaadin-combo-box.html'
 
 @CustomElement()
-@template('<vaadin-combo-box label="Select Hydra API" items="[[apis]]" on-value-changed="_entrypointSelected"></vaadin-combo-box>')
+@template('<vaadin-combo-box id="selector" label="Select Hydra API" items="[[apis]]" on-value-changed="_entrypointSelected"></vaadin-combo-box>')
 export class EntrypointSelector extends Polymer.Element {
 
     @notify()
-    readonly url: string;
+    url: string;
 
     readonly apis: Array<string>;
 
@@ -23,9 +23,15 @@ export class EntrypointSelector extends Polymer.Element {
         });
 
         this._setApis(apis);
+
+        if(apis.filter((api: any) => api.value === this.url)) {
+            this.$.selector.value = this.url;
+        }
     }
 
     _entrypointSelected(e: CustomEvent) {
-        this._setUrl(e.detail.value);
+        if(e.detail.value) {
+            this.url = e.detail.value;
+        }
     }
 }
