@@ -1,59 +1,64 @@
-import './viewer.html!';
-import 'bower_components/vaadin-combo-box/vaadin-combo-box.html!';
-import 'bower_components/paper-toast/paper-toast.html!';
-import '../api-documentation/supported-class-view';
+import { CustomElement, observe, compute, style } from 'twc/polymer';
+import {IApiDocumentation, IClass, IResource} from "heracles";
 
-import * as _ from 'lodash';
+import 'bower:polymer/polymer.html';
 
-@component('api-documentation-viewer')
-class ApiDocumentationViewer extends polymer.Base {
+import 'bower:vaadin-combo-box/vaadin-combo-box.html';
+import 'bower:paper-toast/paper-toast.html';
+import 'bower:paper-dropdown-menu/paper-dropdown-menu.html'
+import './supported-classes/supported-class-view';
 
-    @property()
-    apiDocs:IApiDocumentation;
+@CustomElement()
+@style('viewer.css')
+class ApiDocumentationViewer extends Polymer.Element {
 
-    @property({value: []})
-    modelTypes:Array;
+    apiDocs: IApiDocumentation;
 
-    @property()
-    selectedClass:IClass;
+    modelTypes: Array<string> = [];
 
-    selectClass(classId) {
-        var clazz = _.find(this.apiDocs.classes, { id: classId });
+    selectedClass: IClass;
+
+    selectClass(classId: string) {
+        if(!this.apiDocs || !this.apiDocs.classes) return;
+
+        const clazz = this.apiDocs.classes.find((c: IClass) => {
+            return c.id === classId;
+        });
 
         selectClass.call(this, clazz);
     }
 
-    onClassSelected(e:Event) {
+    onClassSelected(e: CustomEvent) {
         this.selectClass(e.detail.classId);
         e.preventDefault();
     }
 
-    @observe('apiDocs,modelTypes')
-    selectCurrentClass(apiDocs, types) {
-        var clazz = _.find(apiDocs.classes, c => {
-            return _.some(types, t => c.id === t)
+    @observe('apiDocs', 'modelTypes')
+    selectCurrentClass(apiDocs: IApiDocumentation, types: Array<string>) {
+        if(!apiDocs || !apiDocs.classes) return;
+
+        const clazz = apiDocs.classes.find((c: IClass) => {
+            return types.some((t: IResource) => c.id === t)
         });
 
         selectClass.call(this, clazz);
     }
 
-    isCurrent(typeId) {
-        return _.some(this.modelTypes, t => {
+    isCurrent(typeId: string) {
+        return this.modelTypes.some((t: IResource) => {
             return t === typeId;
         });
     }
 
-    @computed()
-    classFound(selectedClass) {
-        return !!selectedClass;
-    }
+    @compute((selectedClass: IClass) => !!selectedClass)
+    classFound: boolean;
 
     closeToast() {
         this.$.toast.close();
     }
 }
 
-function selectClass(clas) {
+function selectClass(clas: IClass) {
     this.selectedClass = clas;
 
     if (!clas) {
@@ -64,5 +69,3 @@ function selectClass(clas) {
         this.$.classSelect.value = clas.id;
     }
 }
-
-ApiDocumentationViewer.register();

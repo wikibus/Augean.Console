@@ -1,19 +1,20 @@
-import './hydra-member-view.html!';
-import 'bower_components/paper-button/paper-button.html!';
-import 'bower_components/paper-card/paper-card.html!';
+import { CustomElement, compute, style } from 'twc/polymer';
+import { IHydraResource } from "heracles";
+
+import 'bower:paper-button/paper-button.html';
+import 'bower:paper-card/paper-card.html';
 import '../api-documentation/property-label';
-import {ObjectGetter} from '../hydra-views/hydra-behaviors';
-import * as _ from 'lodash';
 
-@behavior(ObjectGetter)
-@component('hydra-member-view')
-class HydraMemberView extends polymer.Base {
+@CustomElement()
+@style(':host { display: inline; }')
+class HydraMemberView extends Polymer.Element {
 
-    @property()
-    resource:IHydraResource;
+    resource: IHydraResource;
 
-    @computed()
-    image(resource) {
+    @compute('_getImage', [ 'resource' ])
+    image: object;
+
+    _getImage(resource: IHydraResource) {
         if (resource['http://schema.org/image']) {
             return resource['http://schema.org/image']['http://schema.org/thumbnail']['http://schema.org/contentUrl'];
         }
@@ -21,12 +22,12 @@ class HydraMemberView extends polymer.Base {
         return null;
     }
 
-    getKeys(model) {
+    getKeys(model: any) {
         if (typeof model === 'string') return [];
 
-        var pairs = _.toPairs(model)
-            .filter(pair => !pair[0].startsWith('@'))
-            .filter(pair => pair[0] !== 'http://schema.org/image');
+        const pairs = Object.entries(model)
+            .filter((pair: any) => !pair[0].startsWith('@'))
+            .filter((pair: any) => pair[0] !== 'http://schema.org/image');
         return pairs;
     }
 
@@ -34,5 +35,3 @@ class HydraMemberView extends polymer.Base {
         LdNavigation.Helpers.fireNavigation(this, this.resource.id);
     }
 }
-
-HydraMemberView.register();

@@ -1,62 +1,18 @@
-<dom-module id="operation-selector">
-    <template>
-        <style>
-            :host {
-                display: block;
-                position: fixed;
-                right: 80px;
-                bottom: 40px;
-            }
+<div id="operations" hidden$="[[!showOperations]]">
+    <template is="dom-repeat" items="[[operations]]" as="operation">
+        <div tabindex="0">
+            <paper-fab mini class="operation" icon="[[getIcon(operation)]]" data-method$="[[operation.method]]"
+                       on-tap="selectOperation"></paper-fab>
 
-            paper-fab {
-                margin: 0 auto;
-            }
-
-            paper-fab.operation {
-                --paper-fab-mini: {
-                    margin-bottom: 10px;
-                };
-
-                --paper-fab-background: var(--paper-grey-500);
-            }
-
-            paper-fab.operation[data-method=GET] {
-                --paper-fab-background: var(--paper-light-green-400);
-            }
-
-            paper-fab.operation[data-method=DELETE] {
-                --paper-fab-background: var(--paper-red-500);
-            }
-
-            paper-fab.operation[data-method=POST], paper-fab.operation[data-method=PUT] {
-                --paper-fab-background: var(--paper-amber-600);
-            }
-
-            #operationToggle {
-                --paper-fab-background: var(--paper-deep-purple-400);
-            }
-
-            #operationToggle[data-no-operations] {
-                --paper-fab-background: var(--paper-grey-500);
-            }
-        </style>
-
-            <div id="operations" hidden$="[[!showOperations]]">
-                <template is="dom-repeat" items="[[operations]]" as="operation">
-                    <div tabindex="0">
-                        <paper-fab mini class="operation" icon="[[getIcon(operation)]]" data-method$="[[operation.method]]" on-tap="selectOperation"></paper-fab>
-
-                        <paper-tooltip position="left">
-                            [[operation.title]]
-                        </paper-tooltip>
-                    </div>
-                </template>
-            </div>
-
-            <paper-fab id="operationToggle" toggles$="[[hasOperations]]" icon="image:flash-on" active="{{showOperations}}"
-                       data-no-operations$="[[!hasOperations]]" on-tap="showTooltip"></paper-fab>
-            <paper-tooltip id="noOperationsTooltip" position="left" manual-mode="true">
-                There are no known operations for current model
+            <paper-tooltip position="left">
+                [[operation.title]]
             </paper-tooltip>
+        </div>
     </template>
-</dom-module>
+</div>
+
+<paper-fab id="operationToggle" toggles$="[[hasOperations]]" icon="image:flash-on" active="{{showOperations}}"
+           data-no-operations$="[[!hasOperations]]" on-tap="showTooltip"></paper-fab>
+<paper-tooltip id="noOperationsTooltip" position="left" manual-mode="true">
+    There are no known operations for current model
+</paper-tooltip>

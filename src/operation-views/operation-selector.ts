@@ -1,24 +1,23 @@
-import './operation-selector.html!';
-import '../../bower_components/paper-fab/paper-fab.html!';
-import '../../bower_components/iron-icons/image-icons.html!';
-import '../../bower_components/paper-tooltip/paper-tooltip.html!';
+import { CustomElement, notify, compute, observe } from 'twc/polymer';
+import {IOperation} from "heracles";
 
-@component('operation-selector')
-class OperationSelector extends polymer.Base {
+import 'bower:paper-fab/paper-fab.html';
+import 'bower:iron-icons/image-icons.html';
+import 'bower:paper-tooltip/paper-tooltip.html';
 
-    @property()
-    operations:Array<IOperation>;
+@CustomElement()
+class OperationSelector extends Polymer.Element {
 
-    @property({ readOnly: true, notify: true })
-    operation:IOperation;
+    operations: Array<IOperation>;
 
-    @computed()
-    hasOperations(operations) {
-        return !!operations && operations.length > 0;
-    }
+    @notify()
+    readonly operation: IOperation;
+
+    @compute((operations: Array<IOperation>) => !!operations && operations.length > 0)
+    hasOperations: boolean;
 
     @observe('hasOperations')
-    updateFabStyle(hasOperations) {
+    updateFabStyle(hasOperations: boolean) {
         this.updateStyles();
     }
 
@@ -33,14 +32,18 @@ class OperationSelector extends polymer.Base {
         }
     }
 
-    selectOperation(e) {
+    selectOperation(e: CustomEvent) {
         this._setOperation(e.model.operation);
 
         console.dir(e.model.operation);
 
-        this.fire('operation-selected', {
-            operation: e.model.operation
-        });
+        this.dispatchEvent(new CustomEvent('operation-selected', {
+            detail: {
+                operation: e.model.operation
+            },
+            // composed: true,
+            // bubbles: true
+        }));
     }
 
     getIcon(operation:IOperation) {
@@ -56,5 +59,3 @@ class OperationSelector extends polymer.Base {
         }
     }
 }
-
-OperationSelector.register();

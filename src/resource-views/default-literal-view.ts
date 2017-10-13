@@ -1,13 +1,12 @@
-import './default-literal-view.html!';
+import { CustomElement, compute, style, template } from 'twc/polymer';
+import 'bower:polymer/polymer.html';
 
-@component('default-literal-view')
-class DefaultLiteralView extends polymer.Base {
-    literal: Object;
+@CustomElement()
+@style('{ :host { display: block }')
+@template('<span>[[literalValue]]</span>')
+class DefaultLiteralView extends Polymer.Element {
+    literal: object;
 
-    @computed()
-    literalValue(literal) {
-        return literal['@value'] || literal;
-    }
+    @compute((literal: any) => literal['@value'] || literal)
+    literalValue: string;
 }
-
-DefaultLiteralView.register();

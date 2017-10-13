@@ -1,0 +1,43 @@
+{
+  "entrypoint": "index.html",
+  "shell": "dist/augean-console.html",
+  "sources": [
+    "dist/**/*",
+    "bower.json"
+  ],
+  "fragments": [
+    "dist/api-documentation/viewer.html",
+    "dist/hydra-views/hydra-collection.html",
+    "dist/hydra-views/hydra-member-view.html",
+    "dist/hydra-views/hydra-partial-view-pager.html",
+    "dist/resource-views/default-resource-view.html",
+    "dist/resource-views/default-literal-view.html",
+    "dist/entrypoint-selector.html"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/**/*",
+    "dist/libs/Hypermedia.js"
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  },
+  "builds": [{
+    "name": "prod-new",
+    "preset": "es6-unbundled",
+    "bundle": {
+      "stripComments": true
+    },
+    "basePath" : true
+  }, {
+    "name":"prod-old",
+    "preset": "es6-bundled",
+    "basePath" : true
+  }, {
+    "name": "fallback",
+    "preset": "es5-bundled",
+    "basePath" : true
+  }]
+}

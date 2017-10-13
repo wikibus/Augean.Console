@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "heracles": "registry:npm/heracles#0.1.0+20161026173525",
-    "jsonld": "registry:npm/jsonld#0.4.0+20161023213320",
-    "lodash": "registry:npm/lodash#4.0.0+20160416211519"
-  }
-}

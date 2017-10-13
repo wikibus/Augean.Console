@@ -1,70 +1,66 @@
-import './templates/console-templates';
-import './templates/fallback-templates';
-import "./templates/hydra-templates";
-import 'bower_components/ld-navigation/ld-navigation.html!';
-import 'bower_components/paper-material/paper-material.html!';
-import 'bower_components/paper-multidrawer-panel/paper-multidrawer-panel.html!';
-import 'bower_components/paper-header-panel/paper-header-panel.html!'
-import 'bower_components/paper-toolbar/paper-toolbar.html!'
-import 'bower_components/paper-tabs/paper-tabs.html!'
-import 'bower_components/paper-input/paper-input.html!'
-import 'bower_components/paper-styles/paper-styles.html!'
-import 'bower_components/paper-spinner/paper-spinner.html!'
-import 'bower_components/paper-card/paper-card.html!';
-import 'bower_components/iron-icons/iron-icons.html!';
-import 'bower_components/iron-pages/iron-pages.html!';
-import 'bower_components/iron-icons/av-icons.html!';
-import 'bower_components/iron-a11y-keys-behavior/iron-a11y-keys-behavior.html!';
-import 'bower_components/paper-icon-button/paper-icon-button.html!';
-import 'bower_components/paper-dialog/paper-dialog.html!';
-import 'bower_components/iron-meta/iron-meta.html!';
-import 'augeas';
-import './api-documentation/viewer';
-import './operation-views/operation-selector';
-import './entrypoint-selector';
-import {Hydra} from 'heracles';
-import './augean-console.html!';
+import {CustomElement, notify, compute, style} from "twc/polymer";
+import {PaperInput} from "bower:paper-input/paper-input.html";
+import {IHydraResource} from "heracles";
+
+import './libs/Templates.js';
+
+import 'bower:polymer/polymer-element.html';
+import 'bower:paper-styles/paper-styles.html';
+import 'bower:paper-input/paper-input.html';
+import 'bower:mat-elements/mat-spinner.html';
+import 'bower:ld-navigation/ld-navigation.html';
+import 'bower:app-layout/app-layout.html';
+import 'bower:iron-pages/iron-pages.html';
+import 'bower:paper-icon-button/paper-icon-button.html';
+import 'bower:iron-icons/iron-icons.html';
+import 'bower:iron-icon/iron-icon.html';
+import 'bower:iron-icons/av-icons.html';
+import 'bower:paper-styles/default-theme.html';
+import 'bower:paper-styles/typography.html';
+
+// import './operation-views/operation-selector';
+// import './hydra-views/hydra-collection';
+// import './hydra-views/hydra-member-view';
+// import './hydra-views/hydra-partial-view-pager';
+// import './resource-views/default-resource-view';
+// import './resource-views/default-literal-view';
 
 type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
 
-@component('augean-console')
-class AugeanConsole extends polymer.Base {
+@CustomElement()
+@style('augean-console.css')
+export class AugeanConsole extends Polymer.Element {
 
-    @property({value: null})
-    model:IHydraResource;
+    model: IHydraResource = null;
 
-    @property()
-    url:string;
+    url: string;
 
-    @property()
-    currentModel:Object;
+    currentModel: IHydraResource;
 
-    @property({readOnly: true})
-    lastError:Error;
+    readonly lastError: Error;
 
-    @property({notify: true, value: 'ready', type: String})
-    state:ConsoleState;
+    @notify()
+    state: ConsoleState = 'ready';
 
-    @computed()
-    hasApiDocumentation(model) {
-        return !!model && !!model.apiDocumentation;
-    }
+    _prevState: ConsoleState;
 
-    @computed()
-    urlInput() {
-        return this.$.resource;
-    }
+    @compute((model: IHydraResource) => !!model && !!model.apiDocumentation)
+    hasApiDocumentation: boolean;
 
-    attached() {
-        this.state = 'ready';
-    }
+    @compute(() => this.$.resource)
+    urlInput: PaperInput;
 
-    hasPreviousModel(_modelHistory) {
+    hasPreviousModel(_modelHistory: any) {
         return _modelHistory.base.length > 0;
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+        Polymer.importHref('dist/entrypoint-selector.html');
+    }
+
     showDocs() {
-        this.$.drawerPanel.openRightDrawer();
+        this.$.documentation.open();
     }
 
     load() {
@@ -72,49 +68,58 @@ class AugeanConsole extends polymer.Base {
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
     }
 
-    loadResource(value) {
-        Hydra.loadResource(value)
-            .then(res => {
-                this.model = res;
-                this.currentModel = res;
-                this.state = 'loaded';
-            })
-            .catch(err => {
-                this._setLastError(err);
-                this.state = 'error';
-            });
-    }
-
-    urlChanged(e) {
-        this.debounce('load-model', () => {
-            if (e.detail.value !== '/') {
-                this.$.resource.value = e.detail.value;
-                if (!this.$.resource.invalid) {
-                    this.state = 'loading';
-                    this.loadResource(this.$.resource.value);
-                }
-            }
+    loadResource(value: string) {
+        Polymer.importHref('dist/entrypoint-selector.html', () => {
+            Hypermedia.Hydra.loadResource(value)
+                .then((res: Response) => {
+                    this.model = res;
+                    this.currentModel = res;
+                    this.state = 'loaded';
+                })
+                .catch((err: Error) => {
+                    this._setLastError(err);
+                    this.state = 'error';
+                });
         });
     }
 
-    loadOnEnter(e) {
+    urlChanged(e: CustomEvent) {
+        Polymer.Debouncer.debounce(
+            null,
+            Polymer.Async.microTask,
+            () => {
+                if (e.detail.value !== '/') {
+                    this.$.resource.value = e.detail.value;
+                    if (!this.$.resource.invalid) {
+                        this.state = 'loading';
+                        this.loadResource(this.$.resource.value);
+                    }
+                }
+            });
+    }
+
+    loadOnEnter(e: KeyboardEvent) {
         if (e.keyCode === 13) {
             this.load();
         }
     }
 
-    @computed()
-    displayedModel(currentModel) {
-        return currentModel.collection || currentModel;
-    }
+    @compute((currentModel: IHydraResource) => currentModel.collection || currentModel)
+    displayedModel: IHydraResource;
 
-    showModel(ev) {
+    showModel(ev: CustomEvent) {
         this.push('_modelHistory', this.currentModel);
         this.currentModel = ev.detail;
     }
 
-    @listen('show-class-documentation')
-    showDocumentation(e:Event) {
+    _loadDocElements(e: CustomEvent) {
+        if(e.detail.value === true) {
+            Polymer.importHref('dist/api-documentation/viewer.html');
+        }
+    }
+
+    //@listen('show-class-documentation')
+    showDocumentation(e: CustomEvent) {
         this.$.apiDocumentation.selectClass(e.detail.classId);
         this.showDocs();
         e.stopPropagation();
@@ -124,7 +129,7 @@ class AugeanConsole extends polymer.Base {
         this.$.resource.focus();
     }
 
-    showOperationForm(e) {
+    showOperationForm(e: CustomEvent) {
         if (e.detail.operation.requiresInput == false) {
             e.detail.operation.invoke();
         } else {
@@ -141,5 +146,3 @@ class AugeanConsole extends polymer.Base {
         alert('op');
     }
 }
-
-AugeanConsole.register();
