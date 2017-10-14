@@ -2245,3 +2245,234 @@ declare module "bower:paper-fab/paper-fab.html" {
     hasRipple(): boolean;
   }
 }
+
+declare module "bower:paper-dialog/paper-dialog.html" {
+  export class PaperDialog {
+    /** * The element that will receive a `max-height`/`width`. By default it is the same as `this`,
+     * but it can be set to a child element. This is useful, for example, for implementing a
+     * scrolling region inside the element.
+     */
+    sizingTarget: any;
+
+    /** * The element to fit `this` into.
+     */
+    fitInto: any;
+
+    /** * Will position the element around the positionTarget without overlapping it.
+     */
+    noOverlap: boolean;
+
+    /** * The element that should be used to position the element. If not set, it will
+     * default to the parent node.
+     */
+    positionTarget: any;
+
+    /** * The orientation against which to align the element horizontally
+     * relative to the `positionTarget`. Possible values are "left", "right", "auto".
+     */
+    horizontalAlign: string;
+
+    /** * The orientation against which to align the element vertically
+     * relative to the `positionTarget`. Possible values are "top", "bottom", "auto".
+     */
+    verticalAlign: string;
+
+    /** * If true, it will use `horizontalAlign` and `verticalAlign` values as preferred alignment
+     * and if there's not enough space, it will pick the values which minimize the cropping.
+     */
+    dynamicAlign: boolean;
+
+    /** * A pixel value that will be added to the position calculated for the
+     * given `horizontalAlign`, in the direction of alignment. You can think
+     * of it as increasing or decreasing the distance to the side of the
+     * screen given by `horizontalAlign`.
+     *
+     * If `horizontalAlign` is "left", this offset will increase or decrease
+     * the distance to the left side of the screen: a negative offset will
+     * move the dropdown to the left; a positive one, to the right.
+     *
+     * Conversely if `horizontalAlign` is "right", this offset will increase
+     * or decrease the distance to the right side of the screen: a negative
+     * offset will move the dropdown to the right; a positive one, to the left.
+     */
+    horizontalOffset: number;
+
+    /** * A pixel value that will be added to the position calculated for the
+     * given `verticalAlign`, in the direction of alignment. You can think
+     * of it as increasing or decreasing the distance to the side of the
+     * screen given by `verticalAlign`.
+     *
+     * If `verticalAlign` is "top", this offset will increase or decrease
+     * the distance to the top side of the screen: a negative offset will
+     * move the dropdown upwards; a positive one, downwards.
+     *
+     * Conversely if `verticalAlign` is "bottom", this offset will increase
+     * or decrease the distance to the bottom side of the screen: a negative
+     * offset will move the dropdown downwards; a positive one, upwards.
+     */
+    verticalOffset: number;
+
+    /** * Set to true to auto-fit on attach.
+     */
+    autoFitOnAttach: boolean;
+
+    /** * True if the overlay is currently displayed.
+     */
+    opened: boolean;
+
+    /** * True if the overlay was canceled when it was last closed.
+     */
+    canceled: boolean;
+
+    /** * Set to true to display a backdrop behind the overlay. It traps the focus
+     * within the light DOM of the overlay.
+     */
+    withBackdrop: boolean;
+
+    /** * Set to true to disable auto-focusing the overlay or child nodes with
+     * the `autofocus` attribute` when the overlay is opened.
+     */
+    noAutoFocus: boolean;
+
+    /** * Set to true to disable canceling the overlay with the ESC key.
+     */
+    noCancelOnEscKey: boolean;
+
+    /** * Set to true to disable canceling the overlay by clicking outside it.
+     */
+    noCancelOnOutsideClick: boolean;
+
+    /** * Contains the reason(s) this overlay was last closed (see `iron-overlay-closed`).
+     * `IronOverlayBehavior` provides the `canceled` reason; implementers of the
+     * behavior can provide other reasons in addition to `canceled`.
+     */
+    closingReason: any;
+
+    /** * Set to true to enable restoring of focus when overlay is closed.
+     */
+    restoreFocusOnClose: boolean;
+
+    /** * Set to true to keep overlay always on top.
+     */
+    alwaysOnTop: boolean;
+
+    /** * If `modal` is true, this implies `no-cancel-on-outside-click`, `no-cancel-on-esc-key` and `with-backdrop`.
+     */
+    modal: boolean;
+
+    /** * Animation configuration. See README for more info.
+     */
+    animationConfig: any;
+
+    /** * Convenience property for setting an 'entry' animation. Do not set `animationConfig.entry`
+     * manually if using this. The animated node is set to `this` if using this property.
+     */
+    entryAnimation: string;
+
+    /** * Convenience property for setting an 'exit' animation. Do not set `animationConfig.exit`
+     * manually if using this. The animated node is set to `this` if using this property.
+     */
+    exitAnimation: string;
+    /** * Positions and fits the element into the `fitInto` element.
+     */
+    fit();
+
+    /** * Resets the target element's position and size constraints, and clear
+     * the memoized data.
+     */
+    resetFit();
+
+    /** * Equivalent to calling `resetFit()` and `fit()`. Useful to call this after
+     * the element or the `fitInto` element has been resized, or if any of the
+     * positioning properties (e.g. `horizontalAlign, verticalAlign`) is updated.
+     * It preserves the scroll position of the sizingTarget.
+     */
+    refit();
+
+    /** * Positions the element according to `horizontalAlign, verticalAlign`.
+     */
+    position();
+
+    /** * Constrains the size of the element to `fitInto` by setting `max-height`
+     * and/or `max-width`.
+     */
+    constrain();
+
+    /** * Centers horizontally and vertically if not already positioned. This also sets
+     * `position:fixed`.
+     */
+    center();
+
+    /** * Can be called to manually notify a resizable and its descendant
+     * resizables of a resize change.
+     */
+    notifyResize();
+
+    /** * Used to assign the closest resizable ancestor to this resizable
+     * if the ancestor detects a request for notifications.
+     */
+    assignParentResizable(parentResizable: any);
+
+    /** * Used to remove a resizable descendant from the list of descendants
+     * that should be notified of a resize change.
+     */
+    stopResizeNotificationsFor(target: any);
+
+    /** * This method can be overridden to filter nested elements that should or
+     * should not be notified by the current element. Return true if an element
+     * should be notified, or false if it should not be notified.
+     *
+     * @param {HTMLElement} element A candidate descendant element that
+    implements `IronResizableBehavior`.
+     * @return {boolean} True if the `element` should be notified of resize.
+     */
+    resizerShouldNotify(element: any): boolean;
+
+    /** * The backdrop element.
+     *
+     * @type {Element}
+     */
+    backdropElement();
+
+    /** * Toggle the opened state of the overlay.
+     */
+    toggle();
+
+    /** * Open the overlay.
+     */
+    open();
+
+    /** * Close the overlay.
+     */
+    close();
+
+    /** * Cancels the overlay.
+     *
+     * @param event The original event
+     */
+    cancel(event: any);
+
+    /** * Invalidates the cached tabbable nodes. To be called when any of the focusable
+     * content changes (e.g. a button is disabled).
+     */
+    invalidateTabbables();
+
+    /** * An element implementing `Polymer.NeonAnimationRunnerBehavior` calls this method to configure
+     * an animation with an optional type. Elements implementing `Polymer.NeonAnimatableBehavior`
+     * should define the property `animationConfig`, which is either a configuration object
+     * or a map of animation type to array of configuration objects.
+     */
+    getAnimationConfig(type: any);
+
+    /** * Plays an animation with an optional `type`.
+     *
+     * @param type
+     * @param cookie
+     */
+    playAnimation(type: string, cookie: any);
+
+    /** * Cancels the currently running animations.
+     */
+    cancelAnimation();
+  }
+}

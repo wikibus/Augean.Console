@@ -29,7 +29,8 @@
     "paper-tooltip": "polymerelements/paper-tooltip#^2.0.1",
     "ld-navigation": "^0.4",
     "paper-fab": "^2.0.0",
-    "mat-elements": "expandjs/mat-elements#^1.3.0"
+    "mat-elements": "expandjs/mat-elements#^1.3.0",
+    "paper-dialog": "polymerelements/paper-dialog#^2.0.0"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"

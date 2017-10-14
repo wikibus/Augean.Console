@@ -12,6 +12,8 @@
                 <span data-url="http://www.markus-lanthaler.com/hydra/api-demo/">Hydra demo API</span>
             </entrypoint-selector>
         </app-toolbar>
+
+        <resource-outline root-resource="[[currentModel]]"></resource-outline>
     </app-drawer>
 
     <app-drawer id="documentation" align="end" slot="drawer" swipe-open on-opened-changed="_loadDocElements">

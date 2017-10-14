@@ -18,13 +18,6 @@ import 'bower:iron-icons/av-icons.html';
 import 'bower:paper-styles/default-theme.html';
 import 'bower:paper-styles/typography.html';
 
-// import './operation-views/operation-selector';
-// import './hydra-views/hydra-collection';
-// import './hydra-views/hydra-member-view';
-// import './hydra-views/hydra-partial-view-pager';
-// import './resource-views/default-resource-view';
-// import './resource-views/default-literal-view';
-
 type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
 
 @CustomElement()
@@ -76,11 +69,16 @@ export class AugeanConsole extends Polymer.Element {
                     this.currentModel = res;
                     this.state = 'loaded';
                 })
+                .then(this._loadOutlineElement)
                 .catch((err: Error) => {
                     this._setLastError(err);
                     this.state = 'error';
                 });
         });
+    }
+
+    _loadOutlineElement() {
+        Polymer.importHref('dist/outline/resource-outline.html');
     }
 
     urlChanged(e: CustomEvent) {

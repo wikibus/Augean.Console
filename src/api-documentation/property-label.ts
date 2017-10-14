@@ -26,7 +26,7 @@ class PropertyLabel extends Polymer.Element {
 
     @observe('resource', 'propertyId')
     getTitle(resource: IHydraResource, propertyId: string) {
-        if (resource.apiDocumentation) {
+        if (resource && resource.apiDocumentation) {
             let properties;
             if (Array.isArray(resource.types)) {
                 properties = resource.types.map((t: IClass) => resource.apiDocumentation.getProperties(t));
