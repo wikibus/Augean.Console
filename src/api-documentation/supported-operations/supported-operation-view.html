@@ -1,0 +1,27 @@
+<p>
+    [[supportedOperation.title]]
+</p>
+
+<p>
+    [[supportedOperation.description]]
+</p>
+
+<p>
+    <b>Expects</b>:
+    <supported-class-link hidden$="[[!hasExpects]]" supported-class="[[supportedOperation.expects]]"></supported-class-link>
+    <span hidden$="[[hasExpects]]">[[expectsTitle]]</span>
+</p>
+
+<p>
+    <b>Returns</b>:
+    <supported-class-link hidden$="[[!hasReturns]]" supported-class="[[supportedOperation.returns]]"></supported-class-link>
+    <span hidden$="[[hasReturns]]">[[returnsTitle]]</span>
+</p>
+
+<div hidden$="[[!supportedOperation.statusCodes]]">
+    <template is="dom-bind" items="[[supportedOperation.statusCodes]]" as="status">
+        <p>
+            <b>[[status.code]]</b>: [[status.description]]
+        </p>
+    </template>
+</div>

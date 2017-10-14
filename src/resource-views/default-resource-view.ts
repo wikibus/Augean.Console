@@ -1,27 +1,25 @@
-import './default-resource-view.html!';
+import {CustomElement, compute} from 'twc/polymer';
+import {IHydraResource} from "heracles";
+
 import '../api-documentation/property-label';
-import 'src/api-documentation/property-label';
-import 'bower_components/paper-tabs/paper-tabs.html!';
-import 'bower_components/paper-card/paper-card.html!';
-import 'bower_components/ld-navigation/ld-navigation.html!';
-import {ObjectGetter} from '../hydra-views/hydra-behaviors';
-import * as _ from 'lodash';
+import 'bower:paper-tabs/paper-tabs.html';
+import 'bower:paper-card/paper-card.html';
+import 'bower:ld-navigation/ld-navigation.html';
+import './resource-card';
 
-@behavior(ObjectGetter)
-@component('default-resource-view')
-class DefaultResourceView extends polymer.Base {
+@CustomElement()
+class DefaultResourceView extends Polymer.Element {
 
-    @property()
-    resource:IHydraResource;
+    resource: IHydraResource;
 
-    @property({ value: 0 })
-    tab:number;
+    tab: number = 0;
 
-    @property({ type: Boolean, value: false })
-    nested:Boolean;
+    nested: Boolean = false;
 
-    @computed()
-    image(resource) {
+    @compute('_getImage', ['resource'])
+    image: object;
+
+    _getImage(resource: IHydraResource) {
         if (resource['http://schema.org/image']) {
             return resource['http://schema.org/image']['http://schema.org/thumbnail']['http://schema.org/contentUrl'];
         }
@@ -29,17 +27,18 @@ class DefaultResourceView extends polymer.Base {
         return null;
     }
 
-    @computed()
-    objectProperties(resource) {
+    @compute('_getObjectProperties', ['resource'])
+    objectProperties: Array<object>;
+
+    _getObjectProperties(resource: IHydraResource) {
         if (typeof resource === 'string') return [];
 
-        var pairs = _.toPairs(resource)
+        return Object.entries(resource)
             .filter(pair => !(pair[1].startsWith && pair[1].startsWith('_:')))
             .map(pair => ({
                 id: pair[0],
                 value: getValue(pair[1])
             }));
-        return pairs;
     }
 
     load() {
@@ -47,35 +46,6 @@ class DefaultResourceView extends polymer.Base {
     }
 }
 
-function getValue(object) {
-    return object ['@value'] || object;
+function getValue(object: any) {
+    return object['@value'] || object;
 }
-
-@component('resource-card')
-class ResourceCard extends polymer.Base {
-
-    @property()
-    propertyId:String;
-
-    @property()
-    object:Object;
-
-    @property()
-    subject:Object;
-
-    @property({ type: Boolean })
-    nested = false;
-
-    @computed({ reflectToAttribute: true })
-    isId(propertyId):boolean {
-        return this.propertyId === '@id';
-    }
-
-    @computed({ reflectToAttribute: true })
-    hideId(isId, nested) {
-        return isId;
-    }
-}
-
-ResourceCard.register();
-DefaultResourceView.register();

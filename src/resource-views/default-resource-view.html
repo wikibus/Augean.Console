@@ -1,61 +1,6 @@
-<dom-module id="default-resource-view">
-    <template>
-        <style>
-            :host {
-                display: block;
-
-                --resource-card: {
-                    min-width: 250px;
-                }
-            }
-
-            .properties {
-                display: flex;
-            }
-
-            resource-card:not([nested])[is-id] {
-                display: none;
-            }
-        </style>
-
-        <div id="properties">
-            <template is="dom-repeat" items="[[objectProperties]]" as="property">
-                <resource-card nested$="[[nested]]" subject="[[resource]]" property-id="[[property.id]]" object="[[property.value]]"></resource-card>
-            </template>
-        </div>
-
+<div id="properties">
+    <template is="dom-repeat" items="[[objectProperties]]" as="property">
+        <resource-card nested$="[[nested]]" subject="[[resource]]" property-id="[[property.id]]"
+                       object="[[property.value]]"></resource-card>
     </template>
-</dom-module>
-
-<dom-module id="resource-card">
-    <template>
-        <style>
-            :host {
-                display: inline-block;
-                margin: 5px;
-                @apply(--resource-card);
-            }
-
-            paper-card {
-                width: 100%;
-            }
-        </style>
-
-        <div hidden$="[[!isId]]">
-            <a is="ld-link" resource-url="[[object]]">[[object]]</a>
-        </div>
-
-        <paper-card hidden$="[[isId]]">
-            <div class="card-content">
-                <h2>
-                    <property-label resource="[[subject]]" property-id="[[propertyId]]"></property-label>
-                </h2>
-                <ags-view predicate="[[propertyId]]" object="[[object]]" params='{ "nested": true }'></ags-view>
-            </div>
-            <div class="card-actions" hidden$="[[!actionsRendered]]">
-                <ags-view template-scope="resource-card-actions" predicate="[[propertyId]]" object="[[object]]"
-                             ignore-missing="true" has-been-rendered="{{actionsRendered}}"></ags-view>
-            </div>
-        </paper-card>
-    </template>
-</dom-module>
+</div>

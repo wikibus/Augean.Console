@@ -1,0 +1,6 @@
+{
+  "name": "Augean.Console",
+  "short_name": "Augean.Console",
+  "start_url": "/",
+  "display": "standalone"
+}

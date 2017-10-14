@@ -1,18 +1,18 @@
-import './hydra-partial-view-pager.html!';
-import 'bower_components/paper-button/paper-button.html!';
-import 'bower_components/paper-card/paper-card.html!';
-import {ObjectGetter} from './hydra-behaviors';
+import 'bower:paper-button/paper-button.html';
+import 'bower:paper-card/paper-card.html';
+import {IPartialCollectionView} from "heracles";
+import { CustomElement, style } from 'twc/polymer';
 
-@behavior(ObjectGetter)
-@component('hydra-partial-view-pager')
-class PartialViewPager extends polymer.Base {
-    
-    @property()
+@CustomElement()
+@style(`paper-card {
+                width: 100%;
+                margin: 5px;
+            }`)
+class HydraPartialViewPager extends Polymer.Element {
+
     view: IPartialCollectionView;
 
-    go(ev) {
+    go(ev: Event) {
         LdNavigation.Helpers.fireNavigation(this, ev.target.dataTo);
     }
 }
-
-PartialViewPager.register();

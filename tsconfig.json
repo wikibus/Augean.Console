@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "target": "es2016",
+    "outDir": "dist",
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "files": [
+  ],
+  "include": [
+    "node_modules/twc/types/polymer.decorators.d.ts",
+    "node_modules/twc/types/polymer.d.ts",
+    "types/*.d.ts",
+    "src/**/*.ts",
+    "potts.d.ts"
+  ]
+}

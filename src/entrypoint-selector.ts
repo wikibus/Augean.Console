@@ -1,17 +1,21 @@
-import './entrypoint-selector.html!';
-import 'bower_components/vaadin-combo-box/vaadin-combo-box.html!'
+import { CustomElement, notify, template } from 'twc/polymer';
+import 'bower:polymer/polymer-element.html';
+import './libs/Hypermedia.js';
+import 'bower:vaadin-combo-box/vaadin-combo-box.html'
 
-@component('entrypoint-selector')
-class EntrypointSelector extends polymer.Base {
+@CustomElement()
+@template('<vaadin-combo-box id="selector" label="Select Hydra API" items="[[apis]]" on-value-changed="_entrypointSelected"></vaadin-combo-box>')
+export class EntrypointSelector extends Polymer.Element {
 
-    @property({notify: true, type: String, readOnly: true})
-    url:string;
+    @notify()
+    url: string;
 
-    @property({readOnly: true})
-    apis:Array;
+    readonly apis: Array<string>;
 
-    attached() {
-        var apis = Polymer.dom(this).children.map(apiEl => {
+    ready() {
+        super.ready();
+
+        const apis = Array.prototype.map.call(this.children, (apiEl: HTMLElement) => {
             return {
                 label: apiEl.textContent,
                 value: apiEl.getAttribute('data-url')
@@ -19,11 +23,15 @@ class EntrypointSelector extends polymer.Base {
         });
 
         this._setApis(apis);
+
+        if(apis.filter((api: any) => api.value === this.url)) {
+            this.$.selector.value = this.url;
+        }
     }
 
-    _entrypointSelected(e) {
-        this._setUrl(e.detail.value);
+    _entrypointSelected(e: CustomEvent) {
+        if(e.detail.value) {
+            this.url = e.detail.value;
+        }
     }
 }
-
-EntrypointSelector.register();

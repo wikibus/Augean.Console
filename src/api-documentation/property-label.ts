@@ -1,40 +1,42 @@
-import './property-label.html!';
-import 'bower_components/paper-tooltip/paper-tooltip.html!'
-import * as _ from 'lodash';
+import { CustomElement, observe, compute, notify } from 'twc/polymer';
+import {IClass, IHydraResource, IResource, ISupportedProperty} from "heracles";
+import '../libs/Utils.js';
 
-@component('property-label')
-class PropertyLabel extends polymer.Base {
+import 'bower:paper-tooltip/paper-tooltip.html';
+import 'bower:polymer/polymer-element.html';
 
-    @property({readOnly: true})
-    supportedProperty:ISupportedProperty;
+@CustomElement()
+class PropertyLabel extends Polymer.Element {
 
-    @property()
+    readonly supportedProperty: ISupportedProperty;
+
     propertyId:string;
 
-    @computed({notify: true})
-    propertyTitle(supportedProperty:ISupportedProperty, propertyId) {
-        return supportedProperty.title || propertyId;
-    }
+    @notify()
+    @compute((supportedProperty:ISupportedProperty, propertyId: string) => {
+        if(supportedProperty && supportedProperty.title) {
+            return supportedProperty.title;
+        }
 
-    @property()
-    resource:Object;
+        return propertyId;
+    })
+    propertyTitle: string;
 
-    @observe('resource, propertyId')
-    getTitle(resource:IHydraResource, propertyId) {
+    resource: IResource;
+
+    @observe('resource', 'propertyId')
+    getTitle(resource: IHydraResource, propertyId: string) {
         if (resource.apiDocumentation) {
-            var properties;
-            if (_.isArray(resource['@type'])) {
-                properties = _.map(resource['@type'], t => resource.apiDocumentation.getProperties(t));
+            let properties;
+            if (Array.isArray(resource.types)) {
+                properties = resource.types.map((t: IClass) => resource.apiDocumentation.getProperties(t));
             }
             else {
-                properties = [resource.apiDocumentation.getProperties(resource['@type'])]
+                properties = [resource.apiDocumentation.getProperties(resource.types)];
             }
 
-            var supportedProp = _.chain(properties)
-                .flatten()
-                .filter(prop => prop.property.id === propertyId)
-                .head()
-                .value();
+            const supportedProps = Utils.flatten(properties);
+            const [ supportedProp, ...tail ] = supportedProps.filter((prop: ISupportedProperty) => prop.property.id === propertyId);
 
             if (supportedProp) {
                 this._setSupportedProperty(supportedProp);
@@ -45,5 +47,3 @@ class PropertyLabel extends polymer.Base {
         this._setSupportedProperty(propertyId);
     }
 }
-
-PropertyLabel.register();

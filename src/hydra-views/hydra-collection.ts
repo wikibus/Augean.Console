@@ -1,12 +1,9 @@
-import './hydra-collection.html!';
-import {ObjectGetter} from './hydra-behaviors';
+import { CustomElement, style } from 'twc/polymer';
+import 'bower:polymer/polymer-element.html';
 
-@behavior(ObjectGetter)
-@component('hydra-collection')
-class HydraCollection extends polymer.Base {
+@CustomElement()
+@style('hydra-collection.css')
+class HydraCollection extends Polymer.Element {
 
-    @property()
-    collection: Object;
+    collection: object;
 }
-
-HydraCollection.register();
