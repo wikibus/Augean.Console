@@ -12,10 +12,7 @@ import {IHydraResource} from "heracles";
 import '../api-documentation/property-label';
 
 @CustomElement()
-@style(`
-mat-sublist mat-item {
-    padding-left: 80px !important
-`)
+@style(`:host { display: block; overflow: scroll; }`)
 export class ResourceOutline extends Polymer.Element {
     rootResource: IHydraResource;
 
@@ -32,16 +29,30 @@ export class ResourceOutline extends Polymer.Element {
     currentProperties: Array<string>;
 
     _getCurrentProperties(resource: IHydraResource) {
-        return Object.entries(resource)
-                     .filter(entry => entry[1]['@id'])
-                     .map(entry => ({
-                         id: entry[1]['@id'],
-                         property: entry[0]
-                     }));
+        const enumerableProperties = Object.entries(resource)
+            .filter(entry => entry[1]['@id'] || Array.isArray(entry[1]))
+            .map(entry => {
+                const id = Array.isArray(entry[1])
+                    ? 'Multiple items'
+                    : entry[1]['@id'];
+
+                return {
+                    id: id,
+                    property: entry[0]
+                };
+            });
+
+        return [...enumerableProperties];
     }
 
     _getPath(uri: string) {
-        return new URL(uri).pathname;
+        try {
+
+            const url = new URL(uri);
+            return url.pathname + url.search;
+        } catch(e) {
+            return uri;
+        }
     }
 
     @observe()
@@ -50,7 +61,7 @@ export class ResourceOutline extends Polymer.Element {
     }
 
     _changeResource(e: CustomEvent) {
-        const property = e.model.item.property;
+        const property = e.target.data;
         this._history.push(this.resource);
         this._setResource(this.resource[property]);
         this._set_hasHistory(true);

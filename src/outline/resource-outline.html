@@ -1,4 +1,4 @@
-<mat-list style="height: 272px">
+<mat-list>
     <mat-item label="[[_getPath(resourceId)]]" on-xp-activate="_goUp">
         <template is="dom-if" if="[[!_hasHistory]]" >
             <mat-avatar icon-src="https://www.w3.org/RDF/icons/rdf_flyer.svg" slot="primary" alt="rdf" />
@@ -13,8 +13,14 @@
     <mat-divider></mat-divider>
 
     <template is="dom-repeat" items="[[currentProperties]]">
-        <mat-item label="[[_getPath(item.id)]]" on-xp-activate="_changeResource">
+        <mat-item label="[[_getPath(item.id)]]" data="[[item.property]]" on-xp-activate="_changeResource">
             <property-label resource="[[resource]]" property-id="[[item.property]]"></property-label>
+        </mat-item>
+    </template>
+
+    <template is="dom-if" if="[[resource.collection]]">
+        <mat-item label="[[_getPath(resource.collection.id)]]" data="collection" on-xp-activate="_changeResource">
+            <span>Collection</span>
         </mat-item>
     </template>
 </mat-list>
