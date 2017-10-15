@@ -12,7 +12,8 @@
     "dist/hydra-views/hydra-partial-view-pager.html",
     "dist/resource-views/default-resource-view.html",
     "dist/resource-views/default-literal-view.html",
-    "dist/entrypoint-selector.html"
+    "dist/entrypoint-selector.html",
+    "bower_components/mat-elements/mat-table.html"
   ],
   "extraDependencies": [
     "manifest.json",
