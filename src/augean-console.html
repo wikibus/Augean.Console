@@ -62,7 +62,7 @@
 
             <div data-state="loaded">
                 <iron-meta key="apiDocs" value="[[displayedModel.apiDocumentation]]"></iron-meta>
-                <ags-view value="[[displayedModel]]"></ags-view>
+                <ags-view value="[[displayedModel]]" ignore-missing></ags-view>
 
                 <operation-selector operations="[[displayedModel.operations]]" on-operation-selected="showOperationForm"
                                     operation="{{operation}}"></operation-selector>
