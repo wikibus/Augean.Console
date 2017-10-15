@@ -9,15 +9,13 @@
     "bower_components",
     "node_modules"
   ],
-  "devDependencies": {
+  "dependencies": {
     "babel-loader": "^7.1.2",
     "babel-minify-webpack-plugin": "^0.2.0",
     "polymer-cli": "^1.5.5",
     "potts": "^1.2.1",
     "twc": "^0.4.4-rc",
-    "webpack": "^3.6.0"
-  },
-  "dependencies": {
+    "webpack": "^3.6.0",
     "@types/lodash": "^4.14.74",
     "augeas": "git://github.com/wikibus/augeas.git#master",
     "heracles": "git://github.com/wikibus/heracles.git#webpack",
