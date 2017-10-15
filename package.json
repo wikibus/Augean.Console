@@ -4,7 +4,7 @@
     "build": "twc && webpack && polymer build",
     "typings": "potts",
     "watch": "twc -w & webpack -w",
-    "postinstall": "npm i -g yarn; yarn global add prpl-server"
+    "postinstall": "yarn global add prpl-server"
   },
   "cacheDirectories": [
     "bower_components",
