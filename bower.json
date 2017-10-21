@@ -37,8 +37,8 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
   },
   "resolutions": {
-    "polymer": "1.9 - 2",
-    "iron-flex-layout": "1 - 2",
-    "webcomponentsjs": "^v1.0.2"
+    "polymer": "^2.0.0",
+    "iron-flex-layout": "^2.0.0",
+    "webcomponentsjs": "^1.0.0"
   }
 }
