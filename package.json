@@ -4,7 +4,7 @@
     "build": "twc && webpack && polymer build",
     "typings": "potts",
     "watch": "twc -w & webpack -w",
-    "postinstall": "bower i",
+    "preinstall": "bower i",
     "heroku-prebuild": "yarn run build"
   },
   "cacheDirectories": [
