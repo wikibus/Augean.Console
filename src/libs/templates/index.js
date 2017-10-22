@@ -12,7 +12,7 @@ ViewTemplates.when
     .renders((render, collection) => {
         Polymer.importHref('dist/hydra-views/hydra-collection.html');
 
-        const view = collection.view;
+        const view = collection.views[0];
 
         return html`
             <hydra-collection collection="${collection}"></hydra-collection>

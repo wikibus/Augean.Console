@@ -56,10 +56,6 @@
                 Hello
             </div>
 
-            <div id="spinner-container" data-state="loading">
-                <mat-spinner showed></mat-spinner>
-            </div>
-
             <div data-state="loaded">
                 <iron-meta key="apiDocs" value="[[displayedModel.apiDocumentation]]"></iron-meta>
                 <ags-view value="[[displayedModel]]" ignore-missing></ags-view>
@@ -82,5 +78,9 @@
                 <p>[[lastError]]</p>
             </div>
         </iron-pages>
+
+        <loading-overlay opened="[[isLoading]]">
+            <mat-spinner showed></mat-spinner>
+        </loading-overlay>
     </app-header-layout>
 </app-drawer-layout>

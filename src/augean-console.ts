@@ -7,7 +7,7 @@ import './libs/Templates.js';
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
 import 'bower:paper-input/paper-input.html';
-import 'bower:mat-elements/mat-spinner.html';
+import './helper-elements/loading-overlay';
 import 'bower:ld-navigation/ld-navigation.html';
 import 'bower:app-layout/app-layout.html';
 import 'bower:iron-pages/iron-pages.html';
@@ -18,7 +18,7 @@ import 'bower:iron-icons/av-icons.html';
 import 'bower:paper-styles/default-theme.html';
 import 'bower:paper-styles/typography.html';
 
-type ConsoleState = 'ready' | 'loading' | 'loaded' | 'error' | 'operation';
+type ConsoleState = 'ready' | 'loaded' | 'error' | 'operation';
 
 @CustomElement()
 @style('augean-console.css')
@@ -34,6 +34,8 @@ export class AugeanConsole extends Polymer.Element {
 
     @notify()
     state: ConsoleState = 'ready';
+
+    readonly isLoading: boolean = false;
 
     _prevState: ConsoleState;
 
@@ -57,7 +59,7 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     load() {
-        this.state = 'loading';
+        this._setIsLoading(true);
         LdNavigation.Helpers.fireNavigation(this, this.$.resource.value);
     }
 
@@ -68,11 +70,13 @@ export class AugeanConsole extends Polymer.Element {
                     this.model = res;
                     this.currentModel = res;
                     this.state = 'loaded';
+                    this._setIsLoading(false);
                 })
                 .then(this._loadOutlineElement)
                 .catch((err: Error) => {
                     this._setLastError(err);
                     this.state = 'error';
+                    this._setIsLoading(false);
                 });
         });
     }
@@ -89,7 +93,7 @@ export class AugeanConsole extends Polymer.Element {
                 if (e.detail.value !== '/') {
                     this.$.resource.value = e.detail.value;
                     if (!this.$.resource.invalid) {
-                        this.state = 'loading';
+                        this._setIsLoading(true);
                         this.loadResource(this.$.resource.value);
                     }
                 }
