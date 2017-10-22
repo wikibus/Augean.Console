@@ -12,19 +12,23 @@ ViewTemplates.when
     .renders((render, collection) => {
         Polymer.importHref('dist/hydra-views/hydra-collection.html');
 
-        const view = collection['http://www.w3.org/ns/hydra/core#view'];
+        const view = collection.view;
 
         return html`
             <hydra-collection collection="${collection}"></hydra-collection>
         
-            ${render(view, 'pager')}`;
+            ${view ? render(view, 'pager') : ''}`;
     });
 
 ViewTemplates.when
     .value(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#Collection')
     .scope(s => s === 'hydra-collection')
     .renders((render, collection) => {
-        const members = collection['http://www.w3.org/ns/hydra/core#member'];
+        const members = collection.members;
+
+        if(!members || members.length === 0) {
+            return html``;
+        }
 
         const properties = members[0].types.map(type => members[0].apiDocumentation.getProperties(type))
             .reduce((acc, val) => [...acc, ...val]);
@@ -37,6 +41,7 @@ ViewTemplates.when
                         <th>
                             <span><property-label resource="${members[0]}" property-id$="${property.property.id}"></property-label></span>
                         </th>`)}
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +51,11 @@ ViewTemplates.when
                         <td>
                             <span>${render(member[property.property.id] || '', 'collection-member')}</span>
                         </td>`)}
+                        <td>
+                            <ld-link resource-url$="${member.id}">
+                                <paper-icon-button icon="chevron-right"></paper-icon-button>
+                            </ld-link>
+                        </td>
                     </tr>`)}
                 </tbody>
             </table>`;
@@ -53,10 +63,19 @@ ViewTemplates.when
 
 ViewTemplates.when
     .scope(s => s === 'collection-member')
-    .value(v => v.id && v.id.startsWith('http://lexvo.org') >= 0)
+    .value(v => v.id && v.id.startsWith('http://lexvo.org'))
     .renders((render, value) => {
         const countryCode = value.id.replace('http://lexvo.org/id/iso639-1/', '');
         return html`${countryCode} `;
+    });
+
+ViewTemplates.when
+    .scope(s => s === 'collection-member')
+    .value(v => !!v.id)
+    .renders((render, value) => {
+        return html`<ld-link resource-url$="${value.id}">
+                        <a>${value.title || value.id}</a>
+                    </ld-link> `;
     });
 
 ViewTemplates.when

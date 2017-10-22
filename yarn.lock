@@ -3548,7 +3548,7 @@ he@1.1.1, he@1.1.x:
 
 "heracles@git://github.com/wikibus/heracles.git#master":
   version "0.1.3-a2"
-  resolved "git://github.com/wikibus/heracles.git#b3aee160e1f253018effa82206cd7fbe480018c4"
+  resolved "git://github.com/wikibus/heracles.git#07951e525b6e149dada583d3edc77650a6117d7e"
   dependencies:
     isomorphic-fetch "^2.2.1"
     jsonld "^0.4.12"
