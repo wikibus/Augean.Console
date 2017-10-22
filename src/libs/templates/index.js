@@ -1,20 +1,35 @@
-import {ViewTemplates} from 'augeas';
+import {ViewTemplates, render} from 'augeas';
 import {html} from 'lit-html';
 import {repeat} from 'lit-html/lib/repeat';
 
+window.TemplateUtil = {
+    render
+};
+
 ViewTemplates.when
     .value(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#Collection')
+    .scope(s => s === null)
     .renders((render, collection) => {
-        Polymer.importHref('bower_components/mat-elements/mat-table.html');
+        Polymer.importHref('dist/hydra-views/hydra-collection.html');
 
-        const members = collection['http://www.w3.org/ns/hydra/core#member'];
         const view = collection['http://www.w3.org/ns/hydra/core#view'];
+
+        return html`
+            <hydra-collection collection="${collection}"></hydra-collection>
+        
+            ${render(view, 'pager')}`;
+    });
+
+ViewTemplates.when
+    .value(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#Collection')
+    .scope(s => s === 'hydra-collection')
+    .renders((render, collection) => {
+        const members = collection['http://www.w3.org/ns/hydra/core#member'];
 
         const properties = members[0].types.map(type => members[0].apiDocumentation.getProperties(type))
             .reduce((acc, val) => [...acc, ...val]);
 
         return html`
-        <mat-table>
             <table>
                 <thead>
                     <tr>
@@ -33,10 +48,7 @@ ViewTemplates.when
                         </td>`)}
                     </tr>`)}
                 </tbody>
-            </table>
-        </mat-table>
-        
-        ${render(view, 'pager')}`;
+            </table>`;
     });
 
 ViewTemplates.when

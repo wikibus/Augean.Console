@@ -782,7 +782,7 @@ asynckit@^0.4.0:
 
 "augeas@git://github.com/wikibus/augeas.git#master":
   version "0.2.0-aloha"
-  resolved "git://github.com/wikibus/augeas.git#abfc17463df1b5392bb1b687adc06600727e4134"
+  resolved "git://github.com/wikibus/augeas.git#b00b726c338d15aa9d344a6d35ccff10ae2c03a1"
   dependencies:
     "@polymer/polymer" "^3.0.0-pre.1"
     core-js "^2.5.1"
@@ -4127,11 +4127,7 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lit-html@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.6.0.tgz#3d756ea67f6d0cac1c0e78ef9e52d4335198b728"
-
-lit-html@^0.7.1:
+lit-html@0.7.1, lit-html@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.7.1.tgz#61785045cf84f9ee955fa078c2985b52b765ad16"
 

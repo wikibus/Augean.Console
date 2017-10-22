@@ -15,6 +15,7 @@ module.exports = {
         'Hypermedia': path.resolve(__dirname, 'src/libs/Hypermedia.js'),
         'Utils': path.resolve(__dirname, 'src/libs/Utils.js'),
         'Templates': path.resolve(__dirname, 'src/libs/templates/index.js'),
+        'Cycle': path.resolve(__dirname, 'src/libs/cycle.js'),
     },
     module: {
         rules: [

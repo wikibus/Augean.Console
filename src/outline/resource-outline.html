@@ -1,7 +1,7 @@
 <mat-list>
     <mat-item label="[[_getPath(resourceId)]]" on-xp-activate="_goUp">
         <template is="dom-if" if="[[!_hasHistory]]" >
-            <mat-avatar icon-src="https://www.w3.org/RDF/icons/rdf_flyer.svg" slot="primary" alt="rdf" />
+            <mat-avatar icon-src="https://www.w3.org/RDF/icons/rdf_flyer.svg" slot="primary" alt="rdf" ></mat-avatar>
         </template>
         <template is="dom-if" if="[[_hasHistory]]" >
             <paper-icon-button icon="arrow-back" slot="primary"></paper-icon-button>
