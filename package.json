@@ -8,7 +8,6 @@
     "heroku-postbuild": "yarn run build"
   },
   "cacheDirectories": [
-    "bower_components",
     "node_modules"
   ],
   "dependencies": {
