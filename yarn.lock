@@ -2,6 +2,345 @@
 # yarn lockfile v1
 
 
+"@bower_components/app-layout@PolymerElements/app-layout#^2.0.1":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/app-layout/tar.gz/623997a76bea695a51de0d4e96e11a8198e367da"
+
+"@bower_components/codemirror@Codemirror/codemirror#5.19.0":
+  version "5.19.0"
+  resolved "https://codeload.github.com/Codemirror/codemirror/tar.gz/a350d03f15df2892e41b094faa85a08459942845"
+
+"@bower_components/cookies@ScottHamper/cookies#^1.0.0":
+  version "1.2.3"
+  resolved "https://codeload.github.com/ScottHamper/cookies/tar.gz/b7357e1c0ae6d00630de36fb186dbada329b7036"
+
+"@bower_components/expandjs@ExpandJS/expandjs#^1.0.0":
+  version "1.1.1"
+  resolved "https://codeload.github.com/ExpandJS/expandjs/tar.gz/b449df286702b0cf1de7c8b006dcdc1a30cbaf3a"
+  dependencies:
+    html-json-forms Pupix/JSONForms
+    lodash "^4.17.0"
+    path-to-regexp "^1.7.0"
+    uuid "^3.0.0"
+
+"@bower_components/font-roboto@PolymerElements/font-roboto#^1.0.0":
+  version "1.0.1"
+  resolved "https://codeload.github.com/PolymerElements/font-roboto/tar.gz/6b16584ff654fea05d6bf3e812fb8b225202663f"
+
+"@bower_components/iron-a11y-announcer@PolymerElements/iron-a11y-announcer#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-a11y-announcer/tar.gz/6f67e135f6a6371f879aceee1f08faee56330cab"
+
+"@bower_components/iron-a11y-keys-behavior@PolymerElements/iron-a11y-keys-behavior#^2.0.1":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-a11y-keys-behavior/tar.gz/a3f03fc3fb5a0d8e93eaa33c2b6c02c16098b402"
+
+"@bower_components/iron-ajax@PolymerElements/iron-ajax#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-ajax/tar.gz/536c76a4206e08a16b364930855e46f58ce3565d"
+
+"@bower_components/iron-autogrow-textarea@PolymerElements/iron-autogrow-textarea#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-autogrow-textarea/tar.gz/1e6bcf4c585fa4a1b82acef2ba9aa6eab76de3b4"
+
+"@bower_components/iron-behaviors@PolymerElements/iron-behaviors#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-behaviors/tar.gz/fbada8ba9910b4806f057b82f077f2013b7fd204"
+
+"@bower_components/iron-checked-element-behavior@PolymerElements/iron-checked-element-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-checked-element-behavior/tar.gz/c3c6cf6038ea246c6952bbd46fb79cc70ea5fd16"
+
+"@bower_components/iron-dropdown@PolymerElements/iron-dropdown#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-dropdown/tar.gz/0a3510a453e27419e2fa5a167f9de269f0645b9a"
+
+"@bower_components/iron-fit-behavior@PolymerElements/iron-fit-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-fit-behavior/tar.gz/8603fa1778ffa25b35f04d2c2f2deb2fa38bbb58"
+
+"@bower_components/iron-flex-layout@PolymerElements/iron-flex-layout#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-flex-layout/tar.gz/a26a7edc3ba60204a8bb4a1f4865f7786dfc7af5"
+
+"@bower_components/iron-form-element-behavior@PolymerElements/iron-form-element-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-form-element-behavior/tar.gz/6087b69013619e5b3e023a10824d25cf7530d1fc"
+
+"@bower_components/iron-form@PolymerElements/iron-form#2.0-preview":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-form/tar.gz/4859ecc2963f540cfe41e8d0ceb85e47b6befc34"
+
+"@bower_components/iron-icon@PolymerElements/iron-icon#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-icon/tar.gz/bfdf82f7c8eb4c205cb2d4af6996ffc98f41b1c1"
+
+"@bower_components/iron-icons@PolymerElements/iron-icons#^2.0.1":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-icons/tar.gz/8d999f711c42366c7f81247eddbd11882b473533"
+
+"@bower_components/iron-iconset-svg@PolymerElements/iron-iconset-svg#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-iconset-svg/tar.gz/791acf9d965c7b539b57589769d085a0518e2235"
+
+"@bower_components/iron-image@PolymerElements/iron-image#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-image/tar.gz/3c5963de450252aef5d989a09a3915aa1e435da0"
+
+"@bower_components/iron-input@PolymerElements/iron-input#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-input/tar.gz/354343f4bdad87de7049f6c8242941f2457a6b8c"
+
+"@bower_components/iron-list@PolymerElements/iron-list#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-list/tar.gz/61f7760f180b903ad2b73b1a873a64aab804635b"
+
+"@bower_components/iron-media-query@PolymerElements/iron-media-query#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-media-query/tar.gz/1840027d1ba76dad13304187e5ec5dc2cfc19f05"
+
+"@bower_components/iron-menu-behavior@PolymerElements/iron-menu-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-menu-behavior/tar.gz/cf68d76ebcfebd57d1a73e53c47845a9956506e1"
+
+"@bower_components/iron-meta@PolymerElements/iron-meta#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-meta/tar.gz/d98128f771ede383b9b5c5c5f1f63feb056b2786"
+
+"@bower_components/iron-overlay-behavior@PolymerElements/iron-overlay-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-overlay-behavior/tar.gz/7ce638b97f7b66357ce7162de847194972e912b8"
+
+"@bower_components/iron-pages@PolymerElements/iron-pages#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-pages/tar.gz/2c1967dbc5b6b4f02f7d05738fb8333736e5e029"
+
+"@bower_components/iron-resizable-behavior@PolymerElements/iron-resizable-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-resizable-behavior/tar.gz/c96b96b9fe922c3692fa256cf3a60beaf786dfd0"
+
+"@bower_components/iron-scroll-target-behavior@PolymerElements/iron-scroll-target-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-scroll-target-behavior/tar.gz/eaefca92b9e1c94a0e692a047a415b076b332e80"
+
+"@bower_components/iron-selector@PolymerElements/iron-selector#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-selector/tar.gz/bcb18b50c4de2623bee094dd5e79071b2995a244"
+
+"@bower_components/iron-validatable-behavior@PolymerElements/iron-validatable-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/iron-validatable-behavior/tar.gz/1e3dcc441a4f72b97248e64e59b6b6d309009992"
+
+"@bower_components/ld-navigation@tpluscode/ld-navigation#^0.4.0-a2":
+  version ""
+  resolved "https://codeload.github.com/tpluscode/ld-navigation/tar.gz/a5fe3dfb0ed2542bb1dad17eb1090d67e1e0e119"
+
+"@bower_components/markdown-it@Markdown-it/markdown-it#^8.0.0":
+  version "8.4.0"
+  resolved "https://codeload.github.com/Markdown-it/markdown-it/tar.gz/3353462142d519dfe5b613e4d9e79fa29601ff98"
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.3"
+
+"@bower_components/marked-element@PolymerElements/marked-element#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/marked-element/tar.gz/4b0e836c20f08d662ae1aeb36c92192d7730aa00"
+
+"@bower_components/marked@chjj/marked#~0.3.6":
+  version "0.3.6"
+  resolved "https://codeload.github.com/chjj/marked/tar.gz/eddec20467c2d10c7769061ee9074e268500966f"
+
+"@bower_components/mat-elements@expandjs/mat-elements#^1.3.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/expandjs/mat-elements/tar.gz/20ee6eab75c3f656349b2bf414ad6d9bc0869ba4"
+
+"@bower_components/neon-animation@PolymerElements/neon-animation#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/neon-animation/tar.gz/0ae3e2710228bede7d241ddffa94d587202ad7ad"
+
+"@bower_components/paper-behaviors@PolymerElements/paper-behaviors#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-behaviors/tar.gz/a6fb186616a605de1d5f787181ff1fe6c3d448b9"
+
+"@bower_components/paper-button@PolymerElements/paper-button#^2.0.0":
+  version "2.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-button/tar.gz/3011b871faa3e74633566ff6b559e55c860779ce"
+
+"@bower_components/paper-card@PolymerElements/paper-card#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-card/tar.gz/5e3f717031401ad9a296360fd2ce94b882a93aa2"
+
+"@bower_components/paper-dialog-behavior@PolymerElements/paper-dialog-behavior#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-dialog-behavior/tar.gz/2f3b60cbd63c251f939289af82cf8ed89439c3af"
+
+"@bower_components/paper-dialog@polymerelements/paper-dialog#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/polymerelements/paper-dialog/tar.gz/0ae043898d7ae75f3d8a81307e1bc1ec6a2b5dc4"
+
+"@bower_components/paper-dropdown-menu@polymerelements/paper-dropdown-menu#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/polymerelements/paper-dropdown-menu/tar.gz/ee8e2110561b7ff588d7e5a1b115603f78ceff06"
+
+"@bower_components/paper-fab@PolymerElements/paper-fab#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-fab/tar.gz/e94eeff06377979ef6a7d5e51a94e7fa7c3c5837"
+
+"@bower_components/paper-icon-button@PolymerElements/paper-icon-button#^2.0.1":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-icon-button/tar.gz/89727d5251e57121ef9bf245f21e1c30d711e9ff"
+
+"@bower_components/paper-input@PolymerElements/paper-input#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-input/tar.gz/c6c88f97555858602fcd7c482fcd9232b63ba058"
+
+"@bower_components/paper-menu-button@PolymerElements/paper-menu-button#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-menu-button/tar.gz/3085f05fdabfe4f71c1f1791c501057905cdd448"
+
+"@bower_components/paper-ripple@PolymerElements/paper-ripple#1 - 2":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-ripple/tar.gz/d0884e8508263e680fd9ee6c11b52c74a416f27f"
+
+"@bower_components/paper-spinner@PolymerElements/paper-spinner#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-spinner/tar.gz/3c354da07d95ac78af3edb7a5b98d4d28a0d0fd8"
+
+"@bower_components/paper-styles@PolymerElements/paper-styles#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-styles/tar.gz/739c14c9114dd3f80172e43d4ea2c5faf9bae132"
+
+"@bower_components/paper-tabs@PolymerElements/paper-tabs#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-tabs/tar.gz/66e3d15a44acbb77ea09f663ab37b11bf18bdd5f"
+
+"@bower_components/paper-toast@polymerelements/paper-toast#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/polymerelements/paper-toast/tar.gz/d1ece312011034304773208e1bde056ea31d109d"
+
+"@bower_components/paper-toolbar@PolymerElements/paper-toolbar#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/paper-toolbar/tar.gz/ebd6b6eb19156dfee97548f87e783b1a006db694"
+
+"@bower_components/paper-tooltip@polymerelements/paper-tooltip#^2.0.1":
+  version "0.0.0"
+  resolved "https://codeload.github.com/polymerelements/paper-tooltip/tar.gz/725dd342e43e7ad47bedfca4eeed85adc4ce44ae"
+
+"@bower_components/polymer@Polymer/polymer#1.9 - 2":
+  version "2.2.0"
+  resolved "https://codeload.github.com/Polymer/polymer/tar.gz/4e4696b082616ea3812d2bd40bf6821c82019046"
+
+"@bower_components/prism-element@PolymerElements/prism-element#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/PolymerElements/prism-element/tar.gz/9f716147477e2f27302e3252e4bd289fc840a4f8"
+
+"@bower_components/prism@PrismJS/prism#^1.5.0":
+  version "1.8.3"
+  resolved "https://codeload.github.com/PrismJS/prism/tar.gz/f6f9cdaf3e80cd14c5d4954473116a153c641a0c"
+  optionalDependencies:
+    clipboard "^1.5.5"
+
+"@bower_components/shadycss@webcomponents/shadycss#^v1.0.0":
+  version "1.0.6"
+  resolved "https://codeload.github.com/webcomponents/shadycss/tar.gz/85d1b59214bc773b0a64393be03c7a85cd0eb354"
+
+"@bower_components/show-json@ryanburns23/show-json#^2.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/ryanburns23/show-json/tar.gz/4713a29cfcbc2bd7f6cd3f929b2fca2055797e37"
+
+"@bower_components/vaadin-combo-box@vaadin/vaadin-combo-box#^2.0.0":
+  version "2.0.0"
+  resolved "https://codeload.github.com/vaadin/vaadin-combo-box/tar.gz/c6aecb3f09d5aba1625e32ca3ab76ac21362ca64"
+
+"@bower_components/web-animations-js@web-animations/web-animations-js#^2.2.0":
+  version "2.3.1"
+  resolved "https://codeload.github.com/web-animations/web-animations-js/tar.gz/a2dddad1c210c8abe5bc1c5a5e126e9946d44252"
+
+"@bower_components/webcomponentsjs@webcomponents/webcomponentsjs#^v1.0.2":
+  version "1.0.17"
+  resolved "https://codeload.github.com/webcomponents/webcomponentsjs/tar.gz/97d3d6d960cbc59012d88cc54af430518a934af6"
+
+"@bower_components/xp-buffer@ExpandJS/xp-buffer#^1.0.0":
+  version "1.0.2"
+  resolved "https://codeload.github.com/ExpandJS/xp-buffer/tar.gz/dc9ddc1558b490b8eaa6792ce61b186ebbce96a5"
+  dependencies:
+    expandjs "^1.0.0"
+
+"@bower_components/xp-doc-parser@ExpandJS/xp-doc-parser#^1.0.0":
+  version "1.0.2"
+  resolved "https://codeload.github.com/ExpandJS/xp-doc-parser/tar.gz/2c886ccb8f20ba9c432bff0c4a179421e24d815b"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-emitter "^1.0.0"
+    xp-request "^1.0.0"
+
+"@bower_components/xp-elements@ExpandJS/xp-elements#^1.0.0":
+  version "0.0.0"
+  resolved "https://codeload.github.com/ExpandJS/xp-elements/tar.gz/cc8e6585e6402d003328d2f2cc7a6b909dd8ad91"
+
+"@bower_components/xp-emitter@ExpandJS/xp-emitter#^1.0.0":
+  version "1.0.2"
+  resolved "https://codeload.github.com/ExpandJS/xp-emitter/tar.gz/441b983d5a2aeac34d89b08197f964e7176d0d23"
+  dependencies:
+    eventemitter3 "^2.0.0"
+    expandjs "^1.0.0"
+
+"@bower_components/xp-house@ExpandJS/xp-house#^1.0.0":
+  version "1.0.2"
+  resolved "https://codeload.github.com/ExpandJS/xp-house/tar.gz/4eb9221d15177a2251875e82036b25c9c64ce72b"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-emitter "^1.0.0"
+
+"@bower_components/xp-primus@ExpandJS/xp-primus#^1.0.0":
+  version "1.0.3"
+  resolved "https://codeload.github.com/ExpandJS/xp-primus/tar.gz/a7558ffed690093e897184ced3d915f2296c1d2e"
+  dependencies:
+    expandjs "^1.0.0"
+    primus.io "^4.0.0"
+    ws "^1.1.0"
+    xp-emitter "^1.0.0"
+    xp-script "^1.0.0"
+
+"@bower_components/xp-queue@ExpandJS/xp-queue#^1.0.0":
+  version "1.0.2"
+  resolved "https://codeload.github.com/ExpandJS/xp-queue/tar.gz/fb38b9691ad1684e9433b80e7006e2ddf20d2afb"
+  dependencies:
+    expandjs "^1.0.0"
+
+"@bower_components/xp-request@ExpandJS/xp-request#^1.0.0":
+  version "1.1.1"
+  resolved "https://codeload.github.com/ExpandJS/xp-request/tar.gz/2a6564f15116343d8999ca761e667409ea63caf0"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-buffer "^1.0.0"
+    xp-emitter "^1.0.0"
+
+"@bower_components/xp-schema@ExpandJS/xp-schema#^1.0.0":
+  version "1.0.2"
+  resolved "https://codeload.github.com/ExpandJS/xp-schema/tar.gz/089b5dca496b5af58afc6d4e4dd79556ba833edd"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-emitter "^1.0.0"
+
+"@bower_components/xp-script@ExpandJS/xp-script#^1.0.0":
+  version "1.0.2"
+  resolved "https://codeload.github.com/ExpandJS/xp-script/tar.gz/f0152c1b1b7ceea104f8a9a0d5b9fe4c050de0a6"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-emitter "^1.0.0"
+
+"@bower_components/xp-uploader@ExpandJS/xp-uploader#^1.0.0":
+  version "1.1.1"
+  resolved "https://codeload.github.com/ExpandJS/xp-uploader/tar.gz/737274de0605be8f8f7c33f6f8db06781f89470d"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-buffer "^1.0.0"
+    xp-emitter "^1.0.0"
+
 "@polymer/polymer@^3.0.0-pre.1":
   version "3.0.0-pre.1"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.0.0-pre.1.tgz#9fc26b5259aad9265f324ced02de715991d2eabe"
@@ -494,6 +833,14 @@ accepts@~1.3.3, accepts@~1.3.4:
     mime-types "~2.1.16"
     negotiator "0.6.1"
 
+access-control@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/access-control/-/access-control-1.0.0.tgz#aeba282cee77313e85240163d69e35b29e36d626"
+  dependencies:
+    millisecond "0.1.x"
+    setheader "0.0.x"
+    vary "1.1.x"
+
 accessibility-developer-tools@^2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/accessibility-developer-tools/-/accessibility-developer-tools-2.12.0.tgz#3da0cce9d6ec6373964b84f35db7cfc3df7ab514"
@@ -654,6 +1001,12 @@ are-we-there-yet@~1.1.2:
     delegates "^1.0.0"
     readable-stream "^2.0.6"
 
+argparse@^1.0.7:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.9.tgz#73d83bc263f86e97f8cc4f6bae1b0e90a7d22c86"
+  dependencies:
+    sprintf-js "~1.0.2"
+
 arr-diff@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/arr-diff/-/arr-diff-2.0.0.tgz#8f3b827f955a8bd669697e4a4256ac3ceae356cf"
@@ -762,7 +1115,7 @@ async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.0.0, async@^2.0.1, async@^2.1.2:
+async@^2.0.0, async@^2.0.0-rc.4, async@^2.0.1, async@^2.1.2:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
   dependencies:
@@ -775,6 +1128,10 @@ async@~0.2.9:
 async@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async/-/async-1.0.0.tgz#f8fc04ca3a13784ade9e1641af98578cfbd647a9"
+
+asyncemit@~3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/asyncemit/-/asyncemit-3.0.1.tgz#cc3e0fe0da39b53cc15e5b3aa8616ea6a72bd599"
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -1916,6 +2273,14 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
 
+clipboard@^1.5.5:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-1.7.1.tgz#360d6d6946e99a7a1fef395e42ba92b5e9b5a16b"
+  dependencies:
+    good-listener "^1.2.2"
+    select "^1.1.2"
+    tiny-emitter "^2.0.0"
+
 cliui@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"
@@ -1968,9 +2333,41 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+color-convert@^0.5.0:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
+
+color-name@^1.0.0:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
+
+color-string@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/color-string/-/color-string-0.3.0.tgz#27d46fb67025c5c2fa25993bfbf579e47841b991"
+  dependencies:
+    color-name "^1.0.0"
+
+color@0.8.x:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/color/-/color-0.8.0.tgz#890c07c3fd4e649537638911cf691e5458b6fca5"
+  dependencies:
+    color-convert "^0.5.0"
+    color-string "^0.3.0"
+
+colornames@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/colornames/-/colornames-0.0.2.tgz#d811fd6c84f59029499a8ac4436202935b92be31"
+
 colors@1.0.3, colors@1.0.x:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
+
+colorspace@1.0.x:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/colorspace/-/colorspace-1.0.1.tgz#c99c796ed31128b9876a52e1ee5ee03a4a719749"
+  dependencies:
+    color "0.8.x"
+    text-hex "0.0.x"
 
 combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.5"
@@ -2123,6 +2520,10 @@ configstore@^2.0.0:
     write-file-atomic "^1.1.2"
     xdg-basedir "^2.0.0"
 
+connected@0.0.x:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/connected/-/connected-0.0.2.tgz#7b5755b216ce31ffabccc38e9f4e1dfc1c3b7c6d"
+
 console-browserify@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-browserify/-/console-browserify-1.1.0.tgz#f0241c45730a9fc6323b206dbf38edc741d0bb10"
@@ -2213,6 +2614,12 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+create-server@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/create-server/-/create-server-1.0.1.tgz#164342834f188bbec7c7bc4667463cc2b1304c44"
+  dependencies:
+    connected "0.0.x"
+
 cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -2299,13 +2706,17 @@ dateformat@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
 
+debug@0.7.x:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
+
 debug@2, debug@2.6.9, debug@^2.0.0, debug@^2.1.0, debug@^2.2.0, debug@^2.6.8:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
     ms "2.0.0"
 
-debug@2.2.0, debug@~2.2.0:
+debug@2.2.0, debug@2.2.x, debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
@@ -2367,6 +2778,10 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
 
+delegate@^3.1.2:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.1.3.tgz#9a8251a777d7025faa55737bc3b071742127a9fd"
+
 delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
@@ -2413,6 +2828,14 @@ detect-indent@^4.0.0:
 detect-node@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.0.3.tgz#a2033c09cc8e158d37748fbde7507832bd6ce127"
+
+diagnostics@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/diagnostics/-/diagnostics-1.1.0.tgz#e1090900b49523e8527be20f081275205f2ae36a"
+  dependencies:
+    colorspace "1.0.x"
+    enabled "1.0.x"
+    kuler "0.0.x"
 
 dicer@0.2.5:
   version "0.2.5"
@@ -2543,9 +2966,19 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emits@3.0.x:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/emits/-/emits-3.0.0.tgz#32752bba95e1707b219562384ab9bb8b1fd62f70"
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
+
+enabled@1.0.x:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/enabled/-/enabled-1.0.2.tgz#965f6513d2c2d1c5f4652b64a2e3396467fc2f93"
+  dependencies:
+    env-variable "0.0.x"
 
 encodeurl@~1.0.1:
   version "1.0.1"
@@ -2614,6 +3047,14 @@ enhanced-resolve@^3.4.0:
     memory-fs "^0.4.0"
     object-assign "^4.0.1"
     tapable "^0.2.7"
+
+entities@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
+
+env-variable@0.0.x:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/env-variable/-/env-variable-0.0.3.tgz#b86c1641be5610267d506f18071ea76d707097cb"
 
 errno@^0.1.3:
   version "0.1.4"
@@ -2773,9 +3214,13 @@ event-emitter@~0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
-eventemitter3@1.x.x:
+eventemitter3@1.2.x, eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
+
+eventemitter3@^2.0.0, eventemitter3@~2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
 
 events@^1.0.0:
   version "1.1.1"
@@ -2821,6 +3266,15 @@ expand-tilde@^1.2.2:
   resolved "https://registry.yarnpkg.com/expand-tilde/-/expand-tilde-1.2.2.tgz#0b81eba897e5a3d31d1c3d102f8f01441e559449"
   dependencies:
     os-homedir "^1.0.1"
+
+expandjs@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/expandjs/-/expandjs-1.1.1.tgz#0f6c405e4df52d584b2f2d6aedb1a0d4e0306c44"
+  dependencies:
+    html-json-forms Pupix/JSONForms
+    lodash "^4.17.0"
+    path-to-regexp "^1.7.0"
+    uuid "^3.0.0"
 
 express@^4.15.2:
   version "4.16.2"
@@ -2914,6 +3368,10 @@ extend-shallow@^2.0.1:
 extend@3, extend@^3.0.0, extend@~3.0.0, extend@~3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
+
+extendible@0.1.x:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/extendible/-/extendible-0.1.1.tgz#e2a37ed87129fb4f9533e8a8d7506230a539c905"
 
 external-editor@^1.1.0:
   version "1.1.1"
@@ -3106,6 +3564,10 @@ formatio@1.1.1:
   dependencies:
     samsam "~1.1"
 
+forwarded-for@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/forwarded-for/-/forwarded-for-1.0.1.tgz#e7da4814025168ffc0a10d3ff79e1415f46af469"
+
 forwarded@~0.1.0, forwarded@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
@@ -3157,6 +3619,13 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
     inherits "~2.0.0"
     mkdirp ">=0.5 0"
     rimraf "2"
+
+fusing@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fusing/-/fusing-1.0.0.tgz#550c15d76af9265778aa051ece44d4000a098d45"
+  dependencies:
+    emits "3.0.x"
+    predefine "0.1.x"
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -3347,6 +3816,12 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+good-listener@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
+  dependencies:
+    delegate "^3.1.2"
 
 got@^5.0.0:
   version "5.7.1"
@@ -3599,6 +4074,10 @@ hpack.js@^2.1.6:
     obuf "^1.0.0"
     readable-stream "^2.0.1"
     wbuf "^1.1.0"
+
+html-json-forms@Pupix/JSONForms:
+  version "1.0.0"
+  resolved "https://codeload.github.com/Pupix/JSONForms/tar.gz/8ce1338d1302a57776f469d055b7927a38fc8961"
 
 html-minifier@^3.0.1:
   version "3.5.5"
@@ -4083,6 +4562,12 @@ kind-of@^4.0.0:
   dependencies:
     is-buffer "^1.1.5"
 
+kuler@0.0.x:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/kuler/-/kuler-0.0.0.tgz#b66bb46b934e550f59d818848e0abba4f7f5553c"
+  dependencies:
+    colornames "0.0.2"
+
 latest-version@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/latest-version/-/latest-version-2.0.0.tgz#56f8d6139620847b8017f8f1f4d78e211324168b"
@@ -4126,6 +4611,12 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+linkify-it@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.0.3.tgz#d94a4648f9b1c179d64fa97291268bdb6ce9434f"
+  dependencies:
+    uc.micro "^1.0.1"
 
 lit-html@0.7.1, lit-html@^0.7.1:
   version "0.7.1"
@@ -4269,7 +4760,7 @@ lodash@^3.0.0, lodash@^3.0.1, lodash@^3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.11.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.8.0:
+lodash@^4.11.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.8.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4345,6 +4836,10 @@ md5@^2.2.1:
     charenc "~0.0.1"
     crypt "~0.0.1"
     is-buffer "~1.1.1"
+
+mdurl@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -4439,6 +4934,10 @@ miller-rabin@^4.0.0:
   dependencies:
     bn.js "^4.0.0"
     brorand "^1.0.1"
+
+millisecond@0.1.x:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/millisecond/-/millisecond-0.1.2.tgz#6cc5ad386241cab8e78aff964f87028eec92dac5"
 
 "mime-db@>= 1.29.0 < 2", mime-db@^1.28.0, mime-db@~1.30.0:
   version "1.30.0"
@@ -4982,7 +5481,7 @@ path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
 
-path-to-regexp@^1.0.1:
+path-to-regexp@^1.0.1, path-to-regexp@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
   dependencies:
@@ -5306,6 +5805,12 @@ potts@^1.2.1:
     command-line-usage "^4.0.0"
     polymer-analyzer "^2.2.0"
 
+predefine@0.1.x:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/predefine/-/predefine-0.1.2.tgz#2aa92b4496bc1f8554e43a45f76bfbe50d33d37f"
+  dependencies:
+    extendible "0.1.x"
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -5329,6 +5834,56 @@ pretty@2.0.0:
     condense-newlines "^0.2.1"
     extend-shallow "^2.0.1"
     js-beautify "^1.6.12"
+
+primus-emitter@3.1.x:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/primus-emitter/-/primus-emitter-3.1.1.tgz#a85a36353fe8a96975be5edfebd7ee66c84dce1b"
+
+primus-multiplex@3.2.x:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/primus-multiplex/-/primus-multiplex-3.2.1.tgz#b0056e10c7a3ffc57eb7000b29ff400e0664cfcb"
+  dependencies:
+    eventemitter3 "1.2.x"
+    predefine "0.1.x"
+
+primus-rooms-adapter@0.3.x:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/primus-rooms-adapter/-/primus-rooms-adapter-0.3.2.tgz#2344ddb78b23f86da04fd37516692e528c8b8f2c"
+  dependencies:
+    extendible "0.1.x"
+
+primus-rooms@3.4.x:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/primus-rooms/-/primus-rooms-3.4.1.tgz#7e832323a6c90c38433ae6084c0d75d4ab9cb6fd"
+  dependencies:
+    async "^2.0.0-rc.4"
+    debug "2.2.x"
+    primus-rooms-adapter "0.3.x"
+
+primus.io@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/primus.io/-/primus.io-4.0.0.tgz#f23e8b98e43d295c97d1823edb68d677986afe19"
+  dependencies:
+    eventemitter3 "1.2.x"
+    primus "6.0.x"
+    primus-emitter "3.1.x"
+    primus-multiplex "3.2.x"
+    primus-rooms "3.4.x"
+
+primus@6.0.x:
+  version "6.0.9"
+  resolved "https://registry.yarnpkg.com/primus/-/primus-6.0.9.tgz#6efcac3349b08d37aeeddabb35fde66740c09f23"
+  dependencies:
+    access-control "~1.0.0"
+    asyncemit "~3.0.1"
+    create-server "~1.0.1"
+    diagnostics "~1.1.0"
+    eventemitter3 "~2.0.2"
+    forwarded-for "~1.0.1"
+    fusing "~1.0.0"
+    setheader "~0.0.4"
+    ultron "~1.1.0"
+    yeast "~0.1.2"
 
 private@^0.1.6, private@^0.1.7:
   version "0.1.7"
@@ -5949,6 +6504,10 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
 
+select@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
+
 selenium-standalone@^5.8.0:
   version "5.11.2"
   resolved "https://registry.yarnpkg.com/selenium-standalone/-/selenium-standalone-5.11.2.tgz#724ccaa72fb26f3711e0e20989e478c4133df844"
@@ -6081,6 +6640,12 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
 set-immediate-shim@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/set-immediate-shim/-/set-immediate-shim-1.0.1.tgz#4b2b1b27eb808a9f8dcc481a58e5e56f599f3f61"
+
+setheader@0.0.x, setheader@~0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/setheader/-/setheader-0.0.4.tgz#926ed28cf762149620931e7aea3f1b95816ec694"
+  dependencies:
+    debug "0.7.x"
 
 setimmediate@^1.0.4:
   version "1.0.5"
@@ -6285,6 +6850,10 @@ spdy@^3.3.3:
 sprintf-js@^1.0.3:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.1.tgz#36be78320afe5801f6cea3ee78b6e5aab940ea0c"
+
+sprintf-js@~1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
 sshpk@^1.7.0:
   version "1.13.1"
@@ -6576,6 +7145,10 @@ test-value@^2.1.0:
     array-back "^1.0.3"
     typical "^2.6.0"
 
+text-hex@0.0.x:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/text-hex/-/text-hex-0.0.0.tgz#578fbc85a6a92636e42dd17b41d0218cce9eb2b3"
+
 text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
@@ -6634,6 +7207,10 @@ timers-browserify@^2.0.2:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.4.tgz#96ca53f4b794a5e7c0e1bd7cc88a372298fa01e6"
   dependencies:
     setimmediate "^1.0.4"
+
+tiny-emitter@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
 
 tmp@^0.0.29:
   version "0.0.29"
@@ -6735,6 +7312,10 @@ ua-parser-js@^0.7.14:
   version "0.7.14"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.14.tgz#110d53fa4c3f326c121292bbeac904d2e03387ca"
 
+uc.micro@^1.0.1, uc.micro@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.3.tgz#7ed50d5e0f9a9fb0a573379259f2a77458d50192"
+
 uglify-js@3.1.x:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.2.tgz#b50bcf15a5fd9e9ed40afbcdef3b59d6891b291f"
@@ -6770,6 +7351,10 @@ uid-number@^0.0.6:
 ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
+
+ultron@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.0.tgz#b07a2e6a541a815fc6a34ccd4533baec307ca864"
 
 underscore.string@3.3.4:
   version "3.3.4"
@@ -6900,7 +7485,7 @@ vargs@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/vargs/-/vargs-0.1.0.tgz#6b6184da6520cc3204ce1b407cac26d92609ebff"
 
-vary@~1.1.1, vary@~1.1.2:
+vary@1.1.x, vary@~1.1.1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
@@ -7198,7 +7783,7 @@ ws@1.1.2:
     options ">=0.0.5"
     ultron "1.0.x"
 
-ws@1.1.4:
+ws@1.1.4, ws@^1.1.0:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.4.tgz#57f40d036832e5f5055662a397c4de76ed66bf61"
   dependencies:
@@ -7234,6 +7819,34 @@ xmldom@0.1.x:
 xmlhttprequest-ssl@1.5.3:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.3.tgz#185a888c04eca46c3e4070d99f7b49de3528992d"
+
+xp-buffer@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/xp-buffer/-/xp-buffer-1.0.2.tgz#ec925be7b910be0e4673f4c793a756f01bf1fb9f"
+  dependencies:
+    expandjs "^1.0.0"
+
+xp-emitter@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/xp-emitter/-/xp-emitter-1.0.2.tgz#8887330e0b2b52cf32c64ca15f6e834d4a8e42d8"
+  dependencies:
+    eventemitter3 "^2.0.0"
+    expandjs "^1.0.0"
+
+xp-request@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/xp-request/-/xp-request-1.1.1.tgz#bc4977e7d4abe6daa82b0a6c6bafe56160bfe2d4"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-buffer "^1.0.0"
+    xp-emitter "^1.0.0"
+
+xp-script@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/xp-script/-/xp-script-1.0.2.tgz#8ca00e98fd102dda8cdda83a860c073b48f31bf2"
+  dependencies:
+    expandjs "^1.0.0"
+    xp-emitter "^1.0.0"
 
 "xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
@@ -7287,7 +7900,7 @@ yauzl@^2.5.0:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.0.1"
 
-yeast@0.1.2:
+yeast@0.1.2, yeast@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
