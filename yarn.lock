@@ -132,7 +132,7 @@
   resolved "https://codeload.github.com/PolymerElements/iron-validatable-behavior/tar.gz/1e3dcc441a4f72b97248e64e59b6b6d309009992"
 
 "@bower_components/ld-navigation@tpluscode/ld-navigation#^0.4.0-a2":
-  version ""
+  version "0.4.0-a2"
   resolved "https://codeload.github.com/tpluscode/ld-navigation/tar.gz/a5fe3dfb0ed2542bb1dad17eb1090d67e1e0e119"
 
 "@bower_components/markdown-it@Markdown-it/markdown-it#^8.0.0":
