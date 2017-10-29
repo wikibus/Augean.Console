@@ -1,5 +1,5 @@
 import {CustomElement, compute} from 'twc/polymer';
-import {IHydraResource, IOperation, ISupportedOperation, ISupportedProperty} from "heracles";
+import {IClass, IHydraResource, IOperation, ISupportedOperation, ISupportedProperty} from "heracles";
 
 import '../api-documentation/property-label';
 import 'bower:paper-tabs/paper-tabs.html';
@@ -17,6 +17,19 @@ class DefaultResourceView extends Polymer.Element {
     resource: IHydraResource;
 
     closeable: boolean;
+
+    @compute((resource: IHydraResource) => {
+        return resource.types.map((cId: string) => {
+            const clas = resource.apiDocumentation.getClass(cId);
+
+            if(!clas) {
+                return { title: cId };
+            }
+
+            return clas;
+        });
+    })
+    classes: Array<IClass>;
 
     @compute((resource: IHydraResource) => Utils.getProperties(resource))
     allProperties: Array<ISupportedProperty>;
@@ -39,16 +52,25 @@ class DefaultResourceView extends Polymer.Element {
     @compute((operations: Array<IOperation>) => operations.length > 0)
     _hasOperations: boolean;
 
-    load() {
-        LdNavigation.Helpers.fireNavigation(this, this.resource.id);
-    }
+    @compute((resource: IHydraResource) => resource.types.length > 0)
+    _hasClasses: boolean;
 
     close() {
         this.dispatchEvent(new CustomEvent('close'));
     }
 
+    _expandChild(e: CustomEvent) {
+        this.dispatchEvent(new CustomEvent('child-expanded', {
+            detail: {
+                resource: e.model.value
+            },
+            bubbles: true,
+            composed: true
+        }));
+    }
+
     _followLink(e: CustomEvent) {
-        this.dispatchEvent(new CustomEvent('child-selected', {
+        this.dispatchEvent(new CustomEvent('child-loaded', {
             detail: {
                 resource: e.model.value
             },
@@ -60,7 +82,7 @@ class DefaultResourceView extends Polymer.Element {
     _showClassDocumentation(e: CustomEvent) {
         this.dispatchEvent(new CustomEvent('show-class-documentation', {
             detail: {
-                classId: e.model.type
+                classId: e.model.type.id
             },
             bubbles: true,
             composed: true

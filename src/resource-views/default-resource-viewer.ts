@@ -21,7 +21,8 @@ default-resource-view {
 @template(`
 <template is="dom-repeat" items="[[displayedResources]]">
     <default-resource-view resource="[[item]]"
-                           on-child-selected="_appendToDisplayed"
+                           on-child-expanded="_appendToDisplayed"
+                           on-child-loaded="_loadChild"
                            on-close="_truncateDisplayedResources"
                            closeable="[[!_isFirst(index)]]"
                            narrow$="[[_isFirstOfMany(index, _isSingle)]]"></default-resource-view>
@@ -38,6 +39,10 @@ class DefaultResourceViewer extends Polymer.Element {
     @observe('resource')
     _onResourceChanged(resource: IHydraResource) {
         this._setDisplayedResources([ resource ]);
+    }
+
+    _loadChild(e: CustomEvent) {
+        LdNavigation.Helpers.fireNavigation(this, e.detail.resource.id);
     }
 
     _appendToDisplayed(e: CustomEvent) {

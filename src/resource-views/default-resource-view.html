@@ -51,23 +51,19 @@
 </style>
 
 <mat-header slot="header" background="blue">
-    <span class="label">Lorem ipsum dolor sit amet</span>
+    <span class="label">[[resource.id]]</span>
     <paper-icon-button icon="close" hidden$="[[!closeable]]" on-tap="close"></paper-icon-button>
 </mat-header>
 
 <ul class="app-grid">
-    <li id="basic" class="item">
-        <h2>Basic info</h2>
+    <li id="basic" class="item" hidden$="[[!_hasClasses]]">
+        <h2>Type</h2>
         <mat-paper z="1">
             <mat-list>
-                <mat-item label="[[resource.id]]">
-                    <span>@id</span>
-                </mat-item>
-                <template is="dom-repeat" as="type" items="[[resource.types]]">
-                    <mat-item label="[[type]]">
-                        <span>@type</span>
-                        <paper-icon-button slot="secondary" icon="help-outline"
-                                           on-tap="_showClassDocumentation"></paper-icon-button>
+                <template is="dom-repeat" as="type" items="[[classes]]">
+                    <mat-item label="[[type.title]]" on-xp-activate="_showClassDocumentation">
+                        <span>[[type.id]]</span>
+                        <iron-icon slot="secondary" icon="help-outline"></iron-icon>
                     </mat-item>
                 </template>
             </mat-list>
@@ -80,7 +76,7 @@
                 <template is="dom-repeat" as="op" items="[[operations]]">
                     <mat-item label="[[op.title]]">
                         <span>[[op.description]]</span>
-                        <paper-icon-button slot="secondary" icon="image:flash-on"></paper-icon-button>
+                        <iron-icon slot="secondary" icon="image:flash-on"></iron-icon>
                     </mat-item>
                 </template>
             </mat-list>
@@ -107,7 +103,7 @@
                 <template is="dom-repeat" as="property" items="[[links]]">
                     <mat-sublist label="[[property.title]]" hidden$="[[!_hasValues(property)]]">
                         <template is="dom-repeat" as="value" items="[[_getValues(property)]]">
-                            <mat-item label="[[_getPath(value.id)]]">
+                            <mat-item label="[[_getPath(value.id)]]" on-xp-activate="_expandChild">
                                 <paper-icon-button slot="secondary" icon="link" on-tap="_followLink"></paper-icon-button>
                             </mat-item>
                         </template>

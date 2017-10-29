@@ -7,7 +7,7 @@ function getProperties(resource) {
 
     return resource.types
                 .map(type => resource.apiDocumentation.getProperties(type))
-                .reduce((acc, val) => [...acc, ...val]);
+                .reduce((acc, val) => [...acc, ...val], []);
 }
 
 export {
