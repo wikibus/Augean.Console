@@ -255,6 +255,10 @@
   version "2.0.0"
   resolved "https://codeload.github.com/vaadin/vaadin-combo-box/tar.gz/c6aecb3f09d5aba1625e32ca3ab76ac21362ca64"
 
+"@bower_components/vaadin-split-layout@vaadin/vaadin-split-layout#^3.0.1":
+  version "3.0.1"
+  resolved "https://codeload.github.com/vaadin/vaadin-split-layout/tar.gz/da8ab1e60a8b2b1c60a1e30ba2d5093dd67afdad"
+
 "@bower_components/web-animations-js@web-animations/web-animations-js#^2.2.0":
   version "2.3.1"
   resolved "https://codeload.github.com/web-animations/web-animations-js/tar.gz/a2dddad1c210c8abe5bc1c5a5e126e9946d44252"
@@ -1139,7 +1143,7 @@ asynckit@^0.4.0:
 
 "augeas@git://github.com/wikibus/augeas.git#master":
   version "0.2.0-aloha"
-  resolved "git://github.com/wikibus/augeas.git#b00b726c338d15aa9d344a6d35ccff10ae2c03a1"
+  resolved "git://github.com/wikibus/augeas.git#97a8b0e4c1196a5a4a9171ff3c692152f726735a"
   dependencies:
     "@polymer/polymer" "^3.0.0-pre.1"
     core-js "^2.5.1"
@@ -7264,9 +7268,9 @@ tunnel-agent@~0.4.1:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.4.3.tgz#6373db76909fe570e08d73583365ed828a74eeeb"
 
-twc@^0.4.4-rc:
-  version "0.4.4-rc"
-  resolved "https://registry.yarnpkg.com/twc/-/twc-0.4.4-rc.tgz#78a12807f955aea18ef5b0b1a6a754c5317269bd"
+twc@^0.4.6-rc:
+  version "0.4.6-rc"
+  resolved "https://registry.yarnpkg.com/twc/-/twc-0.4.6-rc.tgz#9a4277f254634d2555420f2ea48936e840cba617"
   dependencies:
     pretty "2.0.0"
     typescript "2.4.1"

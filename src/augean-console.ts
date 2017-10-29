@@ -120,11 +120,20 @@ export class AugeanConsole extends Polymer.Element {
         }
     }
 
-    //@listen('show-class-documentation')
+    @listen('show-class-documentation')
     showDocumentation(e: CustomEvent) {
-        this.$.apiDocumentation.selectClass(e.detail.classId);
-        this.showDocs();
+        Polymer.importHref('dist/api-documentation/viewer.html', () => {
+            this.$.apiDocumentation.selectClass(e.detail.classId);
+            this.showDocs();
+        });
+
         e.stopPropagation();
+    }
+
+
+    @listen('show-inline-resource')
+    showResource(e: CustomEvent) {
+        this.currentModel = e.detail.resource;
     }
 
     _focusUrlInput() {

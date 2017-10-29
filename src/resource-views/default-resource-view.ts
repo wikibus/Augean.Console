@@ -1,51 +1,99 @@
 import {CustomElement, compute} from 'twc/polymer';
-import {IHydraResource} from "heracles";
+import {IHydraResource, IOperation, ISupportedOperation, ISupportedProperty} from "heracles";
 
 import '../api-documentation/property-label';
 import 'bower:paper-tabs/paper-tabs.html';
 import 'bower:paper-card/paper-card.html';
 import 'bower:ld-navigation/ld-navigation.html';
+import 'bower:mat-elements/mat-item.html';
+import 'bower:mat-elements/mat-list.html';
+import 'bower:mat-elements/mat-header.html';
+import 'bower:mat-elements/mat-paper.html';
+import 'bower:iron-icons/image-icons.html';
 import './resource-card';
 
 @CustomElement()
 class DefaultResourceView extends Polymer.Element {
-
     resource: IHydraResource;
 
-    tab: number = 0;
+    closeable: boolean;
 
-    nested: Boolean = false;
+    @compute((resource: IHydraResource) => Utils.getProperties(resource))
+    allProperties: Array<ISupportedProperty>;
 
-    @compute('_getImage', ['resource'])
-    image: object;
+    @compute((allProperties: ISupportedProperty[]) => _getNonLinks(allProperties))
+    properties: Array<ISupportedProperty>;
 
-    _getImage(resource: IHydraResource) {
-        if (resource['http://schema.org/image']) {
-            return resource['http://schema.org/image']['http://schema.org/thumbnail']['http://schema.org/contentUrl'];
-        }
+    @compute((allProperties: ISupportedProperty[]) => _getLinks(allProperties))
+    links: Array<ISupportedProperty>;
 
-        return null;
-    }
+    @compute((resource: IHydraResource) => resource.operations)
+    operations: Array<ISupportedOperation>;
 
-    @compute('_getObjectProperties', ['resource'])
-    objectProperties: Array<object>;
+    @compute((links: Array<ISupportedProperty>) => links.length > 0)
+    _hasLinks: boolean;
 
-    _getObjectProperties(resource: IHydraResource) {
-        if (typeof resource === 'string') return [];
+    @compute((properties: Array<ISupportedProperty>) => properties.length > 0)
+    _hasProperties: boolean;
 
-        return Object.entries(resource)
-            .filter(pair => !(pair[1].startsWith && pair[1].startsWith('_:')))
-            .map(pair => ({
-                id: pair[0],
-                value: getValue(pair[1])
-            }));
-    }
+    @compute((operations: Array<IOperation>) => operations.length > 0)
+    _hasOperations: boolean;
 
     load() {
         LdNavigation.Helpers.fireNavigation(this, this.resource.id);
     }
+
+    close() {
+        this.dispatchEvent(new CustomEvent('close'));
+    }
+
+    _followLink(e: CustomEvent) {
+        this.dispatchEvent(new CustomEvent('child-selected', {
+            detail: {
+                resource: e.model.value
+            },
+            bubbles: true,
+            composed: true
+        }));
+    }
+
+    _showClassDocumentation(e: CustomEvent) {
+        this.dispatchEvent(new CustomEvent('show-class-documentation', {
+            detail: {
+                classId: e.model.type
+            },
+            bubbles: true,
+            composed: true
+        }))
+    }
+
+    _getValues(property: ISupportedProperty) {
+        let values = this.resource[property.property.id];
+        if(Array.isArray(values) === false) {
+            values = [ values ];
+        }
+
+        return values.filter((i: any) => typeof i !== 'undefined');
+    }
+
+    _hasValues(property: ISupportedProperty) {
+        return this._getValues(property).length > 0;
+    }
+
+    _getPath(urlStr: string) {
+        const url = new URL(urlStr);
+        return url.pathname + url.search;
+    }
 }
 
-function getValue(object: any) {
-    return object['@value'] || object;
+function _getLinks(properties: Array<ISupportedProperty>) {
+    return properties.filter((prop: ISupportedProperty) => {
+        return prop.property.types.indexOf('http://www.w3.org/ns/hydra/core#Link') !== -1;
+    });
+}
+
+function _getNonLinks(properties: Array<ISupportedProperty>) {
+    return properties.filter((prop: ISupportedProperty) => {
+        return prop.property.types.indexOf('http://www.w3.org/ns/hydra/core#Link') === -1;
+    });
 }

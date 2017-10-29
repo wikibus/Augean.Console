@@ -1,6 +1,7 @@
 import {ViewTemplates, render} from 'augeas';
 import {html} from 'lit-html';
 import {repeat} from 'lit-html/lib/repeat';
+import './default-resource-view';
 
 window.TemplateUtil = {
     render
@@ -30,8 +31,7 @@ ViewTemplates.when
             return html``;
         }
 
-        const properties = members[0].types.map(type => members[0].apiDocumentation.getProperties(type))
-            .reduce((acc, val) => [...acc, ...val]);
+        const properties = Utils.getProperties(members[0]);
 
         return html`
             <table>
@@ -94,10 +94,8 @@ ViewTemplates.when
 ViewTemplates.when
     .value(v => typeof(v) === 'object' && v !== null)
     .renders((r, v, property) => {
-        Polymer.importHref('dist/resource-views/default-resource-view.html');
-        return html`<default-resource-view nested$="${!!property}"
-                                                                 property="${property}"
-                                                                 resource="${v}"></default-resource-view>`;
+        Polymer.importHref('dist/resource-views/default-resource-viewer.html');
+        return html`<default-resource-viewer property="${property}" resource="${v}"></default-resource-viewer>`;
     });
 
 ViewTemplates.when

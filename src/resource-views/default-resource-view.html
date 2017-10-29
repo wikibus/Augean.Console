@@ -1,6 +1,119 @@
-<div id="properties">
-    <template is="dom-repeat" items="[[objectProperties]]" as="property">
-        <resource-card nested$="[[nested]]" subject="[[resource]]" property-id="[[property.id]]"
-                       object="[[property.value]]"></resource-card>
-    </template>
-</div>
+<style include="app-grid-style">
+    :host {
+        --app-grid-columns: 2;
+        --app-grid-gutter: 10px;
+        --app-grid-expandible-item-columns: 2;
+
+
+        --default-resource-view-narrow: {
+            --app-grid-columns: 1;
+            --app-grid-gutter: 5px;
+            --app-grid-expandible-item-columns: 1;
+        }
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+
+    li.item {
+        list-style: none;
+        background-color: white;
+    }
+
+    @media (max-width: 799px) {
+        :host {
+            @apply --default-resource-view-narrow;
+        }
+    }
+
+    :host([narrow]) {
+        @apply --default-resource-view-narrow;
+        max-width: 300px;
+    }
+
+    .item#basic, .item#operations {
+        @apply --app-grid-expandible-item;
+    }
+
+    .item.property {
+        --app-grid-item-height: 15vh;
+    }
+
+    mat-sublist .item {
+        padding-left: 20px;
+    }
+
+    h2 {
+        @apply --paper-font-common-base;
+    }
+</style>
+
+<mat-header slot="header" background="blue">
+    <span class="label">Lorem ipsum dolor sit amet</span>
+    <paper-icon-button icon="close" hidden$="[[!closeable]]" on-tap="close"></paper-icon-button>
+</mat-header>
+
+<ul class="app-grid">
+    <li id="basic" class="item">
+        <h2>Basic info</h2>
+        <mat-paper z="1">
+            <mat-list>
+                <mat-item label="[[resource.id]]">
+                    <span>@id</span>
+                </mat-item>
+                <template is="dom-repeat" as="type" items="[[resource.types]]">
+                    <mat-item label="[[type]]">
+                        <span>@type</span>
+                        <paper-icon-button slot="secondary" icon="help-outline"
+                                           on-tap="_showClassDocumentation"></paper-icon-button>
+                    </mat-item>
+                </template>
+            </mat-list>
+        </mat-paper>
+    </li>
+    <li id="operations" class="item" hidden$="[[!_hasOperations]]">
+        <h2>Operations</h2>
+        <mat-paper z="1">
+            <mat-list id="operations">
+                <template is="dom-repeat" as="op" items="[[operations]]">
+                    <mat-item label="[[op.title]]">
+                        <span>[[op.description]]</span>
+                        <paper-icon-button slot="secondary" icon="image:flash-on"></paper-icon-button>
+                    </mat-item>
+                </template>
+            </mat-list>
+        </mat-paper>
+    </li>
+    <li class="item" hidden$="[[!_hasProperties]]">
+        <h2>Properties</h2>
+        <mat-paper z="1">
+            <mat-list>
+                <template is="dom-repeat" as="property" items="[[properties]]">
+                    <mat-sublist label="[[property.title]]" hidden$="[[!_hasValues(property)]]">
+                        <template is="dom-repeat" as="value" items="[[_getValues(property)]]">
+                            <ags-view class="item" value="[[value]]" template-scope="default-resource-view"></ags-view>
+                        </template>
+                    </mat-sublist>
+                </template>
+            </mat-list>
+        </mat-paper>
+    </li>
+    <li class="item" hidden$="[[!_hasLinks]]">
+        <h2>Links</h2>
+        <mat-paper z="1">
+            <mat-list>
+                <template is="dom-repeat" as="property" items="[[links]]">
+                    <mat-sublist label="[[property.title]]" hidden$="[[!_hasValues(property)]]">
+                        <template is="dom-repeat" as="value" items="[[_getValues(property)]]">
+                            <mat-item label="[[_getPath(value.id)]]">
+                                <paper-icon-button slot="secondary" icon="link" on-tap="_followLink"></paper-icon-button>
+                            </mat-item>
+                        </template>
+                    </mat-sublist>
+                </template>
+            </mat-list>
+        </mat-paper>
+    </li>
+</ul>
