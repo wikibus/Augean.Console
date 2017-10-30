@@ -3,6 +3,7 @@ import {PaperInput} from "bower:paper-input/paper-input.html";
 import {IHydraResource} from "heracles";
 
 import './libs/Templates.js';
+import './libs/Utils.js';
 
 import 'bower:polymer/polymer-element.html';
 import 'bower:paper-styles/paper-styles.html';
@@ -82,7 +83,7 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     _loadOutlineElement() {
-        Polymer.importHref('dist/outline/resource-outline.html');
+        Polymer.importHref('dist/side-menu.html');
     }
 
     urlChanged(e: CustomEvent) {

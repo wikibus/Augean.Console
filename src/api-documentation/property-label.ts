@@ -1,6 +1,5 @@
 import { CustomElement, observe, compute, notify } from 'twc/polymer';
 import {IClass, IHydraResource, IResource, ISupportedProperty} from "heracles";
-import '../libs/Utils.js';
 
 import 'bower:paper-tooltip/paper-tooltip.html';
 import 'bower:polymer/polymer-element.html';

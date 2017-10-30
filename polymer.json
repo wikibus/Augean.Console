@@ -13,7 +13,7 @@
     "dist/resource-views/default-resource-view.html",
     "dist/resource-views/default-literal-view.html",
     "dist/entrypoint-selector.html",
-    "dist/outline/resource-outline.html",
+    "dist/side-menu.html",
     "dist/outline/resource-json.html"
   ],
   "extraDependencies": [

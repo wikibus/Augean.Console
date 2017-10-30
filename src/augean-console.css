@@ -1,6 +1,8 @@
 :host {
   display: block;
   margin: 0;
+
+  --app-drawer-width: 350px;
 }
 
 #api-docs-container {
@@ -26,4 +28,13 @@ app-toolbar {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+side-menu {
+  height: calc(100% - 128px);
+  overflow: auto;
+}
+
+entrypoint-selector {
+  width: 100%;
 }

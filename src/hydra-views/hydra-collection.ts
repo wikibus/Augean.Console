@@ -3,6 +3,7 @@ import 'bower:polymer/polymer-element.html';
 import 'bower:mat-elements/mat-table.html';
 import 'bower:mat-elements/mat-table-styles.html';
 import {IHydraResource} from "heracles";
+import '../api-documentation/property-label';
 
 @CustomElement()
 class HydraCollection extends Polymer.Element {

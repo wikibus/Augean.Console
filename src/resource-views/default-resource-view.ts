@@ -7,6 +7,7 @@ import 'bower:paper-card/paper-card.html';
 import 'bower:ld-navigation/ld-navigation.html';
 import 'bower:mat-elements/mat-item.html';
 import 'bower:mat-elements/mat-list.html';
+import 'bower:mat-elements/mat-sublist.html';
 import 'bower:mat-elements/mat-header.html';
 import 'bower:mat-elements/mat-paper.html';
 import 'bower:iron-icons/image-icons.html';

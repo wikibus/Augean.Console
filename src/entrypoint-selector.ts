@@ -1,4 +1,4 @@
-import { CustomElement, notify, template } from 'twc/polymer';
+import { CustomElement, notify, template, style } from 'twc/polymer';
 import 'bower:polymer/polymer-element.html';
 import './libs/Hypermedia.js';
 import 'bower:vaadin-combo-box/vaadin-combo-box.html'
