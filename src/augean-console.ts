@@ -65,20 +65,21 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     loadResource(value: string) {
-        Polymer.importHref('dist/entrypoint-selector.html', () => {
-            Hypermedia.Hydra.loadResource(value)
-                .then((res: Response) => {
-                    this.model = res;
-                    this.currentModel = res;
-                    this.state = 'loaded';
-                    this._setIsLoading(false);
-                })
-                .then(this._loadOutlineElement)
-                .catch((err: Error) => {
-                    this._setLastError(err);
-                    this.state = 'error';
-                    this._setIsLoading(false);
-                });
+        Polymer.importHref('dist/entrypoint-selector.html', async () => {
+            try {
+                const res = await Hypermedia.Hydra.loadResource(value);
+
+                this.model = res;
+                this.currentModel = res;
+                this.state = 'loaded';
+                this._setIsLoading(false);
+
+                this._loadOutlineElement();
+            } catch(err: Error) {
+                this._setLastError(err);
+                this.state = 'error';
+                this._setIsLoading(false);
+            }
         });
     }
 

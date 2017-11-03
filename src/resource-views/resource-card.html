@@ -7,11 +7,11 @@
         <h2>
             <property-label resource="[[subject]]" property-id="[[propertyId]]"></property-label>
         </h2>
-        <ags-view predicate="[[propertyId]]" value="[[object]]" params='{ "nested": true }'></ags-view>
+        <lit-view predicate="[[propertyId]]" value="[[object]]" params='{ "nested": true }'></lit-view>
     </div>
     <div class="card-actions" hidden$="[[!actionsRendered]]">
-        <ags-view template-scope="resource-card-actions" predicate="[[propertyId]]" value="[[object]]"
-                  ignore-missing="true" has-been-rendered="{{actionsRendered}}"></ags-view>
+        <lit-view template-scope="resource-card-actions" predicate="[[propertyId]]" value="[[object]]"
+                  ignore-missing="true" has-been-rendered="{{actionsRendered}}"></lit-view>
     </div>
 </paper-card>
 

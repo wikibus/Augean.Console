@@ -89,7 +89,7 @@
                 <template is="dom-repeat" as="property" items="[[properties]]">
                     <mat-sublist label="[[property.title]]" hidden$="[[!_hasValues(property)]]">
                         <template is="dom-repeat" as="value" items="[[_getValues(property)]]">
-                            <ags-view class="item" value="[[value]]" template-scope="default-resource-view"></ags-view>
+                            <lit-view class="item" value="[[value]]" template-scope="default-resource-view"></lit-view>
                         </template>
                     </mat-sublist>
                 </template>
