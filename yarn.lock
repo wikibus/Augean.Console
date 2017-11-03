@@ -131,9 +131,9 @@
   version "0.0.0"
   resolved "https://codeload.github.com/PolymerElements/iron-validatable-behavior/tar.gz/1e3dcc441a4f72b97248e64e59b6b6d309009992"
 
-"@bower_components/ld-navigation@tpluscode/ld-navigation#^0.4.0-a2":
-  version "0.4.0-a2"
-  resolved "https://codeload.github.com/tpluscode/ld-navigation/tar.gz/a5fe3dfb0ed2542bb1dad17eb1090d67e1e0e119"
+"@bower_components/ld-navigation@tpluscode/ld-navigation#^0.4.0-a3":
+  version "0.4.0-a3"
+  resolved "https://codeload.github.com/tpluscode/ld-navigation/tar.gz/65e707fc466f0730a6c9943eec77b5db50bc1873"
 
 "@bower_components/markdown-it@Markdown-it/markdown-it#^8.0.0":
   version "8.4.0"
@@ -815,7 +815,11 @@
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.0.6.tgz#5679919c43da77cbc884ba0bef6457111c65d7cd"
 
-"@webcomponents/webcomponentsjs@^1.0.0", "@webcomponents/webcomponentsjs@^1.0.7":
+"@webcomponents/webcomponentsjs@^1.0.0":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-1.0.17.tgz#abd27356ca26d3b8423a1f1089d18a8c00c5c36d"
+
+"@webcomponents/webcomponentsjs@^1.0.7":
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-1.0.13.tgz#c42e4c321a0b252f721bead04111ebd4dfc39969"
 
@@ -1140,14 +1144,6 @@ asyncemit@~3.0.1:
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
-
-"augeas@git://github.com/wikibus/augeas.git#master":
-  version "0.2.0-aloha"
-  resolved "git://github.com/wikibus/augeas.git#97a8b0e4c1196a5a4a9171ff3c692152f726735a"
-  dependencies:
-    "@polymer/polymer" "^3.0.0-pre.1"
-    core-js "^2.5.1"
-    lit-html "^0.7.1"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
@@ -4621,6 +4617,14 @@ linkify-it@^2.0.0:
   resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.0.3.tgz#d94a4648f9b1c179d64fa97291268bdb6ce9434f"
   dependencies:
     uc.micro "^1.0.1"
+
+lit-any@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/lit-any/-/lit-any-0.3.0.tgz#4ea40bb3b78210f3c3d51a4a52a3039eae314ccb"
+  dependencies:
+    "@polymer/polymer" "^3.0.0-pre.1"
+    core-js "^2.5.1"
+    lit-html "^0.7.1"
 
 lit-html@0.7.1, lit-html@^0.7.1:
   version "0.7.1"

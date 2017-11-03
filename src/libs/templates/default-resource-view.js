@@ -1,4 +1,4 @@
-import {ViewTemplates, render} from 'augeas';
+import {ViewTemplates} from 'lit-any';
 import {html} from 'lit-html';
 
 ViewTemplates.when

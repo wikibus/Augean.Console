@@ -1,4 +1,4 @@
-import {ViewTemplates, render} from 'augeas';
+import {ViewTemplates, render} from 'lit-any';
 import {html} from 'lit-html';
 import {repeat} from 'lit-html/lib/repeat';
 import './default-resource-view';
