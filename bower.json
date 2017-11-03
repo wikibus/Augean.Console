@@ -1,0 +1,13 @@
+{
+    "name": "Augean.Console",
+    "description": "Alcides Hydra Core console",
+    "main": "index.html",
+    "license": "MIT",
+    "homepage": "https://hydra-polymer.herokuapp.com/",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ]
+}
