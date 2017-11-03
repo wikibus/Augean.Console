@@ -8,7 +8,6 @@
   "fragments": [
     "dist/api-documentation/viewer.html",
     "dist/hydra-views/hydra-collection.html",
-    "dist/hydra-views/hydra-member-view.html",
     "dist/hydra-views/hydra-partial-view-pager.html",
     "dist/resource-views/default-resource-view.html",
     "dist/resource-views/default-literal-view.html",
