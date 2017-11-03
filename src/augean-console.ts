@@ -83,7 +83,7 @@ export class AugeanConsole extends Polymer.Element {
     }
 
     _loadOutlineElement() {
-        Polymer.importHref('dist/side-menu.html');
+        Polymer.importHref('dist/menus/side-menu.html');
     }
 
     urlChanged(e: CustomEvent) {
