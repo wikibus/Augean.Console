@@ -13,8 +13,8 @@
     "dist/resource-views/default-resource-view.html",
     "dist/resource-views/default-literal-view.html",
     "dist/entrypoint-selector.html",
-    "dist/side-menu.html",
-    "dist/outline/resource-json.html"
+    "dist/menus/side-menu.html",
+    "dist/menus/resource-json.html"
   ],
   "extraDependencies": [
     "manifest.json",

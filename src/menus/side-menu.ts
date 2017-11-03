@@ -4,7 +4,7 @@ import 'bower:polymer/polymer-element.html';
 
 import 'bower:mat-elements/mat-list.html';
 import 'bower:mat-elements/mat-sublist.html';
-import './menus/resource-outline';
+import './resource-outline';
 import './menus/entrypoint-menu';
 
 @CustomElement()
