@@ -1,4 +1,4 @@
-import { Hydra } from 'heracles';
+import { Hydra } from 'alcaeus';
 
 export {
     Hydra
