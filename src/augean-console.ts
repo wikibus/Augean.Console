@@ -79,6 +79,7 @@ export class AugeanConsole extends Polymer.Element {
                 this._setLastError(err);
                 this.state = 'error';
                 this._setIsLoading(false);
+                console.error(err);
             }
         });
     }

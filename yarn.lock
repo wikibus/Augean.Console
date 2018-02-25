@@ -912,9 +912,9 @@ ajv@^5.1.0, ajv@^5.1.5:
     json-schema-traverse "^0.3.0"
     json-stable-stringify "^1.0.1"
 
-alcaeus@0.3.0-a4:
-  version "0.3.0-a4"
-  resolved "https://registry.yarnpkg.com/alcaeus/-/alcaeus-0.3.0-a4.tgz#e7d00f680d3d0585e33968abcf9fecc234ec6bf3"
+alcaeus@^0.3.0-a7:
+  version "0.3.0-a7"
+  resolved "https://registry.yarnpkg.com/alcaeus/-/alcaeus-0.3.0-a7.tgz#67c1ac7010f4a945bb57f621ee2de35890dd18df"
   dependencies:
     es6-url-template "^1.0.0"
     isomorphic-fetch "^2.2.1"
@@ -4623,17 +4623,17 @@ linkify-it@^2.0.0:
   dependencies:
     uc.micro "^1.0.1"
 
-lit-any@^0.4.0-a7:
-  version "0.4.0-a7"
-  resolved "https://registry.yarnpkg.com/lit-any/-/lit-any-0.4.0-a7.tgz#ebb9176813f4db9c0808acd39d54d81ecdc3f2b8"
+lit-any@^0.5.0-a1:
+  version "0.5.0-a1"
+  resolved "https://registry.yarnpkg.com/lit-any/-/lit-any-0.5.0-a1.tgz#1f21d8bce21584da8b20aef0c97a840e115fc6f5"
   dependencies:
     "@polymer/polymer" "^3.0.0-pre.1"
     core-js "^2.5.1"
-    lit-html "^0.7.1"
+    lit-html "^0.9.0"
 
-lit-html@0.7.1, lit-html@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.7.1.tgz#61785045cf84f9ee955fa078c2985b52b765ad16"
+lit-html@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.9.0.tgz#a445ecbb3da7d8b17690e6ade6c872c89385092a"
 
 load-json-file@^1.0.0:
   version "1.1.0"

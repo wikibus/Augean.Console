@@ -1,5 +1,6 @@
 import {ViewTemplates, render} from 'lit-any';
-import {html, directive} from 'lit-html';
+import {directive} from 'lit-html';
+import {html} from 'lit-html/lib/lit-extended';
 import {repeat} from 'lit-html/lib/repeat';
 import './default-resource-view';
 import './FieldTemplates';
@@ -27,6 +28,23 @@ ViewTemplates.when
         let contract;
         let formElement = html``;
 
+        const setValue = (part) => {
+            const form = part.element;
+
+            if (!formValues.has(form)) {
+                formValues.set(form, {});
+            }
+
+            form.value = formValues.get(form);
+        };
+
+        const doSearch = (e) => {
+            formValues.set(e.target.previousSibling, e.target.previousSibling.value);
+            const target = searchTemplate.expand(e.target.previousSibling.value);
+
+            LdNavigation.Helpers.fireNavigation(document, target);
+        };
+
         if(searchTemplate) {
             contract = {
                 fields: searchTemplate.mappings.map(f => ({
@@ -40,23 +58,6 @@ ViewTemplates.when
                                 </lit-form>
                                 <input type="submit" on-click="${doSearch}" value="filter">`;
         }
-
-        const doSearch = (e) => {
-            formValues.set(e.target.previousSibling, e.target.previousSibling.value);
-            const target = searchTemplate.expand(e.target.previousSibling.value);
-
-            LdNavigation.Helpers.fireNavigation(document, target);
-        };
-
-        const setValue = (part) => {
-            const form = part.element;
-
-            if (!formValues.has(form)) {
-                formValues.set(form, {});
-            }
-
-            form.value = formValues.get(form);
-        };
 
         return html`
             ${formElement}
@@ -112,6 +113,17 @@ ViewTemplates.when
     .renders((render, value) => {
         const countryCode = value.id.replace('http://lexvo.org/id/iso639-1/', '');
         return html`${countryCode} `;
+    });
+
+ViewTemplates.when
+    .scopeMatches(s => s === 'collection-member')
+    .valueMatches(v => {
+        return v.isImage === true;
+    })
+    .renders((render, value) => {
+        return html`<ld-link resource-url$="${value.id}">
+                        <a>${value.name}</a>
+                    </ld-link> `;
     });
 
 ViewTemplates.when
