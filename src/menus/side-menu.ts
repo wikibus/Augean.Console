@@ -14,7 +14,7 @@ import './entrypoint-menu';
     <mat-sublist label="Main menu" collapsible>
         <entrypoint-menu entrypoint="[[entrypoint]]"></entrypoint-menu>
     </mat-sublist>
-    <mat-sublist label="Resource outline" collapsible>
+    <mat-sublist label="Resource outline" collapsible collapsed>
         <resource-outline root-resource="[[resource]]"></resource-outline>
     </mat-sublist>
 </mat-list>`)

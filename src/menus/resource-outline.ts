@@ -12,7 +12,6 @@ import {IHydraResource} from "heracles";
 import '../api-documentation/property-label';
 
 @CustomElement()
-@style(`:host { display: block; overflow: scroll; }`)
 export class ResourceOutline extends Polymer.Element {
     rootResource: IHydraResource;
 
