@@ -10,7 +10,7 @@ if (process.env.DEPLOY) {
         }));
 }
 
-module.exports = {
+const config = {
     entry: {
         'Hypermedia': path.resolve(__dirname, 'src/libs/Hypermedia.js'),
         'Utils': path.resolve(__dirname, 'src/libs/Utils.js'),
@@ -37,5 +37,10 @@ module.exports = {
         library: "[name]"
     },
     plugins: plugins,
-    devtool: 'source-map'
 };
+
+if (!process.env.DEPLOY) {
+    config.devtool = 'source-map';
+}
+
+module.exports = config;
