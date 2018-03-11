@@ -97,6 +97,7 @@
     "potts": "^1.2.1",
     "prpl-server": "^0.10.1",
     "rdf-serializer-jsonld-ext": "^1.2.0",
+    "source-map": "0.5.7",
     "twc": "^0.4.6-rc",
     "webpack": "^3.6.0"
   },
