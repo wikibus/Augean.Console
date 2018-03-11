@@ -8,4 +8,26 @@ ViewTemplates.when
 
 ViewTemplates.when
     .scopeMatches(s => s === 'default-resource-view')
-    .renders((r, v) => html`<mat-item label="${v}"></mat-item>`);
+    .renders((r, v) => {
+        const matItemClicked = (e) => {
+            if(!v.id) {
+                return;
+            }
+
+            const _this = e.target;
+            _this.dispatchEvent(new CustomEvent('child-expanded', {
+                detail: {
+                    resource: v
+                },
+                bubbles: true,
+                composed: true
+            }));
+        };
+
+        let icon = html``;
+        if(v.id) {
+            icon = html`<iron-icon icon="chevron-right" slot="secondary"></iron-icon>`;
+        }
+
+        return html`<mat-item label="${v}" on-xp-activate="${matItemClicked}">${icon}</mat-item>`;
+    });

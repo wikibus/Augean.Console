@@ -103,7 +103,7 @@
                 <template is="dom-repeat" as="property" items="[[links]]">
                     <mat-sublist label="[[property.title]]" hidden$="[[!_hasValues(property)]]">
                         <template is="dom-repeat" as="value" items="[[_getValues(property)]]">
-                            <mat-item label="[[_getPath(value.id)]]" on-xp-activate="_expandChild">
+                            <mat-item label="[[_getPath(value.id)]]" on-xp-activate="_expandLink">
                                 <paper-icon-button slot="secondary" icon="link" on-tap="_followLink"></paper-icon-button>
                             </mat-item>
                         </template>

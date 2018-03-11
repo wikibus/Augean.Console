@@ -9,7 +9,6 @@ window.TemplateUtil = {
     render
 };
 
-const formValues = new WeakMap();
 const previousCollection = new WeakMap();
 
 ViewTemplates.when
@@ -27,20 +26,15 @@ ViewTemplates.when
 
         let contract;
         let formElement = html``;
+        let litForm;
 
         const setValue = (part) => {
-            const form = part.element;
-
-            if (!formValues.has(form)) {
-                formValues.set(form, {});
-            }
-
-            form.value = formValues.get(form);
+            litForm = part.element;
+            litForm.value = collection['http://hydra-ex.rest/vocab/currentMappings'] || {};
         };
 
-        const doSearch = (e) => {
-            formValues.set(e.target.previousSibling, e.target.previousSibling.value);
-            const target = searchTemplate.expand(e.target.previousSibling.value);
+        const doSearch = () => {
+            const target = searchTemplate.expand(litForm.value);
 
             LdNavigation.Helpers.fireNavigation(document, target);
         };

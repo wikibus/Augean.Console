@@ -60,7 +60,7 @@ class DefaultResourceView extends Polymer.Element {
         this.dispatchEvent(new CustomEvent('close'));
     }
 
-    _expandChild(e: CustomEvent) {
+    _expandLink(e: CustomEvent) {
         this.dispatchEvent(new CustomEvent('child-expanded', {
             detail: {
                 resource: e.model.value
