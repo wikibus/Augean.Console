@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "polymer serve",
+    "start": "yarn watch & polymer serve",
     "build": "twc && webpack && polymer build",
     "typings": "potts",
     "watch": "twc -w & webpack -w",

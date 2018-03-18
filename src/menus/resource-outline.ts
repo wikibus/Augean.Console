@@ -77,8 +77,12 @@ export class ResourceOutline extends Polymer.Element {
     }
 
     _showSource() {
-        Polymer.importHref('dist/outline/resource-json.html', () => {
-            this.$.source.show();
-        });
+        this.dispatchEvent(new CustomEvent('show-resource-json', {
+            bubbles: true,
+            composed: true,
+            detail: {
+                resource: this.resource
+            }
+        }));
     }
 }

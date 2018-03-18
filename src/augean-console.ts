@@ -1,4 +1,4 @@
-import {CustomElement, notify, compute, style} from "twc/polymer";
+import {CustomElement, notify, compute, style, listen} from "twc/polymer";
 import {PaperInput} from "bower:paper-input/paper-input.html";
 import {IHydraResource} from "heracles";
 
@@ -137,6 +137,14 @@ export class AugeanConsole extends Polymer.Element {
     @listen('show-inline-resource')
     showResource(e: CustomEvent) {
         this.currentModel = e.detail.resource;
+    }
+
+    @listen('show-resource-json')
+    showResourceJson(e: CustomEvent) {
+        Polymer.importHref('dist/resource-views/resource-json.html', () => {
+            this.$.source.resource = e.detail.resource;
+            this.$.source.show();
+        });
     }
 
     _focusUrlInput() {
