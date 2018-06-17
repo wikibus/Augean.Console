@@ -1,6 +1,6 @@
 import {CustomElement, template, style, compute} from 'twc/polymer';
 import 'bower:polymer/polymer-element.html';
-import '../libs/cycle.js';
+import '../libs/Cycle.js';
 
 import 'bower:paper-dialog/paper-dialog.html';
 import 'bower:show-json/show-json.html';
