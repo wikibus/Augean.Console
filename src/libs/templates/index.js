@@ -1,17 +1,14 @@
 import {ViewTemplates, render} from 'lit-any';
-import {directive} from 'lit-html';
 import {html} from 'lit-html/lib/lit-extended';
 import {repeat} from 'lit-html/lib/repeat';
 import './default-resource-view';
 import './FieldTemplates';
 
 window.TemplateUtil = {
-    render
+    render: (what, where, ignore) => render(ViewTemplates.default, what, where, ignore),
 };
 
-const previousCollection = new WeakMap();
-
-ViewTemplates.when
+ViewTemplates.default.when
     .valueMatches(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#Collection')
     .scopeMatches(s => s === null)
     .renders((render, collection) => {
@@ -26,15 +23,9 @@ ViewTemplates.when
 
         let contract;
         let formElement = html``;
-        let litForm;
 
-        const setValue = (part) => {
-            litForm = part.element;
-            litForm.value = collection['http://hydra-ex.rest/vocab/currentMappings'] || {};
-        };
-
-        const doSearch = () => {
-            const target = searchTemplate.expand(litForm.value);
+        const doSearch = (e) => {
+            const target = searchTemplate.expand(e.target.value);
 
             LdNavigation.Helpers.fireNavigation(document, target);
         };
@@ -48,9 +39,11 @@ ViewTemplates.when
                 }))
             };
 
-            formElement = html`<lit-form no-labels ref="${directive(setValue)}" contract="${contract}">
-                                </lit-form>
-                                <input type="submit" on-click="${doSearch}" value="filter">`;
+            formElement = html`<lit-form no-labels contract="${contract}"
+                                         submit-button-label="Filter"
+                                         value=${collection['http://hydra-ex.rest/vocab/currentMappings'] || {}}
+                                         on-submit="${doSearch}">
+                               </lit-form>`;
         }
 
         return html`
@@ -61,7 +54,7 @@ ViewTemplates.when
             ${view ? render(view, 'pager') : ''}`;
     });
 
-ViewTemplates.when
+ViewTemplates.default.when
     .valueMatches(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#Collection')
     .scopeMatches(s => s === 'hydra-collection')
     .renders((render, collection) => {
@@ -101,7 +94,7 @@ ViewTemplates.when
             </table>`;
     });
 
-ViewTemplates.when
+ViewTemplates.default.when
     .scopeMatches(s => s === 'collection-member')
     .valueMatches(v => v.id && v.id.startsWith('http://lexvo.org'))
     .renders((render, value) => {
@@ -109,7 +102,7 @@ ViewTemplates.when
         return html`${countryCode} `;
     });
 
-ViewTemplates.when
+ViewTemplates.default.when
     .scopeMatches(s => s === 'collection-member')
     .valueMatches(v => {
         return v.isImage === true;
@@ -120,7 +113,7 @@ ViewTemplates.when
                     </ld-link> `;
     });
 
-ViewTemplates.when
+ViewTemplates.default.when
     .scopeMatches(s => s === 'collection-member')
     .valueMatches(v => !!v.id)
     .renders((render, value) => {
@@ -129,12 +122,12 @@ ViewTemplates.when
                     </ld-link> `;
     });
 
-ViewTemplates.when
+ViewTemplates.default.when
     .scopeMatches(s => s === 'collection-member')
     .valueMatches(v => Array.isArray(v))
     .renders((render, array) => html`${repeat(array, element => html`${render(element)}`)}`);
 
-ViewTemplates.when
+ViewTemplates.default.when
     .valueMatches(v => v['@type'] === 'http://www.w3.org/ns/hydra/core#PartialCollectionView')
     .scopeMatches(s => s === 'pager')
     .renders((render, view, scope) => {
@@ -146,14 +139,14 @@ ViewTemplates.when
         return html`<hydra-partial-view-pager view="${view}" slot$="${scope}"></hydra-partial-view-pager>`;
     });
 
-ViewTemplates.when
+ViewTemplates.default.when
     .valueMatches(v => typeof(v) === 'object' && v !== null)
     .renders((r, v, property) => {
         Polymer.importHref('dist/resource-views/default-resource-viewer.html');
         return html`<default-resource-viewer property="${property}" resource="${v}"></default-resource-viewer>`;
     });
 
-ViewTemplates.when
+ViewTemplates.default.when
     .valueMatches(v => true)
     .scopeMatches(s => true)
     .renders((r,v,s) => html`${v}`);

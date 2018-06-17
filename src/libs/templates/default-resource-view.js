@@ -1,12 +1,12 @@
 import {ViewTemplates} from 'lit-any';
 import {html} from 'lit-html/lib/lit-extended';
 
-ViewTemplates.when
+ViewTemplates.default.when
     .scopeMatches(s => s === 'default-resource-view')
     .valueMatches(v => v.isImage)
-    .renders((r, img) => html`<a target="_blank" href="${img.contentUrl}"><img src$="${img.thumbnail.contentUrl}"></a>`);
+    .renders((r, img) => html`<a target="_blaynk" href="${img.contentUrl}"><img src$="${img.thumbnail.contentUrl}"></a>`);
 
-ViewTemplates.when
+ViewTemplates.default.when
     .scopeMatches(s => s === 'default-resource-view')
     .renders((r, v) => {
         const matItemClicked = (e) => {

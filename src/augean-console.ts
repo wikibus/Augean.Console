@@ -67,7 +67,8 @@ export class AugeanConsole extends Polymer.Element {
     loadResource(value: string) {
         Polymer.importHref('dist/entrypoint-selector.html', async () => {
             try {
-                const res = await Hypermedia.Hydra.loadResource(value);
+                const hr = await Hypermedia.Hydra.loadResource(value);
+                const res = hr.root;
 
                 this.model = res;
                 this.currentModel = res;

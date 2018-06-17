@@ -21,11 +21,11 @@ function typeMatches(uri) {
     };
 }
 
-FieldTemplates.when
+FieldTemplates.default.when
     .fieldMatches(typeMatches('http://www.w3.org/2001/XMLSchema#integer'))
     .renders((f, id, v, set) => html`<paper-input label="${f.title}" type="number" value$="${v}" on-input="${e => set(jsonLdWrapped(e.target.value))}" >`);
 
-FieldTemplates.when
+FieldTemplates.default.when
     .fieldMatches(f => true)
     .renders((f, id, v, set) => {
         return html`<paper-input label="${f.title}" type="text" value="${valueGetter(v)}" on-input="${e => set(jsonLdWrapped(e.target.value))}" >`;

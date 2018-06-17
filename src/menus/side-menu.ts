@@ -1,5 +1,5 @@
 import { CustomElement, template, style, observe } from 'twc/polymer';
-import {IHydraResource} from "heracles";
+import {IHydraResource, IHydraResponse} from "alcaeus";
 import 'bower:polymer/polymer-element.html';
 
 import 'bower:mat-elements/mat-list.html';
@@ -26,8 +26,8 @@ class SideMenu extends Polymer.Element {
     @observe('resource')
     _getEntrypoint(resource: IHydraResource) {
         resource.apiDocumentation.getEntrypoint()
-            .then((entrypoint: IHydraResource) => {
-                this._setEntrypoint(entrypoint);
+            .then((entrypoint: IHydraResponse) => {
+                this._setEntrypoint(entrypoint.root);
             })
             .catch(() => {
                 this._setEntrypoint({});

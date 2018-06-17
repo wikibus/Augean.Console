@@ -26,13 +26,7 @@ class PropertyLabel extends Polymer.Element {
     @observe('resource', 'propertyId')
     getTitle(resource: IHydraResource, propertyId: string) {
         if (resource && resource.apiDocumentation) {
-            let properties;
-            if (Array.isArray(resource.types)) {
-                properties = resource.types.map((t: IClass) => resource.apiDocumentation.getProperties(t));
-            }
-            else {
-                properties = [resource.apiDocumentation.getProperties(resource.types)];
-            }
+            let properties = resource.types.map((t: IClass) => resource.apiDocumentation.getProperties(t));
 
             const supportedProps = Utils.flatten(properties);
             const [ supportedProp, ...tail ] = supportedProps.filter((prop: ISupportedProperty) => prop.property.id === propertyId);
