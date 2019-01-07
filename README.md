@@ -1,3 +1,5 @@
-# Augean.Console
+# Generic Hydra Console
 
-View on https://hydra-polymer.herokuapp.com/
+:exclamation: DISCONTINUED :exclamation: 
+
+New and shiny implementation at https://github.com/hypermedia-app/generic.hypermedia.app
